@@ -1,4 +1,15 @@
 FaceCalendar::Application.routes.draw do
+  get "calendar/show"
+
+  get "login/start"
+
+  get "login/logout"
+
+#  controller :login do
+#    get 'logout' => logout
+#  end
+
+
   get "sqltest/test"
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -49,7 +60,7 @@ FaceCalendar::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'login#start'
 
   # See how all your routes lay out with "rake routes"
 

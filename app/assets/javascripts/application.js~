@@ -17,4 +17,4 @@
 = require jquery
 = require bootstrap
 = require bootstra_min
-= require lib
+= require js

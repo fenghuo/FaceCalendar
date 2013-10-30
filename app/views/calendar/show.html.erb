@@ -1,0 +1,253 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">FaceCalendar</a>
+        </div>
+        <div class="navbar-collapse collapse">
+	  <% if session[:user_id] %>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+	  <% else %>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <%= text_field_tag :email, params[:email], placeholder: "Email", class: "form-control" %> 
+		<!--input type="text" placeholder="Email" class="form-control"-->
+            </div>
+            <div class="form-group">
+		<%= password_field_tag :password, params[:password], placeholder: "Password", class: "form-control" %>
+              <!--input type="password" placeholder="Password" class="form-control"-->
+            </div>
+		<%= button_tag "Sign in", class: "btn btn-success" %>
+               <!--button type="submit" class="btn btn-success">Sign in<!/button-->
+           </form>
+	   <% end %>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <style type="text/css">
+
+            .panel {
+                display:none;
+            }
+            .selected {
+                background-color:red;
+            }
+        </style>
+        <script>
+            //global initialization
+            get_group();
+            get_event(1);
+            
+
+
+            //add
+            add_init();
+            
+            var select_mode = 0;
+            function event_start(h, d) {
+                //var time_show = document.getElementById("time_event");
+                if (select_mode == 0) {
+                    
+
+                    select_mode = 1;
+                    add_event(d, h);
+                    $('#week tr:gt(0):eq(' + h + ') td:eq(' + d + ')').addClass("selected");
+                    //alert(h+","+d);
+                }
+                else {
+                    //time_show.innerHTML = add_time_desp();
+                    $(".panel").slideDown("slow");
+                    select_mode = 0;
+                }
+
+            }
+            function event_select(h, d) {
+                if (select_mode == 1) {
+                    //var time_show = document.getElementById("time_event");
+                    add_event(d, h);
+                    $('#week tr:gt(0):eq(' + h + ') td:eq(' + d + ')').addClass("selected");
+                }
+            }
+
+            function event_submit() {
+                var tex = document.getElementById("text_event");
+                
+                add_submit(tex.value,button_status);
+                event_clean();
+                $(".panel").hide();
+                event_draw();
+            }
+            
+            function event_cancel() {
+                add_event_clean();
+                event_clean();
+                $(".panel").hide();
+                event_draw();
+            }
+
+            var button_status = new Array();
+            for (var i = 0; i < group.length; i++) {
+                button_status[i] = 0;
+            }
+            button_status[group.length] = 1;
+       
+
+            function event_group(i) {
+                button_status[i] = 1 - button_status[i];
+                //alert(button_status[0] + "," + i + "," + group.length);
+                if (i == group.length && button_status[i] == 1) {
+                    for (var j = 0; j < group.length; j++)
+                        if (button_status[j] == 1) {
+                            button_status[j] = 0;
+                            $('#group_selection button:nth-child(' + (j+2) + ')').button('toggle');
+                        }
+                }
+                if (i != group.length && button_status[group.length] == 1) {
+                    button_status[group.length] = 0;
+                    $('#group_selection button:nth-child(' + (group.length + 2) + ')').button('toggle');
+                }
+            }
+            
+            //draw
+            function event_clean() {
+                $('#week div').remove();
+                $('#week tr td').removeClass("selected");
+                
+            }
+
+            var event_blocks = new Array();
+            function event_draw() {
+                for (var j = 1; j <= 7; j++) {
+                    var event_today = get_event_by_day(j);
+                    var event_concu = event_concurrency(event_today);
+                    
+                    //event_sorted_today
+                    event_today = event_sorted_today(event_today, event_concu);
+                    //event_sorted_concurrency
+                    event_concu = event_concu.sort(function (a, b) { return a - b; });
+
+                    for (var i = 0; i < event_today.length; i++) {
+                        
+                        var d = j;
+                        var h0 = event_today[i].start;
+                        var h1 = event_today[i].end;
+
+                        var ele = $('#week tr:nth-child(' + (2 + 2 * h0) + ') td:nth-child(' + (d + 1) + ')')
+                        var div_posi_x = ele.offset().top;
+                        var div_posi_y = ele.offset().left;
+                        var win = document.createElement("div");
+                        var t = document.createElement("p");
+                        var desp = document.createElement("p");
+                        
+                        //check how many have been drawn
+                        var drawn = 0.0;
+                        for (var k = 0; k < i; k++) {
+                            if(isconcurr(event_today[k].start,event_today[k].end,event_today[i].start,event_today[i].end)==1)
+                                drawn=drawn+1;
+                        }
+
+                        //width and start point
+                        
+
+                        var widthi = 1.0 / event_concu[i] * ele.width() * 0.9;//0.9 is the scalar factor
+                        var leftmost = div_posi_y+ drawn / event_concu[i] * ele.width();
+                        win.style.position = "absolute";
+                        win.style.height = 2 * ele.outerHeight() * (h1 - h0) + "px";
+                        win.style.width = widthi + "px";
+                        win.style.top = div_posi_x + "px";
+                        win.style.left = leftmost + "px";
+                        win.style.backgroundColor = "blue";
+                        
+                        //add event method here!
+
+                        t.innerHTML = time_slot(h0 * 2, 24) + "-" + time_slot(h1 * 2, 24);
+                        desp.innerHTML = event_today[i].desp;
+                        win.appendChild(t);
+                        win.appendChild(desp);
+                        
+                        $('#week').append(win);
+                        //$('#week div').hide();
+                        // $('#week tr:gt(0):eq(' + h0 + ') td:eq(' + d + ')').addClass("selected");
+                    }
+                    //alert(events[0].desp);
+                }
+            }
+        </script>
+        <div class="panel" id="reg_event">
+            <form>
+            <table>
+                <tr>
+                    <td>Event:</td>
+                    <td><input type="text" id="text_event" data-provide="typeahead" style="width:800px;"/></td>
+                    <td><input type="button" value="submit" onclick="event_submit()" class="btn btn-primary" /></td>
+                    <td><input type="button" value="cancel" onclick="event_cancel()" class="btn btn-primary" /></td>
+                </tr>
+            </table>
+            <div>
+                Groups:
+                 <div class="btn-group" data-toggle="buttons-checkbox" id="group_selection">
+                     <script>
+                         
+                         for (var i = 0; i < group.length; i++)
+                             $('#group_selection').append("<button type='button' class='btn btn-primary' onclick='event_group(" + i + ")'>" + group[i] + "</button>");
+                         $('#group_selection').append("<button type='button' id='private_button' class='btn btn-primary' onclick='event_group(" + i + ")'>Private</button>");
+                         $('#private_button').button('toggle');
+                     </script>
+                 </div>
+
+            </div>
+            </form>
+        </div>
+        
+        <table class="table table-bordered" style="table-layout:fixed;line-height:30px;position:relative;" id="week" onselect="return false" >
+            
+            <thead>
+                <tr>
+                <th>&nbsp;</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Tuesday</th>
+                <th>Friday</th>
+                <th>Saturaday</th>
+                <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+              <script>
+                  var i = 0;
+                  var j = 0;
+                  for (i = 0; i < 48; i++) {
+                      document.write("<tr>");
+                      document.write("<td>" + time_slot(i, 24) + "-"+time_slot((i+1)%48, 24)+ "</td>");
+                      for (j = 1; j < 8; j++) {
+                          document.write("<td onclick='event_start(" + i + "," + j + ")' onmousemove='event_select(" + i + "," + j + ")'>&nbsp;</td>");
+                      }
+                      document.write("</tr>");
+                  }
+                  event_draw();
+              </script>
+             </tbody>
+            
+        </table>
