@@ -1,2 +1,24 @@
 <h1>Sqltest#test</h1>
-<p>Find me in app/views/sqltest/test.html.erb</p>
+<p>Database Connect test <%= @result%> </p>
+
+<p><% @uid %></p>
+
+<table border='1'>
+<tr>
+	<% @value.first.each do |k,v| %>
+		<th>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @value.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>

@@ -1,4 +1,13 @@
+require 'User_model.rb'
+
 class SqltestController < ApplicationController
-  def test
-  end
+  
+	def check_login
+		
+	end
+	
+	def test
+		@value=User.GetTest
+		@uid=User.LoginCheck('test','pass')	
+	end
 end

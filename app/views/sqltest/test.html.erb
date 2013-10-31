@@ -1,4 +1,24 @@
 <h1>Sqltest#test</h1>
 <p>Database Connect test <%= @result%> </p>
 
-<p><%= @value%></p>
+<p><%= @uid %></p>
+
+<table border='1'>
+<tr>
+	<% @value.first.each do |k,v| %>
+		<th>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @value.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>

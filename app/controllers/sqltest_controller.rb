@@ -1,13 +1,9 @@
-require 'mysql'
+require 'User_model.rb'
 
 class SqltestController < ApplicationController
-  def test
-	@result="Failed!"
-	con = Mysql.new('localhost', 'root', 'YOUR PASSWORD', 'facecalendar')
-	@rs = con.query('select * from user')
-	@value="table_username:\n"
-	@rs.each_hash { |h| @value+=h['username']+" "}
-	con.close
-	@result="Succeed!"
-  end
+	
+	def test
+		@value=User.GetTest
+		@uid=User.LoginCheck('test','pass')	
+	end
 end

@@ -1,0 +1,11 @@
+
+class User < ActiveRecord::Base
+
+  def self.GetTest
+	config = YAML::load_file("config/database.yml")["development"]
+	client = Mysql2::Client.new(config)
+	@rs = client.query('call event_getAll(1)')	
+	client.close
+	return @rs
+  end
+end
