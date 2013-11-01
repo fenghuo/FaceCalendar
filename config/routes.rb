@@ -1,4 +1,7 @@
 FaceCalendar::Application.routes.draw do
+  get "search/group"
+  get "search/event"
+  get "search/user"
   get "calendar/show"
 
   get "login/start"
