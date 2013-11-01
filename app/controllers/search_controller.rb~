@@ -1,0 +1,17 @@
+require 'Groups_model.rb'
+
+class SearchController < ApplicationController
+  def group
+	@rs=11
+	if(params[:gname]!=nil)
+		@grs=Group.SearchByName(params[:gname])
+		
+	end
+  end
+
+  def event
+  end
+
+  def user
+  end
+end

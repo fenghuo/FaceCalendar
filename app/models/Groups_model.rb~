@@ -1,0 +1,16 @@
+require 'Conn_model.rb'
+
+class Group < ActiveRecord::Base
+
+	def self.SearchByName gname
+		client= Conn.GetConn
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call groups_searchByName('"+gname+"')");
+			client.close			
+			return @rs	
+		end
+	end
+
+end
