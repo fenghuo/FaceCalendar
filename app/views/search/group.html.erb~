@@ -7,27 +7,28 @@
 
 <% if (@grs!=nil) %>
 	
-	<% if (@grs.count<1) %>
+	<% if (@grs.kind_of?(Array) && @grs.count<1) %>
 		<p>No Groups Found!</p>s
 	<% else %>
-	<table border='1'>
-	<tr>
-		<% @grs.first.each do |k,v| %>
-			<th>
-				<%= k.to_s %>
-			</th>
-		<% end %>	
-	</tr>
+		<table border='1' class='table'>
+		<tr>
+			<% @grs.first.each do |k,v| %>
+				<th>
+					<%= k.to_s %>
+				</th>
+			<% end %>	
+		</tr>
 
-	<% @grs.each do |row| %>
-	<tr>
-		<% row.each do |k,v| %>
-			<td>	
-				<%= v.to_s %>
-			</td>
+		<% @grs.each do |row| %>
+		<tr>
+			<% row.each do |k,v| %>
+				<td>	
+					<%= v.to_s %>
+				</td>
+			<% end %>
+		</tr>
 		<% end %>
-	</tr>
+		</table>
 	<% end %>
-	</table>
 <% end %>
 </div>
