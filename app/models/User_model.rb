@@ -3,7 +3,8 @@ require 'Conn_model.rb'
 class User < ActiveRecord::Base
 
 	def self.LoginCheck(username,password)
-		client= Conn.GetConn		
+		client= Conn.GetConn	
+		@rs=nil	
 		if(client==nil)
 			return -1;
 		else
