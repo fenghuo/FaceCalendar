@@ -1,0 +1,28 @@
+<div class="panel-group" id="accordion">
+  <% if (@my_own_group_names != nil) %>
+    <% if (@my_own_group_names.count >= 1) %>
+      <% indx = 0 %>
+      <% @my_own_group_names.each do |name| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#<%= 'collapse'+indx.to_s %>" >
+                <%= name %>
+              </a>
+            </h4>
+          </div>
+          <div id="<%= 'collapse'+indx.to_s %>" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <%= @my_own_groups[indx].inspect %>
+            </div>
+          </div>
+        </div> 
+        <% indx = indx + 1 %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div> 
+
+<script type="text/javascript">  
+$(".collapse").collapse('hide')
+</script>

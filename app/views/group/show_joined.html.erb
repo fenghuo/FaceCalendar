@@ -1,0 +1,37 @@
+<% content_for :show_joined do%>
+<h1>Show My Joined Group</h1>
+<div id='shown-ones-joined-group-table'>
+<% if (@my_joined_groups!=nil) %>
+
+	<% if (@my_joined_groups.count<1) %>
+		<p>No Groups Found!</p>
+	<% else %>
+		<table border='1' class='table'>
+		<tr>
+			<th>group name</th>
+			<% @my_joined_groups.first.each do |key,value| %>
+				<th>
+					<%= key.to_s %>
+				</th>
+			<% end %>	
+		</tr>
+
+		<% indx = 0 %>
+		<% @my_joined_groups.each do |row| %>
+		<tr>
+			<td>
+				<%= @my_joined_group_names[indx] %>
+			</td>
+			<% row.each do |key,value| %>
+				<td>	
+					<%= value.to_s %>
+				</td>
+			<% end %>
+			<% indx = indx + 1 %>
+		</tr>
+		<% end %>
+		</table>
+	<% end %>
+<% end %>
+</div>
+<% end %>
