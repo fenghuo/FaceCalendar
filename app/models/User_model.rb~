@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 	
   	def self.GetTest
 		client = Conn.GetConn
-		@rs=nil
 		@rs = client.query('call event_getAll(1)')	
 		client.close
 		return @rs

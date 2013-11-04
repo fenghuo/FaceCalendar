@@ -1,7 +1,7 @@
 <h1>Sqltest#test</h1>
 <p>Database Connect test <%= @result%> </p>
 
-<%= form_tag("/sqltest/test", method: "get") do %>
+<%= form_tag("/sqltest/test", method: "post") do %>
   <%= label_tag(:username, "username:") %>
   <%= text_field_tag(:username) %>
   <%= label_tag(:password, "password:") %>
@@ -30,3 +30,27 @@
 </tr>
 <% end %>
 </table>
+
+<% @alltable.each_with_index do |table,index| %>
+
+	<table id='<%=%>' border='1'>
+	<tr>
+		<% table.first.each do |k,v| %>
+			<th>
+				<%= k.to_s %>
+			</th>
+		<% end %>	
+	</tr>
+
+	<% table.each do |row| %>
+	<tr>
+		<% row.each do |k,v| %>
+			<td>	
+				<%= v.to_s %>
+			</td>
+		<% end %>
+	</tr>
+	<% end %>
+	</table>
+<% end %>
+
