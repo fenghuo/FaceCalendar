@@ -7,13 +7,13 @@ class Test < ActiveRecord::Base
 		@alltable=[]
 		@tablename=Test.GetTableName
 		@tablename.each do |t|
-			@alltable<<(client.query("select * from #{t}"))
+			@alltable<<(client.query("select * from `#{t}`"))
 		end
 		return @alltable	
 	end
 	
 	def self.GetTableName	
-		@tablename=["admin","event","groupevent","groupmember","groups","log","login","privateevent","user",]
+		@tablename=["admin","user","event","groupevent","privateevent","groupmember","groups","log","login"]
 		return @tablename
 	end
 end

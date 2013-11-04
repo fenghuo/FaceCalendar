@@ -8,7 +8,9 @@ class SqltestController < ApplicationController
 	def test 
 		@value=User.GetTest
 		@uid=User.LoginCheck(params[:username],params[:password])
-		@test1=Group.create('UCSB CS','2','For csil')	
+		#@test1=Event.Create(4,'2013-11-3','2013-11-3','test',5,'eventname','for csil','csil',1)
+		@test2=User.Create("Jon","Jon","M","M@M.M","NO","","")		
+		@tablename=Test.GetTableName
 		@alltable=Test.GetAllTble
 	end
 end

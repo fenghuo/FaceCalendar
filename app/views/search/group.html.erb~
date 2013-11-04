@@ -7,7 +7,7 @@
 
 <% if (@grs!=nil) %>
 	
-	<% if (@grs.kind_of?(Array) && @grs.count<1) %>
+	<% if (@grs.count<1) %>
 		<p>No Groups Found!</p>s
 	<% else %>
 		<table border='1' class='table'>

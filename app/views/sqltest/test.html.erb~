@@ -1,6 +1,12 @@
 <h1>Sqltest#test</h1>
 <p>Database Connect test <%= @result%> </p>
 
+<div>
+<% tname=@tablename%>
+<% tname.each  do |name| %>
+	<a href="#<%= name %>"><%= name %></a>
+<% end %>
+</div>
 <%= form_tag("/sqltest/test", method: "post") do %>
   <%= label_tag(:username, "username:") %>
   <%= text_field_tag(:username) %>
@@ -31,9 +37,11 @@
 <% end %>
 </table>
 
-<% @alltable.each_with_index do |table| %>
-
-	<table id='<%=%>' border='1'>
+<% @alltable.each_with_index do |table,index| %>
+<hr>
+<h3><%=@tablename[index]%></h3>
+	<% if table !=nil then%>
+	<table id="<%=@tablename[index]%>" border='1'>
 	<tr>
 		<% table.first.each do |k,v| %>
 			<th>
@@ -52,5 +60,6 @@
 	</tr>
 	<% end %>
 	</table>
+	<%end%>
 <% end %>
 

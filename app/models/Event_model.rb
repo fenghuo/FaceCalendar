@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call event_create(#{userid},'#{starttime}','#{endtime}','#{erepeat}',#{groupid},'#{eventname}','#{description}','#{place}',#{weekday}),@rs");
+			client.query("call event_create(#{userid},'#{starttime}','#{endtime}','#{erepeat}',#{groupid},'#{eventname}','#{description}','#{place}',#{weekday},@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
 			return @grs
