@@ -81,14 +81,20 @@ function event_concurrency(event_at_day) {
         temp = 0;
         time_table.push(temp);
     }
+    
     //init day hour occupy
-    //for (var i = 0; i < event_at_day.length; i++) {
-    //    for(var j=event_
-    //}
+    for (var i = 0; i < event_at_day.length; i++) {
+        for (var j = event_at_day[i].start * 2; j < event_at_day[i].end * 2; j++) {
+            time_table[j]++;
+        }
+    }
+
     for (var i = 0; i < event_at_day.length; i++) {
         temp = 0;
-        for (var j = 0; j < event_at_day.length; j++) {
-            temp += isconcurr(event_at_day[i].start, event_at_day[i].end, event_at_day[j].start, event_at_day[j].end);
+        for (var j = event_at_day[i].start * 2; j < event_at_day[i].end * 2; j++) {
+            //temp += isconcurr(event_at_day[i].start, event_at_day[i].end, event_at_day[j].start, event_at_day[j].end);
+            if (temp < time_table[j])
+                temp = time_table[j];
             //alert(event_at_day[i].start + "," + event_at_day[i].end + "," + event_at_day[j].start + "," + event_at_day[j].end + "," + temp);
             
         }
@@ -97,7 +103,30 @@ function event_concurrency(event_at_day) {
     }
     return concurr;
 }
+function event_show_position(event_at_day, event_concur) {
+    var posi = new Array();
+    var i, j;
+    for (i = 0; i < event_at_day.length; i++) {
+        var posi_occupied = new Array();
+        for (j = 0; j < i; j++) {
+            if (isconcurr(event_at_day[i].start, event_at_day[i].end, event_at_day[j].start, event_at_day[j].end))
+                posi_occupied.push(posi[j]);
+        }
+        //least_not_occupied;
+        for (j = 0; j < event_concur[i]; j++) {
+            if (posi_occupied.length == 0) {
+                posi.push(0);
+                break;
+            }
+            if (posi_occupied.indexOf(j) == -1) {
+                posi.push(j);
+                break;
+            }
 
+        }
+    }
+    return posi;
+}
 function event_sorted_today(event_at_day, event_concur) {
     //classify by concurrency
     if(event_at_day.length==0)

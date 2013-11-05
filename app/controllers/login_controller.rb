@@ -40,4 +40,19 @@ class LoginController < ApplicationController
 	session[:user_id] = nil
 	redirect_to action: 'start'
   end
+
+  # def signup
+  # end
+  # 1) If a user clicked the singing-up button twice, the database could not find conflict
+  # and would add two same email address records. We should generate an index of email 
+  # address to avoid conflict between them.
+  # 2) use lower case letters in email address
+  # def create
+  # 	uid = User.LoginCheck(params[:session][:email].downcase,params[:session][:password]);
+  # 	if uid
+  # 		redirect_to :controller => 'calendar', :action => 'show'
+  # 	else
+  # 		# error
+  # 	end
+  # end
 end
