@@ -24,9 +24,13 @@ class LoginController < ApplicationController
 
   def signup
     name = params[:name]
-	email = params[:email]
-	password = params[:password]
-	if User.addNew(name, email, password)
+    email = params[:email]
+    password = params[:password]
+    sex = ''
+    profile = ''
+    picture = ''
+    description = ''
+	if User.Create(email, password, sex, username, profile, picture, description)
 	  redirect_to controller: 'calendar', action: 'show'
 	else
 	end
