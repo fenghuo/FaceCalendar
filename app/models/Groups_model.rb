@@ -8,9 +8,9 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@grs=client.query("call groups_searchByName('#{gname}')");
+			@rs=client.query("call groups_searchByName('#{gname}')");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 	
@@ -23,7 +23,7 @@ class Group < ActiveRecord::Base
 			client.query("call groups_create('#{groupname}','#{category}','#{description}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -36,7 +36,7 @@ class Group < ActiveRecord::Base
 			client.query("call groups_AddMember(#{groupid},#{userid},'#{description}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -49,7 +49,7 @@ class Group < ActiveRecord::Base
 			client.query("call groups_deleteMember(#{groupid},#{userid},@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -59,9 +59,9 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select id from groups where userid=#{userid})");
+			@rs=client.query("select id from groups where userid=#{userid}");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -71,9 +71,9 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select groupid from groupmember where userid=#{userid})");
+			@rs=client.query("select groupid from groupmember where userid=#{userid}");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -85,7 +85,7 @@ class Group < ActiveRecord::Base
 		else
 			@rs=client.query("select userid from groupmember where groupid=#{groupid})");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 	

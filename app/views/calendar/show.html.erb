@@ -44,8 +44,7 @@
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-
-    <style type="text/css">
+      <style type="text/css">
 
             .panel {
                 display:none;
@@ -53,20 +52,46 @@
             .selected {
                 background-color:red;
             }
+             .mouseover {
+                 background-color:gray;
+             }
         </style>
         <script>
             //global initialization
-            get_group();
-            get_event(1);
-            
-
+            //get_group();
+            //get_event(1);
+            <% @all_group.each  do |k|%>
+            group.push("<%= k =%>");
+            <% end %>
+            alert(group[0])
+            <% @all_event.each  do |e_temp|%>
+            var e_temp = new Object();
+            e_temp.desp = "<%= e.eventname %>";
+            e_temp.weekday = "<%= e.weekday %>";
+            e_temp.start = <%= e.starttime.hour + 0.5*e.starttime.min/30 %>;
+            e_temp.end = <%= e.endtime.hour + 0.5*e.endtime.min/30 %>;
+              
+              
+            events.push(e_temp);
+            <% end %>
 
             //add
             add_init();
             
             var select_mode = 0;
+            function time_over(h, d) {
+                if (select_mode == 0) {
+                    $('#week tr:gt(0):eq(' + h + ') td:eq(' + d + ')').addClass("mouseover");
+                }
+            }
+            function time_out(h, d) {
+                if (select_mode == 0) {
+                    $('#week tr:gt(0):eq(' + h + ') td:eq(' + d + ')').removeClass("mouseover");
+                }
+            }
             function event_start(h, d) {
                 //var time_show = document.getElementById("time_event");
+                time_out(h, d);
                 if (select_mode == 0) {
                     
 
@@ -141,11 +166,12 @@
                 for (var j = 1; j <= 7; j++) {
                     var event_today = get_event_by_day(j);
                     var event_concu = event_concurrency(event_today);
+                    var loffset = event_show_position(event_today, event_concu);
                     
                     //event_sorted_today
-                    event_today = event_sorted_today(event_today, event_concu);
+                    //event_today = event_sorted_today(event_today, event_concu);
                     //event_sorted_concurrency
-                    event_concu = event_concu.sort(function (a, b) { return a - b; });
+                    //event_concu = event_concu.sort(function (a, b) { return a - b; });
 
                     for (var i = 0; i < event_today.length; i++) {
                         
@@ -154,18 +180,18 @@
                         var h1 = event_today[i].end;
 
                         var ele = $('#week tr:nth-child(' + (2 + 2 * h0) + ') td:nth-child(' + (d + 1) + ')')
-                        var div_posi_x = ele.offset().top;
-                        var div_posi_y = ele.offset().left;
+                        var div_posi_x = ele.offset().top - $('#week').offset().top;
+                        var div_posi_y = ele.offset().left- $('#week').offset().left;
                         var win = document.createElement("div");
                         var t = document.createElement("p");
                         var desp = document.createElement("p");
                         
                         //check how many have been drawn
-                        var drawn = 0.0;
-                        for (var k = 0; k < i; k++) {
-                            if(isconcurr(event_today[k].start,event_today[k].end,event_today[i].start,event_today[i].end)==1)
-                                drawn=drawn+1;
-                        }
+                        var drawn = loffset[i];
+                        //for (var k = 0; k < i; k++) {
+                        //    if(isconcurr(event_today[k].start,event_today[k].end,event_today[i].start,event_today[i].end)==1)
+                        //        drawn=drawn+1;
+                        //}
 
                         //width and start point
                         
@@ -178,6 +204,8 @@
                         win.style.top = div_posi_x + "px";
                         win.style.left = leftmost + "px";
                         win.style.backgroundColor = "blue";
+                        //win.id = "event" + i + j;
+                        win.onclick = function () { event_click(even_today[i].desp); };
                         
                         //add event method here!
 
@@ -193,7 +221,12 @@
                     //alert(events[0].desp);
                 }
             }
+            function event_click(i) {
+                alert(i);
+            }
         </script>
+    </head>
+    <body>
         <div class="panel" id="reg_event">
             <form>
             <table>
@@ -220,7 +253,7 @@
             </form>
         </div>
         
-        <table class="table table-bordered" style="table-layout:fixed;line-height:30px;position:relative;" id="week" onselect="return false" >
+        <table class="table table-bordered" style="position:relative;table-layout:fixed;line-height:30px;" id="week" onselect="return false" >
             
             <thead>
                 <tr>
@@ -242,7 +275,7 @@
                       document.write("<tr>");
                       document.write("<td>" + time_slot(i, 24) + "-"+time_slot((i+1)%48, 24)+ "</td>");
                       for (j = 1; j < 8; j++) {
-                          document.write("<td onclick='event_start(" + i + "," + j + ")' onmousemove='event_select(" + i + "," + j + ")'>&nbsp;</td>");
+                          document.write("<td onclick='event_start(" + i + "," + j + ")' onmouseover='time_over(" + i + "," + j + ")' onmouseout=time_out(" + i + "," + j + ") onmousemove='event_select(" + i + "," + j + ")'>&nbsp;</td>");
                       }
                       document.write("</tr>");
                   }
@@ -251,3 +284,4 @@
              </tbody>
             
         </table>
+    
