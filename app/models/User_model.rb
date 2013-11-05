@@ -1,4 +1,5 @@
 require 'Conn_model.rb'
+require 'Event_model.rb'
 
 class User < ActiveRecord::Base
 
@@ -21,6 +22,7 @@ class User < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
+			# not safe enough to send passwords and store passwords in database
 			client.query("call login_check ('"+username.to_s+"','"+password.to_s+"',@rs)")
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
@@ -34,4 +36,7 @@ class User < ActiveRecord::Base
 		client.close
 		return @rs
   	end
+
+  	# def signed_in_usr
+  	
 end
