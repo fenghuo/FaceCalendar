@@ -8,33 +8,33 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call event_create(#{userid},'#{starttime}','#{endtime}','#{erepeat}',#{groupid},'#{eventname}','#{description}','#{place}',#{weekday}),@rs");
+			client.query("call event_create(#{userid},'#{starttime}','#{endtime}','#{erepeat}',#{groupid},'#{eventname}','#{description}','#{place}',#{weekday},@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
 			return @grs
 		end	
 	end
 
-	def self.GetAll (userid)
+	def self.GetAll (userid,starttime,endtime)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getAll('#{userid}')");
+			@grs=client.query("call event_getAll(#{userid},'#{starttime}','#{endtime}')");
 			client.close			
 			return @grs	
 		end
 		
 	end
 
-	def self.GetPrivate (userid)
+	def self.GetPrivate (userid,starttime,endtime)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getPrivate('#{userid}')");
+			@grs=client.query("call event_getPrivate(#{userid},'#{starttime}','#{endtime}')");
 			client.close			
 			return @grs	
 		end
@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getGroup('#{userid}')");
+			@grs=client.query("call event_getGroup(#{userid})");
 			client.close			
 			return @grs	
 		end
