@@ -23,10 +23,9 @@ class CalendarController < ApplicationController
       #@all_event = Event_Test.new
       #Event.GetAll(1,"2000-01-01 00:00:00","2100-01-01 00:00:00")
       #@new_event = GetNotice(:user_id)  need support
-  	  return 
-	  end
-	  session[:user_id] = nil
+	else 
 	  redirect_to :controller => 'login', :action => 'start'
+	end
   end
   
   def show_month 
