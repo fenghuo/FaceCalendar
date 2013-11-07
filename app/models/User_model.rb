@@ -3,22 +3,35 @@ require 'Event_model.rb'
 
 class User < ActiveRecord::Base
 
-	def self.Create(username,upass,sex,email,profile,picture,description)
+	def self.Create(username,password,sex,email,picture,firstname,lastname,occupation,skills,birthday,relationship,orientation,introduction)
+	# birthday must be in 'date' format
 		client= Conn.GetConn
-		@rs=nil
+		@rs=-1
 		if(client==nil)
 			return -1;
 		else		
-			client.query("call user_create('#{username}','#{upass}','#{sex}','#{email}','#{profile}','#{picture}','#{description}',@rs)");
+			client.query("call user_create('#{username}','#{password}','#{sex}','#{email}','#{picture}','#{firstname}','#{lastname}','#{occupation}','#{skills}','#{birthday}','#{relationship}','#{orientation}','#{introduction}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 	
+	def self.Get(userid)
+		client= Conn.GetConn	
+		@rs=-1	
+		if(client==nil)
+			return -1;
+		else
+			@rs = client.query("call user_get(#{userid})")	
+			client.close
+			return @rs
+		end
+  	end
+
 	def self.LoginCheck(username,password)
 		client= Conn.GetConn	
-		@rs=nil	
+		@rs=-1	
 		if(client==nil)
 			return -1;
 		else
@@ -36,7 +49,5 @@ class User < ActiveRecord::Base
 		client.close
 		return @rs
   	end
-
-  	# def signed_in_usr
   	
 end

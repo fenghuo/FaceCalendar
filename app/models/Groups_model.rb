@@ -59,31 +59,43 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select id from groups where userid=#{userid}");
+			@rs=client.query("call groups_getCreatedById(#{userid})");
 			client.close			
 			return @rs	
 		end
 	end
 
-	def self.FindOnesJoinedGroup(userid) # all groupid
+	def self.FindOnesJoinedGroup(userid) # all groupid id only
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select groupid from groupmember where userid=#{userid}");
+			@rs=client.query("call groups_getJoinedById(#{userid})");
 			client.close			
 			return @rs	
 		end
 	end
 
+	def self.FindOnesJoinedGroupWithGroupName(userid) # all groupid
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call groups_findGroupWithName(#{userid})");
+			client.close			
+			return @rs	
+		end
+	end
+	
 	def self.FindGroupMembers(groupid) # memebr of groups
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select userid from groupmember where groupid=#{groupid})");
+			@rs=client.query("call groups_getMembersById#{groupid}");
 			client.close			
 			return @rs	
 		end
