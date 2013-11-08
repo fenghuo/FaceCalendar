@@ -79,7 +79,7 @@ class Event < ActiveRecord::Base
 		end
 	end
 		
-	def self.EditTime(eventid,repeat,name,description,place,weekday)
+	def self.EditOthers(eventid,repeat,name,description,place,weekday)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
