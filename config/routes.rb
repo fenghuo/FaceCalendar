@@ -4,14 +4,21 @@ FaceCalendar::Application.routes.draw do
   get "search/user"
   get "calendar/show"
 
-  get "login/start"
+  get 'login/start'
+  get 'login/tryAgain'
+  get 'login/logout'
+  get 'login/login'
+  post 'login/signup'
 
-  get "login/logout"
 
 #  controller :login do
 #    get 'logout' => logout
 #  end
 
+  get "group/show_own"
+  get "group/show_joined"
+  get "group/show_members"
+  get "group/show_frame"
 
   get "sqltest/test"
   # The priority is based upon order of creation:

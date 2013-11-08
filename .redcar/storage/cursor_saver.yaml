@@ -1,0 +1,90 @@
+--- 
+cursor_positions: 
+  - :path: app/views/layouts/application.html.erb
+    :cursor_offset: 478
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/models/Groups_model.rb
+    :cursor_offset: 159
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/views/calendar/show_event.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 10:26:39 -08:00
+  - :path: app/controllers/search_controller.rb
+    :cursor_offset: 230
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/controllers/search_controller.rb~
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/controllers/sqltest_controller.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/views/search/event.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/views/search/group.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/controllers/calendar_controller.rb
+    :cursor_offset: 554
+    :timestamp: 2013-11-04 07:16:25 -08:00
+  - :path: app/views/calendar/temp
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 08:01:08 -08:00
+  - :path: app/views/calendar/show.html.erb
+    :cursor_offset: 7424
+    :timestamp: 2013-11-04 08:00:33 -08:00
+  - :path: config/database.yml
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 20:53:33 -08:00
+  - :path: config/boot.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/models/Event_model.rb
+    :cursor_offset: 474
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/models/Test_model.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/models/Conn_model.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/assets/javascripts/lib.js
+    :cursor_offset: 339
+    :timestamp: 2013-11-04 07:38:12 -08:00
+  - :path: db/faceCalendar.11.3.sql
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/controllers/calendar_controller.rb~
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/controllers/login_controller.rb~
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/models/User.rb~
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: db/schema.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: db/outines
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: db/faceCalendar.sql
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: db/faceCalendar.11.2.sql
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/views/search/group.html.erb~
+    :cursor_offset: 0
+    :timestamp: 2013-11-04 06:23:22 -08:00
+  - :path: app/views/search/user.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/controllers/login_controller.rb
+    :cursor_offset: 0
+    :timestamp: 2013-11-03 06:52:20 -08:00
+  - :path: app/models/User_model.rb
+    :cursor_offset: 503
+    :timestamp: 2013-11-04 06:23:22 -08:00
+files_to_retain: 0

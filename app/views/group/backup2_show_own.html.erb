@@ -1,0 +1,18 @@
+<ul class="nav nav-pills nav-stacked">
+
+          	<li class="active"><a href="#">Home</a></li>
+
+          	<% if (@my_own_group_names!=nil) %>
+
+				<% if (@my_own_group_names.count >= 1) %>
+
+					<% indx = 0 %>
+					<% @my_own_group_names.each do |name| %>
+						<li><a href="#"><%= name %></a></li>
+					<% end %>
+
+				<% end %>
+
+			<% end %>         
+           
+          </ul>
