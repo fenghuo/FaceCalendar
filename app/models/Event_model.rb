@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 			client.query("call event_create(#{userid},'#{starttime}','#{endtime}','#{erepeat}',#{groupid},'#{eventname}','#{description}','#{place}',#{weekday},@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs
+			return @rs
 		end	
 	end
 
@@ -21,9 +21,9 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getAll(#{userid},'#{starttime}','#{endtime}')");
+			@rs=client.query("call event_getAll(#{userid},'#{starttime}','#{endtime}')");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 		
 	end
@@ -34,9 +34,9 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getPrivate(#{userid},'#{starttime}','#{endtime}')");
+			@rs=client.query("call event_getPrivate(#{userid},'#{starttime}','#{endtime}')");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 		
 	end
@@ -47,9 +47,9 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("call event_getGroup(#{userid})");
+			@rs=client.query("call event_getGroup(#{userid})");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 		
 	end
@@ -60,9 +60,9 @@ class Event < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@grs=client.query("select * from `facecalendar`.`event` where `id`=#{eventid}");
+			@rs=client.query("call event_getById(#{eventid})");
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 
@@ -75,11 +75,11 @@ class Event < ActiveRecord::Base
 			client.query("call event_editTime(#{eventid},'#{starttime}','#{endtime}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 		
-	def self.EditTime(eventid,repeat,name,description,place,weekday)
+	def self.EditOthers(eventid,repeat,name,description,place,weekday)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
@@ -88,7 +88,7 @@ class Event < ActiveRecord::Base
 			client.query("call event_editOthers(#{eventid},'#{repeat}','#{name}','#{description}','#{place}',#{weekday},@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
-			return @grs	
+			return @rs	
 		end
 	end
 end

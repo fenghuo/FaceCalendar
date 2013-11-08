@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+#Capistrano
+gem 'capistrano','~> 3.0.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm','~> 0.0.3'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 

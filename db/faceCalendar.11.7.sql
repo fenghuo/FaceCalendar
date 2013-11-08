@@ -122,7 +122,7 @@ CREATE TABLE `groupmember` (
   KEY `groupmember_userid_idx` (`userid`),
   CONSTRAINT `groupmember_groupid` FOREIGN KEY (`groupid`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `groupmember_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `login` (
   PRIMARY KEY (`id`),
   KEY `userid_idx` (`userid`),
   CONSTRAINT `login_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'user1','user1',1),(2,'user2','user2',2),(4,'Jon','Jon',5),(5,'Jon','Jon',6);
+INSERT INTO `login` VALUES (1,'user1','user1',1),(2,'user2','user2',2),(4,'Jon','Jon',5),(5,'Jon','Jon',6),(6,'Jon','Jon',7);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,14 +282,19 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
   `sex` varchar(15) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `profile` varchar(1000) DEFAULT NULL,
   `picture` varchar(100) DEFAULT NULL,
-  `description` varchar(100) DEFAULT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `occupation` varchar(50) DEFAULT NULL,
+  `skills` varchar(500) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `relationship` varchar(50) DEFAULT NULL,
+  `orientation` varchar(50) DEFAULT NULL,
+  `introduction` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -298,7 +303,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user1','male','test@test.com','test','test.com',NULL),(2,'user2','female','test@dd.com','nn','nnn',NULL),(3,'user3','unknown',NULL,NULL,NULL,NULL),(5,'Jon','M','M@M.M','NO','',''),(6,'Jon','M','M@M.M','NO','','');
+INSERT INTO `user` VALUES (1,'male','test@test.com','test.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'female','test@dd.com','nnn',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'unknown',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'M','M@M.M','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'M','M@M.M','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'M','M@M.M','NO','First','Last','occup','skills','2013-11-03','NO','NO','intro');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -542,6 +547,36 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `event_getById` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `event_getById`(in eid int)
+BEGIN
+SELECT 
+    `event`.`userid`,
+    `event`.`starttime`,
+    `event`.`endtime`,
+    `event`.`repeat`,
+    `event`.`eventname`,
+    `event`.`decription`,
+    `event`.`place`,
+    `event`.`weekday`
+FROM `facecalendar`.`event`
+	where `event`.`id`=eid;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `event_getGroup` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -721,6 +756,101 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `groups_findAllGroups` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `groups_findAllGroups`(in uid int)
+BEGIN
+	select b.id,b.name from groups b,groupmember c
+	where c.userid=uid and b.id=c.groupid;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `groups_findGroupWithName` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `groups_findGroupWithName`(in uid int)
+BEGIN
+	SELECT `groups`.`id`,
+    `groups`.`name`
+FROM `facecalendar`.`groups`
+	where `groups`.`id` in
+	(
+		SELECT `groupmember`.`id`
+		FROM `facecalendar`.`groupmember`
+		where `groupmember`.`userid`=uid 
+	);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `groups_getCreatedById` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `groups_getCreatedById`(in uid int)
+BEGIN
+
+	SELECT 
+    `groups`.`id`
+FROM `facecalendar`.`groups`
+	where  `groups`.`userid`=uid;
+ 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `groups_getMembersById` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `groups_getMembersById`(in gid int)
+BEGIN
+
+SELECT 
+    `groupmember`.`userid`
+FROM `facecalendar`.`groupmember`
+where `groupmember`.`groupid`=gid;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `groups_searchByName` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -802,30 +932,49 @@ in username varchar(50),
 in upass varchar(50),
 in sex varchar(50),
 in email varchar(1000),
-in uprofile varchar(1000),
 in picture varchar(1000),
-in description varchar(1000),
+in firstname varchar(50),
+in lastname varchar(50),
+in occupation varchar(50),
+in skills varchar (500),
+in birthday date,
+in relationship varchar(50),
+in orientation varchar(50),
+in introduction varchar(5000),
 out uid int
 )
 BEGIN
 	set uid=-1;
 	start transaction;
 	INSERT INTO `facecalendar`.`user`
-		(
-		`username`,
+	(
 		`sex`,
 		`email`,
-		`profile`,
 		`picture`,
-		`description`)
-		VALUES
-		(
-		username,
+		`firstname`,
+		`lastname`,
+		`occupation`,
+		`skills`,
+		`birthday`,
+		`relationship`,
+		`orientation`,
+		`introduction`
+	)
+	VALUES
+	(
 		sex,
 		email,
-		uprofile,
 		picture,
-		description);
+		firstname,
+		lastname,
+		occupation,
+		skills,
+		birthday,
+		relationship,
+		orientation,
+		introduction
+	);
+
 	
 	select max(id) into uid from user;
 	
@@ -853,7 +1002,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `user_findAllGroups` */;
+/*!50003 DROP PROCEDURE IF EXISTS `user_get` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -861,12 +1010,25 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `user_findAllGroups`(in uid int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `user_get`(in uid int)
 BEGIN
-	select b.id,b.name from groups b,groupmember c
-	where c.userid=uid and b.id=c.groupid;
+	SELECT 
+    `user`.`sex`,
+    `user`.`email`,
+    `user`.`picture`,
+    `user`.`firstname`,
+    `user`.`lastname`,
+    `user`.`occupation`,
+    `user`.`skills`,
+    `user`.`birthday`,
+    `user`.`relationship`,
+    `user`.`orientation`,
+    `user`.`introduction`
+FROM `facecalendar`.`user`
+where `user`.`id`=uid;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -883,4 +1045,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-04  0:13:10
+-- Dump completed on 2013-11-07 13:25:55

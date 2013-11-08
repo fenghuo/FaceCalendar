@@ -5,21 +5,21 @@
     <button id='search-button' type='submit'><span>Search</span></button>
   </form>
 
-<% if (@grs1!=nil) %>
+<% if (@grs!=nil) %>
 	
-	<% if (@grs1.count<1) then %>
+	<% if (@grs.count<1) %>
 		<p>No Groups Found!</p>
 	<% else %>
 		<table border='1' class='table'>
 		<tr>
-			<% @grs1.first.each do |k,v| %>
+			<% @grs.first.each do |k,v| %>
 				<th>
 					<%= k.to_s %>
 				</th>
 			<% end %>	
 		</tr>
 
-		<% @grs1.each do |row| %>
+		<% @grs.each do |row| %>
 		<tr>
 			<% row.each do |k,v| %>
 				<td>	

@@ -12,12 +12,11 @@ development:
   timeout: 5000
   username: root
 <<<<<<< HEAD
-  password: 
-  socket: /var/run/mysqld/mysql.sock
+  password: 'Ytj092161'
 =======
-  password: ''
-  socket: /var/lib/mysql/mysql.sock
->>>>>>> bdd904883faa744fa7c2a5e0e7b1635c71eb0239
+  password: '911'
+>>>>>>> ffa9e981c8ddc73993a95c300d4fb13a83c75eda
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
