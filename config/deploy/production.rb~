@@ -27,9 +27,6 @@ set :ssh_options, {
 }
 
 
-set :rails_env, :production #This is for the rails module which does not find the env correctly
-fetch(:default_env).merge!(rails_env: :production)  # Use RAILS_ENV=production
-
 
 # Extended Server Syntax
 # ======================
