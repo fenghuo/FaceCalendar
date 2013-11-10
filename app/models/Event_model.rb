@@ -91,4 +91,18 @@ class Event < ActiveRecord::Base
 			return @rs	
 		end
 	end
+
+	def self.Delelte(eventid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else		
+			client.query("call event_delete(#{eventid},@rs)");#true if succeed
+			@rs=client.query('select @rs').first["@rs"];
+			client.close			
+			return @rs	
+		end
+	end
+
 end
