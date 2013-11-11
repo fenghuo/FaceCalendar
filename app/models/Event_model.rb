@@ -1,6 +1,6 @@
 require 'Conn_model.rb'
 
-class Event < ActiveRecord::Base
+class EventDB < ActiveRecord::Base
 
 	def self.Create	(userid,starttime,endtime,erepeat,groupid,eventname,description,place,weekday)
 		client= Conn.GetConn
