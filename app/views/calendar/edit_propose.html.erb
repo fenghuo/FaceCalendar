@@ -1,0 +1,15 @@
+<h1>Calendar#edit_propose</h1>
+<p>Find me in app/views/calendar/edit_propose.html.erb</p>
+<p><%= @eventsid %></p>
+
+<table>
+<% session[:current_event].each do |e| %>
+	<tr>
+		<td><%= e.eventname %></td>
+ 		<td><%= e.desp %></td>
+ 		<td><%= e.place %></td>
+ 		<td><%= e.groupname %></td>
+ 		<td><%= e.eventsid %></td>
+	</tr>
+<% end %>
+</table>

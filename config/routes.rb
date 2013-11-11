@@ -1,14 +1,26 @@
 FaceCalendar::Application.routes.draw do
+
+  get "calendar/edit_propose"
+  get "calendar/backup"
+  get "calendar/create_event"
+  get "calendar/edit"
+  get "calendar/show_event"
+  get "calendar/show_month"
   get "search/group"
   get "search/event"
   get "search/user"
   get "calendar/show"
+  post "calendar/create_event"
+  post "calendar/edit_propose"
 
   get 'login/start'
   get 'login/tryAgain'
   get 'login/logout'
   get 'login/login'
-  post 'login/signup'
+  get 'login/signup'
+
+  get "profile/show"
+  get "profile/ret_data"
 
 
 #  controller :login do

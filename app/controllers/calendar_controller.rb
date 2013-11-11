@@ -2,48 +2,268 @@ require 'Event_model.rb'
 require 'Groups_model.rb'
 
 class CalendarController < ApplicationController
-  class Event_Test
-    attr_accessor :eventname, :weekday, :starttime, :endtime
+  helper_method :prep
+  class Event
+    attr_accessor :eventname,:desp,:place,:starttime,:endtime,:groupname, :weekday, :eventid, :eventsid
     def initialize
-      @eventname = "group meeting"
-      @weekday = 1
-      @starttime = DateTime.parse("2013-11-4 10:00:00")
-      @endtime   = DateTime.parse("2013-11-4 10:30:00")
+      @eventname="event_name"
+      @desp="event_desp"
+      @place="event_place"
     end
   end
+  def prep
+    #fake record in reality I will request for every week's record
+    #need to read the database in the released version
+    @event0=Event.new
+    @event0.starttime = DateTime.parse("2013-11-04 10:10:00")
+    @event0.endtime = DateTime.parse("2013-11-04 12:00:00")
+    @event0.groupname = "1;"
+    @event0.weekday = @event0.starttime.wday
+    @event0.eventid = 0
+    if @event0.weekday==0
+      @event0.weekday=7
+    end
+
+    @event1=Event.new
+    @event1.starttime = DateTime.parse("2013-11-03 10:00:00")
+    @event1.endtime = DateTime.parse("2013-11-03 12:00:00")
+    @event1.groupname = "2;"
+    @event1.weekday = @event1.starttime.wday
+    @event1.eventid = 1
+    if @event1.weekday==0
+      @event1.weekday=7
+    end
+
+    @event2=Event.new
+    @event2.starttime = DateTime.parse("2013-10-03 10:00:00")
+    @event2.endtime = DateTime.parse("2013-10-03 12:00:00")
+    @event2.groupname = "3;"
+    @event2.weekday = @event2.starttime.wday
+    @event2.eventid = 2
+    if @event2.weekday==0
+      @event2.weekday=7
+    end
+
+    @all_group = [1,2,3] #Group.FindOnesJoinedGroup(1)
+    @all_event = [ @event0, @event1, @event2]
+
+    use_database=false
+    if session[:current_event]==nil
+      use_database=true
+    else
+      @all_event.each do |ae|
+        if(!session[:current_event].find{|se| se.eventid==ae.eventid})
+          use_database=true
+        end
+      end
+    end
+
+    if(use_database==true)
+      session[:current_event]=[]
+      currentsid=0
+      @all_event.each do |ae|
+        session[:current_event].push(ae)
+        session[:current_event][session[:current_event].length-1].eventsid=currentsid
+        currentsid=currentsid+1
+      end
+
+    else
+      @all_event=session[:current_event]
+    end
+
+    session[:current_group]=@all_group
+  end
+
   def show
+    #session[:current_event]=[]
+    
+
+    #data format regulation
+    if params[:week_start_para]
+      @week_start_tmp=DateTime.parse(params[:week_start_para])
+
+    else
+      @week_start_tmp=DateTime.now
+    
+    end
+
+    @week_start_tmp=DateTime.new(@week_start_tmp.year,@week_start_tmp.mon,@week_start_tmp.day,0,0,0)
+    if @week_start_tmp.wday==0
+      @week_start_tmp=@week_start_tmp-6
+    else
+      @week_start_tmp=@week_start_tmp-@week_start_tmp.wday+1
+    end
+    session[:week_start]=@week_start_tmp
+    @week_next_tmp = @week_start_tmp+7
+    @week_last_tmp = @week_start_tmp-7
+    @start_tmp=@week_start_tmp #for render template
+    prep
+    @all_event=session[:current_event]
   	if session[:user_id]!=nil
       #Event.GetGroup(1)    #"ucsb cs290 cssa" Getgroup return array
       #@all_group = ["ucsb","cs290","cssa"]
       #<<-DOC
-      @all_group = [1,2,4] #Group.FindOnesJoinedGroup(1)
-      @all_event = Event.GetAll(1,DateTime.parse("2013-11-4 10:00:00"),DateTime.parse("2013-11-11 10:00:00"))
+      
+      #Event.GetAll(user_id,DateTime.parse("2013-11-04 00:00:00"),DateTime.parse("2013-11-11 00:00:00"))
       #DOC
       #@all_event = [:desp=>"aaaa"] not working!
       #@all_event = Event_Test.new
       #Event.GetAll(1,"2000-01-01 00:00:00","2100-01-01 00:00:00")
       #@new_event = GetNotice(:user_id)  need support
-	else 
+  	  return 
+	  end
+	  session[:user_id] = nil
 	  redirect_to :controller => 'login', :action => 'start'
-	end
   end
   
-  def show_month 
+  def show_month
+
+
     if session[:user_id]!=nil
+      
+      if params[:month_start]
+        @month_start_tmp=DateTime.parse(params[:month_start])
+
+      else
+        @month_start_tmp=DateTime.now
+
+      end
+      @month_start_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon,1,0,0,0)
+      @month_end_tmp=@month_start_tmp+31
+      @month_end_tmp=DateTime.new(@month_end_tmp.year,@month_end_tmp.mon,1,0,0,0)-1
+      @start_tmp=@month_start_tmp
+      if @month_start_tmp.mon==12
+        @month_next_tmp=DateTime.new(@month_start_tmp.year+1,1,1,0,0,0)
+      else
+        @month_next_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon+1,1,0,0,0)
+      end
+
+      if @month_start_tmp.mon==1
+        @month_last_tmp=DateTime.new(@month_start_tmp.year-1,12,1,0,0,0)
+      else
+        @month_last_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon-1,1,0,0,0)
+      end
+
+      prep
+
+
       #@all_group = Getgroup(:user_id)    #"ucsb cs290 cssa"
       #@all_event = GetAll(:user_id)
       return
     end
+
+    redirect_to :controller => 'login', :action => 'start'
   end
   
   def edit
-    if session[:user_id]==0
-      return
-    end
+    @all_event=session[:current_event]#can use session to reduce database read
+
+    id=params[:eventsid]
+    
+    @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
     
   end
   
   def create_event
 
+    @new_event_eventname=params[:text_event]
+    if @new_event_eventname==""
+      @new_event_eventname="(Untitled)"
+    end
+    @new_event_desp=params[:text_event]
+    @new_event_group=params[:group_encoded]#group format "groupA;groupB..."
+
+
+    new_event_time=params[:time_encoded]
+    new_event_time_decode=new_event_time.split(";")
+    @new_event_start=Array.new
+    @new_event_end=Array.new
+    week_start_tmp=session[:week_start]
+    
+    
+    #add 
+    @all_event=session[:current_event]
+    currentsid=@all_event[@all_event.length-1].eventsid
+    new_event_time_decode.each do |d|
+      ded=d.split(",")
+      @new_event_start.push(week_start_tmp+ded[0].to_i-1+ded[1].to_f/24.0)
+      @new_event_end.push(week_start_tmp+ded[0].to_i-1+ded[2].to_f/24.0)
+      session_rec = Event.new
+      session_rec.eventname=@new_event_eventname
+      session_rec.desp=@new_event_desp
+      session_rec.groupname=@new_event_group
+      session_rec.weekday=ded[0].to_i
+      session_rec.place=""
+      
+      session_rec.eventsid=currentsid+1
+      currentsid=currentsid+1
+
+      session_rec.starttime=week_start_tmp+ded[0].to_i-1+ded[1].to_f/24.0
+      session_rec.endtime=week_start_tmp+ded[0].to_i-1+ded[2].to_f/24.0
+      session_rec.eventid=session[:current_event].length#Event.Create(sessio[:user_id],session_rec.starttime,session_rec.endtime,"",session_rec.groupname,session_rec.eventname,session_rec.desp,session_rec.place,"");
+      session[:current_event].push(session_rec)
+    end
+
+
+    
+
+
+
+    respond_to do |format|
+      format.html
+      format.js 
+    end
+  end
+
+  def show_event
+    @all_event=session[:current_event]#can use session to reduce database read
+
+    id=params[:eventtoshowid]
+    
+    @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
+    #event=event_fint_by_id[id]
+  end
+
+  def backup
+    @all_event=session[:current_event]
+  end
+
+  def edit_propose
+    @all_event=session[:current_event]
+    @eventsid=params[:eventsid]
+    idx=session[:current_event].index {|e| e.eventsid==@eventsid.to_i}
+    go_back_time=session[:current_event][idx].starttime
+    if params[:commit]=="save"
+      #database edit method
+      #session edit
+      
+      session[:current_event][idx].eventname=params[:eventname]
+      session[:current_event][idx].starttime=DateTime.parse(params[:starttime])
+      go_back_time=session[:current_event][idx].starttime
+      session[:current_event][idx].endtime=DateTime.parse(params[:endtime])
+      session[:current_event][idx].place=params[:place]
+      session[:current_event][idx].groupname=params[:groupname]
+      session[:current_event][idx].desp=params[:desp]
+    elsif params[:commit]=="delete"
+      
+      #database delete method
+      #session delete
+      #currentsid=0
+      #session[:current_event]=[]
+      #@all_event.each do |e|
+      #  if e.eventsid!=@eventsid.to_i
+      #    e.eventsid=currentsid
+      #    currentsid=currentsid+1
+      #    session[:current_event].push(e)
+      #  end
+      #end
+      session[:current_event].delete_if {|e| e.eventsid==@eventsid.to_i}
+
+    end
+    
+    
+
+    
+    redirect_to calendar_show_path(week_start_para: go_back_time)
   end
 end
