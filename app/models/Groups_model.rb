@@ -14,13 +14,13 @@ class Group < ActiveRecord::Base
 		end
 	end
 	
-	def self.create(groupname,category,description)
+	def self.Create(groupname,category,description,userid)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_create('#{groupname}','#{category}','#{description}',@rs)");
+			client.query("call groups_create('#{groupname}','#{category}','#{description}','#{userid}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
 			return @rs	
@@ -99,6 +99,19 @@ class Group < ActiveRecord::Base
 			client.close			
 			return @rs	
 		end
+	end
+
+	def self.GetById(groupid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call groups_getById#{groupid}");
+			client.close			
+			return @rs	
+		end
+
 	end
 	
 	def self.NotifyGroupMember(groupid) ## no db notice

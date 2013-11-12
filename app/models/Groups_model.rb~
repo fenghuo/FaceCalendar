@@ -14,7 +14,7 @@ class Group < ActiveRecord::Base
 		end
 	end
 	
-	def self.create(groupname,category,description)
+	def self.Create(groupname,category,description)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
@@ -95,10 +95,23 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("select userid from groupmember where groupid=#{groupid}");
+			@rs=client.query("call groups_getMembersById#{groupid}");
 			client.close			
 			return @rs	
 		end
+	end
+
+	def self.GetById(groupid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call groups_getById#{groupid}");
+			client.close			
+			return @rs	
+		end
+
 	end
 	
 	def self.NotifyGroupMember(groupid) ## no db notice
