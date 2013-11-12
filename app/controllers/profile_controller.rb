@@ -2,6 +2,9 @@ require 'User_model'
 
 class ProfileController < ApplicationController
   def show
+	if ! session[:user_id]
+		redirect_to :controller => 'login', :action => 'start'
+	end
   end
 
   def ret_data
@@ -26,6 +29,13 @@ class ProfileController < ApplicationController
 
     User.Create(username, password, sex, email, "", "Jack", "Smith", occupation, skills, Date.current(), relationship, "", description)
   end
-	
-	
+
+  def update_info
+    for key, value in params
+      if key == "controller" || key == "action"
+        next
+      end
+      puts "#{key} => #{value} \n"
+    end
+  end	
 end

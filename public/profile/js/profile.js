@@ -68,7 +68,12 @@
 					width: 70,
 					text: "Ok",
 					click: function() {
-						updatePanel(diaBody, panel.find(".panel-body"));
+						msg = updatePanel(diaBody, panel.find(".panel-body"));
+						$.ajax({
+							url : "/profile/update_info",
+							type : "POST",
+							data : msg,
+						});
 						$( this ).dialog( "close" );
 					}
 				},
@@ -95,16 +100,62 @@
 		});
 	}
 
+	function uploadDialog() {
+		var dia = $("<div style='display:hide'></div>");
+		dia.append($("<label>choose photo:</label>")).append($("<input type='file' class='form-control upload-img'/>"));
+		dia.dialog({
+			width: 600,
+			autoOpen: false,
+			title : "Upload Photo",
+			closeButton : false,
+			modal : true,
+			buttons: [
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "upload",
+					click : function() {
+						var reader = new FileReader();
+						var uploadFile = $("input.upload-img")[0].files[0];
+						console.log(uploadFile.type + "\t" + uploadFile.name);
+					}
+				},
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "Cancel",
+					click: function() {
+						var some = $( this );
+						$( this ).dialog("close");
+					}
+				}
+			]
+		});
+		dia.dialog("open");
+	}
+
 	function afterLoad() {
 		$.ajax(	{
-				url : "/profile/ret_data",// "data.json.php",
+				url : "/profile/ret_data",
 				type : "GET",
 				dataType : 'json'
 		})
 		.done(function(data) {
+			$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
+			$("p.user-name").html(data[0]["firstname"] + " " + data[0]["lastname"]).css("display", "inline");
 			fillPanel(data);
 			$.each($(".profile"), function(index, value) {
 				$(value).show();
+			});
+			$(".photo-wrapper").mouseenter(function() {
+				$(".btn-pro-img").show();
+			})
+			.mouseleave(function() {
+				$(".btn-pro-img").hide();
+			})
+			.click(function(event) {
+				event.preventDefault();
+				uploadDialog();
 			});
 		});
 	}

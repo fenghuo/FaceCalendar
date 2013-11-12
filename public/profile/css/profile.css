@@ -14,22 +14,38 @@
 }
 
 .photo-wrapper {
-	display: inline-block;
+	display: table-cell;
 	position: relative;
 	bottom: -175px;
 	left: 150px
 }
 
 p.user-name {
-	display: inline;
+	display: none;
 	position: relative;
-	left: 250px;
+	left: 400px;
 	bottom: -75px;
 	font-size: 200%;
 	color: #ebf2f1;
 	word-spacing: 6px;
 	font-family: calibari;
 	text-transform: capitalize;
+}
+
+.img-profile {
+	display : none;
+}
+
+.btn-pro-img {
+	display : none;
+	background : #FFFFFF;
+	padding: 1px 5px;
+	font-size: 9px;
+	line-height: 1.5;
+	border-radius : 3px;
+	position : relative;
+	top : 70px;
+	left : -150px;
 }
 
 .section {
