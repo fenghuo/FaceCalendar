@@ -6,8 +6,28 @@
  		<td><%= e.place %></td>
  		<td><%= e.groupname %></td>
  		<td><%= e.eventsid %></td>
+ 		<td><%= e.weekday %></td>
 		<td><%= e.starttime %></td>
 		<td><%= e.endtime %></td>
 	</tr>
 <% end %>
+
+</table>
+<table>
+	<tr>
+	<p>Groups:<%= session[:current_group].length %></p>
+	<% session[:current_group].each do |e| %>
+	
+		<td>"<%= e %>"</td>
+	
+	<% end %>
+	</tr>
+	<p>Groupid</p>
+	<tr>
+	<% session[:current_groupid].each do |e| %>
+	
+		<td>"<%= e %>"</td>
+	
+	<% end %>
+	</tr>
 </table>

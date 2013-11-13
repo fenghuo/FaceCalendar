@@ -46,12 +46,11 @@ class CalendarController < ApplicationController
 
 
     group_table=Group.FindOnesJoinedGroupWithGroupName(session[:user_id])
-
     @all_group=[]
     @all_groupid=[]
     group_table.each do |e|
-      @all_groupid.push(e[0])
-      @all_group.push(e[1])
+      @all_groupid.push(e["id"])
+      @all_group.push(e["name"])
     end
     #@all_group = [1,2,3] #Group.FindOnesJoinedGroup(1)
     #@all_event = [ @event0, @event1, @event2]
@@ -66,10 +65,13 @@ class CalendarController < ApplicationController
         event0.eventname=e["eventname"]
         event0.desp=e["decription"]
         event0.place=e["place"]
-        event0.starttime = e["starttime"]
-        event0.endtime = e["endtime"]
+        event0.starttime = DateTime.parse(e["starttime"].to_s)
+        event0.endtime = DateTime.parse(e["endtime"].to_s)
         event0.groupname = "private;"
-        event0.weekday = e["weekday"]
+        event0.weekday = event0.starttime.wday
+        if @event0.weekday==0
+          @event0.weekday=7
+        end
         @all_event.push(event0)
       end
     end
@@ -92,7 +94,7 @@ class CalendarController < ApplicationController
         end
       end
     end
-
+    use_database=true
     if(use_database==true)
       session[:current_event]=[]
       currentsid=0
@@ -256,7 +258,7 @@ class CalendarController < ApplicationController
         else
           gid=group_name2id(e)
         end
-        EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",1,session_rec.eventname,session_rec.desp,session_rec.place,-1);
+        EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",1,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
       end
 
       session[:current_event].push(session_rec)
