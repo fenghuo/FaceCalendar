@@ -1,0 +1,11 @@
+<table>
+<% @all_event.each do |e| %>
+	<tr>
+		<td><%= e.eventname %></td>
+ 		<td><%= e.desp %></td>
+ 		<td><%= e.place %></td>
+ 		<td><%= e.groupname %></td>
+ 		<td><%= e.eventsid %></td>
+	</tr>
+<% end %>
+</table>

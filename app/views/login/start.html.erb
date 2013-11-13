@@ -3,7 +3,7 @@
         <h1>Calendar the activity!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
       </div>
-      <form class="cantainer right-panel" method="post" action="/login/signup">
+      <form class="cantainer right-panel" method="get" action="/login/signup">
 		<%= text_field_tag :name, params[:name], placeholder: "Name", class: "form-control"%>
 	    <!--input type="text" placeholder="Name" class="form-control"-->
    	    <%= text_field_tag :email, params[:email], placeholder: "Email", class: "form-control" %>

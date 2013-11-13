@@ -1,0 +1,162 @@
+body {
+	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+	background-color: #eeeeee;
+}
+
+.full-width-image-1 {
+	background: url(http://lorempixel.com/1920/500/) no-repeat center center;
+	background-size: cover;
+	text-align: left;
+	padding: 100px 0;
+}
+
+.full-width-image-2 {
+	background: url(http://lorempixel.com/g/1920/450/) no-repeat center center;
+	background-size: cover;
+	text-align: center;
+	height: 450px;
+}
+
+.photo-wrapper {
+	display: inline-block;
+	position: relative;
+	bottom: -175px;
+	left: 150px
+}
+
+p.user-name {
+	display: inline;
+	position: relative;
+	left: 250px;
+	bottom: -75px;
+	font-size: 200%;
+	color: #ebf2f1;
+	word-spacing: 6px;
+	font-family: calibari;
+	text-transform: capitalize;
+}
+
+.section {
+	padding-top: 75px;
+	padding-bottom: 75px;
+}
+
+.section-heading {
+	font-size: 2.5em;
+	font-family: calibari;
+	margin: -8px 0 0;
+	color: #a35c43;
+}
+
+.section-lead {
+	margin: 0 0;
+}
+
+.section-paragraph {
+	margin: 30px 5px;
+	font-size: 16px;
+	text-align: justify;
+}
+
+footer {
+	margin: 50px 0;
+}
+
+.columns {
+	width: auto;
+	max-width: 1200;
+}
+
+.columns:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.column-left {
+	float: left;
+	width: 48%;
+}
+
+.column-right {
+	float: right;
+	width: 48%;
+}
+
+.columns-forth {
+	width: auto;
+	max-width: 576;
+	margin-left: -20px;
+}
+
+.columns-forth:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.column-first {
+	float: left;
+	width: 57px;
+}
+
+.column-second {
+	float: left;
+	width: 80%;
+	margin: 0 3%;
+}
+
+.box-wrapper {
+	margin-top: 10%;
+	background-color: #ccc4c7; 
+	padding: 1%;
+	min-height: 400px;
+	
+}
+
+.note {
+	background-color: #e8e1e4;
+	padding: 1%;
+	min-height: 375px;
+}
+
+h1.about-me {
+	font-family: calibari;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: #a35c43;
+	font-size: 2.5em;
+	text-align: justify;
+}
+
+.event {
+	margin-top: 20px;
+	margin-left: -20px;
+}
+
+.event-time {
+	background-color: #cccccc;
+	font-style: oblique;
+	margin: 10px 0;
+	padding: 10px;
+}
+
+.event-paragraph {
+	margin: 15px 0;
+	font-size: 16px;
+	text-align: justify;
+}
+
+@media (max-width: 768px) {
+
+.section-heading {
+	font-size: 2em;
+}
+
+.section {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+}

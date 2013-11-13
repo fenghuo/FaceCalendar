@@ -1,6 +1,6 @@
 require 'Conn_model.rb'
 
-class Event < ActiveRecord::Base
+class EventDB < ActiveRecord::Base
 
 	def self.Create	(userid,starttime,endtime,erepeat,groupid,eventname,description,place,weekday)
 		client= Conn.GetConn
@@ -91,4 +91,43 @@ class Event < ActiveRecord::Base
 			return @rs	
 		end
 	end
+
+	def self.Delelte(eventid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else		
+			client.query("call event_delete(#{eventid},@rs)");#true if succeed
+			@rs=client.query('select @rs').first["@rs"];
+			client.close			
+			return @rs	
+		end
+	end
+
+	def self.AddGroup(eventid, groupid, description)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else		
+			client.query("call event_addGroup(#{eventid},#{groupid},'#{description}',@rs)");#true if succeed
+			@rs=client.query('select @rs').first["@rs"];
+			client.close			
+			return @rs	
+		end
+	end
+
+	def self.GetOwner(eventid,@private,@group) #get private userid or groupid
+		client= Conn.GetConn
+		if(client==nil)
+			return -1;
+		else		
+			@private=client.query("call event_isPrivate(#{eventid})")
+			@group=client.query("call event_isGroup(#{eventid})")
+			client.close			
+			return	
+		end
+	end
+
 end

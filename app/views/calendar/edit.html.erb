@@ -1,0 +1,42 @@
+
+ <%= form_tag("edit_propose") do %>
+ <%= submit_tag("save", class: "btn btn-primary") %>
+ <%= submit_tag("delete", class: "btn btn-primary") %>
+ <table class="table table-striped">
+	 	<tr>
+	 		<td>Event Name:</td>
+	 		<td><%= text_field_tag(:eventname, @event_to_show.eventname) %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>Start At:</td>
+	 		<td><%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>End By:</td>
+	 		<td><%= text_field_tag(:endtime,  @event_to_show.endtime) %></td>
+	 	</tr>
+
+	 	<tr>
+	 		<td>Place:</td>
+	 		<td><%= text_field_tag(:place,  @event_to_show.place) %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>Groups:</td>
+	 		<td><%= text_field_tag(:groupname,  @event_to_show.groupname) %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>Description:</td>
+	 		<td><%= text_area_tag(:desp,  @event_to_show.desp) %></td>
+	 	</tr>
+
+	</table>
+ <%= text_field_tag(:eventsid, @event_to_show.eventsid, style: "display:none") %>
+ <% end %>
+ <%= link_to "Discard Editing and Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>
+ <p></p>
+ <%= link_to "Discard Editing and Go Back To Calendar Month View", calendar_show_month_path(month_start: @event_to_show.starttime) %>
+
+ <script>
+ 	$('table input').css("width", window.innerWidth*0.75+"px")
+ 	$('table textarea').css("width", window.innerWidth*0.75+"px")
+ </script>

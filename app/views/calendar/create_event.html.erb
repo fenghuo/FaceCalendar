@@ -1,0 +1,17 @@
+<h1>Calendar#create_event</h1>
+<p>Find me in app/views/calendar/create_event.html.erb</p>
+<p>eventname:<%= @new_event_eventname %></p>
+<p>Desp:<%= @new_event_desp %></p>
+<p>Group:<%= @new_event_group %></p>
+<table>
+	<tr>
+		<% @new_event_start.each do |s| %>
+			<td><%= s %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<% @new_event_end.each do |e| %>
+			<td><%= e %></td>
+		<% end %>
+	</tr>
+</table>
