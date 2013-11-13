@@ -16,6 +16,28 @@
 <% end %>
 
 <p><%= @uid %></p>
+<hr>
+<div>groups</div>
+<hr>
+<table border='1'>
+<tr>
+	<th>
+	<% @test3.first.each do |k,v| %>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @test3.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>
 
 <table border='1'>
 <tr>

@@ -58,19 +58,20 @@ class CalendarController < ApplicationController
 
     @all_event=[]
     event_table=EventDB.GetAll(session[:user_id],starttime,endtime)
-    event_table.each do |e|
-      @event0=Event.new
+    if event_table!=[]
+      event_table.each do |e|
+        event0=Event.new
       
-      @event0.eventid = e.id
-      @all_event.push(event0)
-      @event0.eventname=e.eventname
-      @event0.desp=e.decription
-      @event.place=e.place
-      @event0.starttime = DateTime.parse(e.starttime)
-      @event0.endtime = DateTime.parse(e.endtime)
-      @event0.groupname = "private;"
-      @event0.weekday = e.weekday
-      
+        event0.eventid = e["id"]
+        event0.eventname=e["eventname"]
+        event0.desp=e["decription"]
+        event0.place=e["place"]
+        event0.starttime = e["starttime"]
+        event0.endtime = e["endtime"]
+        event0.groupname = "private;"
+        event0.weekday = e["weekday"]
+        @all_event.push(event0)
+      end
     end
 
 
@@ -86,7 +87,7 @@ class CalendarController < ApplicationController
       end
 
       session[:current_event].each do |ae|
-        if(!@all_event[:current_event].find{|se| se.eventid==ae.eventid})
+        if(!@all_event.find{|se| se.eventid==ae.eventid})
           use_database=true
         end
       end
@@ -226,7 +227,11 @@ class CalendarController < ApplicationController
     
     #add 
     @all_event=session[:current_event]
-    currentsid=@all_event[@all_event.length-1].eventsid
+    if @all_event==[]
+	currentsid=-1
+    else
+        currentsid=@all_event[@all_event.length-1].eventsid
+    end
     new_event_time_decode.each do |d|
       ded=d.split(",")
       @new_event_start.push(week_start_tmp+ded[0].to_i-1+ded[1].to_f/24.0)

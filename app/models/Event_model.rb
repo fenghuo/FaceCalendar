@@ -118,7 +118,7 @@ class EventDB < ActiveRecord::Base
 		end
 	end
 
-	def self.GetOwner(eventid,@private,@group) #get private userid or groupid
+	def self.GetOwner(eventid) #get private userid or groupid
 		client= Conn.GetConn
 		if(client==nil)
 			return -1;
@@ -126,7 +126,7 @@ class EventDB < ActiveRecord::Base
 			@private=client.query("call event_isPrivate(#{eventid})")
 			@group=client.query("call event_isGroup(#{eventid})")
 			client.close			
-			return	
+			return [@private,@group]
 		end
 	end
 
