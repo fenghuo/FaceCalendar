@@ -94,7 +94,7 @@ class CalendarController < ApplicationController
         end
       end
     end
-    use_database=true
+    #use_database=true
     if(use_database==true)
       session[:current_event]=[]
       currentsid=0
@@ -206,8 +206,8 @@ class CalendarController < ApplicationController
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
     
-    EventDB.EditTime(@event_to_show.eventid,@event_to_show.starttime,@event_to_show.endtime)
-    EventDB.EditOthers(@event_to_show.eventid,"",@event_to_show.eventname,@event_to_show.desp,@event_to_show.place,@event_to_show.weekday)
+    #EventDB.EditTime(@event_to_show.eventid,@event_to_show.starttime,@event_to_show.endtime)
+    #EventDB.EditOthers(@event_to_show.eventid,"",@event_to_show.eventname,@event_to_show.desp,@event_to_show.place,@event_to_show.weekday)
   end
   
   def create_event
