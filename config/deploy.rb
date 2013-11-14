@@ -5,12 +5,11 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, '/home/ubuntu/main'
 set :user, %{ubuntu}
-set :user, %false
+set :use_sudo, false
 set :latest_release_directory, File.join(fetch(:deploy_to), 'current')
-# set :scm, :git
 
 # set :format, :pretty
- set :log_level, :debug
+set :log_level, :debug
 # set :pty, true
 
 # set :linked_files, %w{config/database.yml}
@@ -41,5 +40,7 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
+
+
 
 end
