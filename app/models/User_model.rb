@@ -43,6 +43,20 @@ class User < ActiveRecord::Base
 		end
 	end
 	
+	def self.Create(userid, username,password,sex,email,picture,firstname,lastname,occupation,skills,birthday,relationship,orientation,introduction)
+	# birthday must be in 'date' format
+		client= Conn.GetConn
+		@rs=-1
+		if(client==nil)
+			return -1;
+		else		
+			client.query("call user_create('#{username}','#{password}','#{sex}','#{email}','#{picture}','#{firstname}','#{lastname}','#{occupation}','#{skills}','#{birthday}','#{relationship}','#{orientation}','#{introduction}',@rs)");
+			@rs=client.query('select @rs').first["@rs"];
+			client.close			
+			return @rs	
+		end
+	end
+	
   	def self.GetTest
 		client = Conn.GetConn
 		@rs = client.query("call event_getAll(1,'2009-1-1','2022-11-1')")	
