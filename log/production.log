@@ -1,0 +1,346 @@
+Started GET "/assets/rails.png" for 128.111.43.39 at 2013-11-06 00:26:25 +0000
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:26:25 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 177ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2588072664665375094_41285300'
+  app/controllers/login_controller.rb:5:in `start'
+
+
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:29:48 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 39ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2588072664665375094_41285300'
+  app/controllers/login_controller.rb:5:in `start'
+
+
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:29:49 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 84ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2588072664665375094_41285300'
+  app/controllers/login_controller.rb:5:in `start'
+
+
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:30:18 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 51ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1544238894342256787_28060080'
+  app/controllers/login_controller.rb:5:in `start'
+
+
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:32:16 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 50ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__3457884938892385310_27135120'
+  app/controllers/login_controller.rb:5:in `start'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.3ms)
+Started GET "/search/group" for 128.111.43.39 at 2013-11-06 00:35:52 +0000
+Processing by SearchController#group as HTML
+  Rendered search/group.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 39ms
+
+ActionView::Template::Error (Invalid CSS after " */": expected selector or at-rule, was "= require boots..."
+  (in /home/tianjiu/main/faceCalendar/main/FaceCalendar/app/assets/stylesheets/application.css)):
+     9: 
+    10:     <title>FaceCalendar</title>
+    11: 
+    12:     <%= stylesheet_link_tag    "application", :media => "all" %>
+    13:     <%= javascript_include_tag "application" %>
+    14:     <%= csrf_meta_tags %>
+    15:   </head>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__3457884938892385310_27135120'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.8ms)
+Started GET "/search/group" for 128.111.43.39 at 2013-11-06 00:39:03 +0000
+Processing by SearchController#group as HTML
+  Rendered search/group.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5988ms (Views: 5986.6ms | ActiveRecord: 0.0ms)
+Started GET "/search/group?gname=g" for 128.111.43.39 at 2013-11-06 00:39:12 +0000
+Processing by SearchController#group as HTML
+  Parameters: {"gname"=>"g"}
+  Rendered search/group.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 13ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started GET "/search/group?gname=g" for 128.111.43.39 at 2013-11-06 00:40:31 +0000
+Processing by SearchController#group as HTML
+  Parameters: {"gname"=>"g"}
+  Rendered search/group.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started GET "/login/start" for 128.111.43.39 at 2013-11-06 00:40:43 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started GET "/assets/calendar_background.jpg" for 128.111.43.39 at 2013-11-06 00:40:44 +0000
+Started GET "/login/logout?button=" for 128.111.43.39 at 2013-11-06 00:40:46 +0000
+Processing by LoginController#logout as HTML
+  Parameters: {"button"=>""}
+Redirected to http://tjapp.cloudapp.net/login/start
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+Started GET "/login/start" for 128.111.43.39 at 2013-11-06 00:40:46 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 128.111.43.39 at 2013-11-06 00:40:50 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://tjapp.cloudapp.net/calendar/show
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 128.111.43.39 at 2013-11-06 00:40:50 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 13ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 128.111.43.39 at 2013-11-06 00:40:59 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:50:02 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started GET "/assets/calendar_background.jpg" for 128.111.43.39 at 2013-11-06 00:50:02 +0000
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 128.111.43.39 at 2013-11-06 00:50:08 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://tjapp.cloudapp.net/calendar/show
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 128.111.43.39 at 2013-11-06 00:50:08 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started GET "/sqltest/test" for 128.111.43.39 at 2013-11-06 00:50:20 +0000
+Processing by SqltestController#test as HTML
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.event_getAll; expected 3, got 1):
+  app/models/user.rb:37:in `query'
+  app/models/user.rb:37:in `GetTest'
+  app/controllers/sqltest_controller.rb:9:in `test'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.9ms)
+Started GET "/sqltest/test" for 128.111.43.39 at 2013-11-06 00:51:24 +0000
+Processing by SqltestController#test as HTML
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.event_getAll; expected 3, got 1):
+  app/models/user.rb:37:in `query'
+  app/models/user.rb:37:in `GetTest'
+  app/controllers/sqltest_controller.rb:9:in `test'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (57.8ms)
+Started GET "/sqltest/test" for 128.111.43.39 at 2013-11-06 00:51:25 +0000
+Processing by SqltestController#test as HTML
+Completed 500 Internal Server Error in 4ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.event_getAll; expected 3, got 1):
+  app/models/user.rb:37:in `query'
+  app/models/user.rb:37:in `GetTest'
+  app/controllers/sqltest_controller.rb:9:in `test'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.4ms)
+Started GET "/" for 128.111.43.39 at 2013-11-06 00:55:26 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+Started GET "/assets/calendar_background.jpg" for 128.111.43.39 at 2013-11-06 00:55:26 +0000
+Started GET "/sqltest/test" for 128.111.43.39 at 2013-11-06 00:55:39 +0000
+Processing by SqltestController#test as HTML
+Completed 500 Internal Server Error in 8ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.event_getAll; expected 3, got 1):
+  app/models/user.rb:37:in `query'
+  app/models/user.rb:37:in `GetTest'
+  app/controllers/sqltest_controller.rb:9:in `test'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.3ms)
+Started GET "/" for 187.65.11.96 at 2013-11-06 03:56:18 +0000
+Processing by LoginController#start as */*
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started HEAD "/" for 184.106.69.6 at 2013-11-06 08:22:00 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started GET "/" for 124.160.25.198 at 2013-11-06 08:54:46 +0000
+Processing by LoginController#start as */*
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started HEAD "/" for 4.71.33.108 at 2013-11-06 20:42:37 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started GET "/manager/html" for 222.186.52.49 at 2013-11-06 21:16:54 +0000
+
+ActionController::RoutingError (No route matches [GET] "/manager/html"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.23) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.23) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.23) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.23) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.0ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (44.9ms)
+Started GET "/" for 46.38.48.66 at 2013-11-06 21:25:47 +0000
+Processing by LoginController#start as */*
+  Rendered login/start.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+Started GET "/" for 58.185.34.211 at 2013-11-06 21:59:03 +0000
+Processing by LoginController#start as */*
+  Rendered login/start.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started PUT "/webdav/sam.php.php" for 64.31.46.231 at 2013-11-06 23:55:36 +0000
+
+ActionController::RoutingError (No route matches [PUT] "/webdav/sam.php.php"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.23) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.23) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.23) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.23) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (29.9ms)
+Started GET "/" for 198.133.224.186 at 2013-11-07 00:07:37 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started GET "/" for 128.111.43.31 at 2013-11-07 03:54:01 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started GET "/assets/calendar_background.jpg" for 128.111.43.31 at 2013-11-07 03:54:02 +0000
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 128.111.43.31 at 2013-11-07 03:54:03 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://tjapp.cloudapp.net/calendar/show
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 128.111.43.31 at 2013-11-07 03:54:04 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+Started GET "/sqltest/test" for 128.111.43.31 at 2013-11-07 03:54:12 +0000
+Processing by SqltestController#test as HTML
+Completed 500 Internal Server Error in 4ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.event_getAll; expected 3, got 1):
+  app/models/user.rb:37:in `query'
+  app/models/user.rb:37:in `GetTest'
+  app/controllers/sqltest_controller.rb:9:in `test'
+
+
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.3ms)
+Started GET "/" for 128.111.43.31 at 2013-11-07 04:26:44 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
