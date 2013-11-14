@@ -1,10 +1,15 @@
 set :stage, :production
 
+set :rvm_type, :user
+set :rvm_ruby_version, '2.0.0-p247'
+
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
+
+
 role :app, %w{deploy@example.com}
 role :web, %w{deploy@example.com}
 role :db,  %w{deploy@example.com}
