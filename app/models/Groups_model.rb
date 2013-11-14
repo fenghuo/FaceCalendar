@@ -14,13 +14,13 @@ class Group < ActiveRecord::Base
 		end
 	end
 	
-	def self.Create(groupname,category,description,userid)
+	def self.Create(groupname,category,description,userid,groupsize,imageurl)
 		client= Conn.GetConn
 		@rs=nil
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_create('#{groupname}','#{category}','#{description}','#{userid}',@rs)");
+			client.query("call groups_create('#{groupname}','#{category}','#{description}',#{userid},#{groupsize},'#{imageurl}',@rs)");
 			@rs=client.query('select @rs').first["@rs"];
 			client.close			
 			return @rs	
