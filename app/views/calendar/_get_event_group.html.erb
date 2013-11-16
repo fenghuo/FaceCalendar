@@ -1,21 +1,23 @@
 var max_esid=0;
-<% session[:current_event].each  do |e|%>
-    
-    
-        var e_temp  = new Object();
-        e_temp.desp = "<%= e.eventname %>";
-        e_temp.weekday = <%= e.weekday %>;
-        e_temp.eventid = <%= e.eventid %>;
-        e_temp.eventsid=<%= e.eventsid %>;
-        if(e_temp.eventsid>max_esid){
-            max_esid=e_temp.eventsid
-        }
-        e_temp.start = <%= e.starttime.hour + 0.5*e.starttime.min/30 %>;
-        e_temp.end = <%= e.endtime.hour + 0.5*e.endtime.min/30 %>;
-        e_temp.group = "<%= e.groupname %>"; 
-    <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
-        events.push(e_temp);
-    <% end %>    
-    
-    
+<% if session[:current_event]!="" %>
+    <% session[:current_event].each  do |e|%>
+        
+        
+            var e_temp  = new Object();
+            e_temp.desp = "<%= e.eventname %>";
+            e_temp.weekday = <%= e.weekday %>;
+            e_temp.eventid = <%= e.eventid %>;
+            e_temp.eventsid=<%= e.eventsid %>;
+            if(e_temp.eventsid>max_esid){
+                max_esid=e_temp.eventsid
+            }
+            e_temp.start = <%= e.starttime.hour + 0.5*e.starttime.min/30 %>;
+            e_temp.end = <%= e.endtime.hour + 0.5*e.endtime.min/30 %>;
+            e_temp.group = "<%= e.groupname %>"; 
+        <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+            events.push(e_temp);
+        <% end %>    
+        
+        
+    <% end %>
 <% end %>

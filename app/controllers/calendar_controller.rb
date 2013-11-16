@@ -94,7 +94,7 @@ class CalendarController < ApplicationController
         end
       end
     end
-    #use_database=true
+    use_database=true
     if(use_database==true)
       session[:current_event]=[]
       currentsid=0
@@ -206,8 +206,7 @@ class CalendarController < ApplicationController
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
     
-    #EventDB.EditTime(@event_to_show.eventid,@event_to_show.starttime,@event_to_show.endtime)
-    #EventDB.EditOthers(@event_to_show.eventid,"",@event_to_show.eventname,@event_to_show.desp,@event_to_show.place,@event_to_show.weekday)
+
   end
   
   def create_event
@@ -230,7 +229,7 @@ class CalendarController < ApplicationController
     #add 
     @all_event=session[:current_event]
     if @all_event==[]
-	currentsid=-1
+	      currentsid=-1
     else
         currentsid=@all_event[@all_event.length-1].eventsid
     end
@@ -304,6 +303,10 @@ class CalendarController < ApplicationController
       session[:current_event][idx].place=params[:place]
       session[:current_event][idx].groupname=params[:groupname]
       session[:current_event][idx].desp=params[:desp]
+
+      event_to_show=session[:current_event][idx]
+      EventDB.EditTime(event_to_show.eventid,event_to_show.starttime,event_to_show.endtime)
+      EventDB.EditOthers(event_to_show.eventid,"",event_to_show.eventname,event_to_show.desp,event_to_show.place,event_to_show.weekday)
     elsif params[:commit]=="delete"
       
       #database delete method
