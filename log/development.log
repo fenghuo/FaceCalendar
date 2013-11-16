@@ -4689,3 +4689,305 @@ Started GET "/assets/application.js?body=1" for 128.111.43.48 at 2013-11-14 05:4
 
 
 Started GET "/assets/search.js?body=1" for 128.111.43.48 at 2013-11-14 05:42:37 +0000
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/ajax/at2?polling=1" for 127.0.0.1 at 2013-11-16 10:21:02 -0800
+
+ActionController::RoutingError (No route matches [GET] "/ajax/at2"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-16 10:21:12 -0800
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.groups_findGroupWithName; expected 1, got 0):
+  app/models/Groups_model.rb:86:in `query'
+  app/models/Groups_model.rb:86:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:48:in `prep'
+  app/controllers/calendar_controller.rb:144:in `show'
+
+
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-16 10:23:11 -0800
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Incorrect number of arguments for PROCEDURE facecalendar.groups_findGroupWithName; expected 1, got 0):
+  app/models/Groups_model.rb:86:in `query'
+  app/models/Groups_model.rb:86:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:48:in `prep'
+  app/controllers/calendar_controller.rb:144:in `show'
+
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 329ms (Views: 327.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/search.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/calendar.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/calendar_background.jpg" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/assets/facecalendar_icon.jpeg" for 127.0.0.1 at 2013-11-16 10:25:54 -0800
+
+
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://127.0.0.1:3000/calendar/show
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (0.6ms)
+  Rendered calendar/show.html.erb within layouts/application (50.5ms)
+Completed 200 OK in 89ms (Views: 54.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/calendar.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started GET "/assets/search.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-11-16 10:25:59 -0800
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:03 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"zz", "group_encoded"=>"private;", "time_encoded"=>"2,1,2.5;"}
+  Rendered calendar/create_event.js.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:06 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"zz", "group_encoded"=>"private;", "time_encoded"=>"3,2.5,4;4,3.5,4.5;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 48ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:11 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"zz", "group_encoded"=>"private;", "time_encoded"=>"3,5,7;"}
+  Rendered calendar/create_event.js.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:16 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"private;", "time_encoded"=>"4,6,9;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 44ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:21 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"group1;group2;", "time_encoded"=>"2,6,9;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:29 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"group1;group2;", "time_encoded"=>"4,6,7;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:32 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"group1;group2;", "time_encoded"=>"4,7,8;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:37 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"group1;group2;", "time_encoded"=>"4,8,9;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 30ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 10:26:48 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"group1;group2;", "time_encoded"=>"2,7.5,8.5;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 32ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (0.7ms)
+  Rendered calendar/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 52ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/calendar.css?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/search.css?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started GET "/assets/facecalendar_icon.jpeg" for 127.0.0.1 at 2013-11-16 11:00:30 -0800
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 11:00:34 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"private;", "time_encoded"=>"2,6,7;"}
+  Rendered calendar/create_event.js.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 11:00:40 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"private;", "time_encoded"=>"2,6,7;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 11:00:45 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"private;", "time_encoded"=>"3,4,5;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 36ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/calendar/create_event" for 127.0.0.1 at 2013-11-16 11:00:54 -0800
+Processing by CalendarController#create_event as JS
+  Parameters: {"utf8"=>"✓", "text_event"=>"", "group_encoded"=>"private;", "time_encoded"=>"2,7,8;3,7.5,8;"}
+  Rendered calendar/create_event.js.erb (0.0ms)
+Completed 200 OK in 37ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+ActionDispatch::Cookies::CookieOverflow (ActionDispatch::Cookies::CookieOverflow):
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:399:in `[]='
+  actionpack (4.0.0) lib/action_dispatch/middleware/session/cookie_store.rb:109:in `set_cookie'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:350:in `commit_session'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:226:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__814438467277173081__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
