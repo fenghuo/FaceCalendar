@@ -204,6 +204,7 @@ function event_position_new(event_at_day) {
     var colume_event_rec = new Array(event_at_day.length + 1);
     var event_block_rec = new Array(event_at_day.length + 1);
     var block_member = new Array(event_at_day.length + 1);
+    var block_width = new Array(event_at_day.length + 1);
     var event_block_end = 1;
     
 
@@ -222,6 +223,9 @@ function event_position_new(event_at_day) {
 
         temp = new Array();
         block_member[i] = temp;
+        block_width[i] = 0;
+
+
     }
 
     var current_block=-1;//first is 0
@@ -253,8 +257,12 @@ function event_position_new(event_at_day) {
         colume_event_rec[j].push(colume_event_rec_unit);
         posi_rec[i].block_no = current_block;
         posi_rec[i].colum_no = j;
+        block_width[current_block] = Math.max(block_width[current_block], j+1);
         block_member[current_block].push(i);
     }
+    //for (i = 0; i <= current_block; i++) {
+    //    block_width[i] = block_member[i].length;
+    //}
     var needchange = 0;
     var needchangeto = 0;
     for (i = 1; i <= current_block; i++) {
@@ -266,6 +274,7 @@ function event_position_new(event_at_day) {
                 if (colume_event_rec[posi_rec[idx].colum_no + 1][k].the_event.end > event_at_day[idx].start && posi_rec[colume_event_rec[posi_rec[idx].colum_no + 1][k].event_at_day_posi].block_member < i) {
                     needchange = 1;
                     needchangeto = posi_rec[colume_event_rec[posi_rec[idx].colum_no + 1][k].event_at_day_posi].block_no;
+                    block_width[needchangeto]=Math.max(block_width[needchangeto],block_width[i]);
                     break;
                 }
             }
@@ -281,8 +290,10 @@ function event_position_new(event_at_day) {
             needchange = 0;
         }
     }
+    //find the total number of colums
+    
     for (i = 0; i < event_at_day.length; i++) {
-        event_posi[i].block_length = block_member[posi_rec[i].block_no].length;
+        event_posi[i].block_length = block_width[posi_rec[i].block_no];
         event_posi[i].colum_no = posi_rec[i].colum_no;
     }
     return event_posi;
