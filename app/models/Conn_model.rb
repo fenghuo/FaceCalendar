@@ -5,4 +5,8 @@ class Conn < ActiveRecord::Base
 		client = Mysql2::Client.new(config)
 		return client
 	end
+
+	def self.ESP(string)
+		return ActiveRecord::Base.connection.quote(string) 
+	end
 end
