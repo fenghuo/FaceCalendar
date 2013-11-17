@@ -15,7 +15,50 @@
   <%= submit_tag("Login") %>
 <% end %>
 
+<table border='1'>
+<tr>
+	<th>
+	<% @test3.first.each do |k,v| %>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @test3.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>
+
+
 <p><%= @uid %></p>
+<hr>
+<div>groups</div>
+<hr>
+<table border='1'>
+<tr>
+	<th>
+	<% @test3.first.each do |k,v| %>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @test3.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>
 
 <table border='1'>
 <tr>
@@ -39,9 +82,9 @@
 
 <% @alltable.each_with_index do |table,index| %>
 <hr>
-<h3><%=@tablename[index]%></h3>
+<h3 id="<%=@tablename[index]%>" ><%=@tablename[index]%></h3>
 	<% if table !=nil then%>
-	<table id="<%=@tablename[index]%>" border='1'>
+	<table border='1'>
 	<tr>
 		<% table.first.each do |k,v| %>
 			<th>

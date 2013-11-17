@@ -71,9 +71,9 @@ class User < ActiveRecord::Base
 		end
 	end
 	
-  	def self.Search(userid,userfullName)
+  	def self.Search(userfullName)
 		client = Conn.GetConn
-		@rs = client.query("call user_search(#{userid},'#{userfullName}')")	
+		@rs = client.query("call user_search('#{userfullName}')")	
 		client.close
 		return @rs
   	end
