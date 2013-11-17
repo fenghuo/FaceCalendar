@@ -8,7 +8,7 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			@rs=client.query("call groups_searchByName('#{gname}')");
+			@rs=client.query("call groups_searchByName(#{Conn.ESP(gname)})");
 			client.close			
 			return @rs	
 		end
@@ -20,8 +20,8 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_create('#{groupname}','#{category}','#{description}',#{userid},#{groupsize},'#{imageurl}',@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call groups_create('#{Conn.ESP(groupname)}','#{Conn.ESP(category)}','#{Conn.ESP(description)}',#{Conn.ESP(userid)},#{Conn.ESP(groupsize)},'#{Conn.ESP(imageurl)}',@rs)");
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -33,8 +33,8 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_AddMember(#{groupid},#{userid},'#{description}',@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call groups_AddMember(#{groupid},#{userid},'#{Conn.ESP(description)}',@rs)");
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -47,7 +47,7 @@ class Group < ActiveRecord::Base
 			return -1;
 		else
 			client.query("call groups_deleteMember(#{groupid},#{userid},@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -121,9 +121,22 @@ class Group < ActiveRecord::Base
 			return -1;
 		else
 			client.query("call groups_getById(#{groupid},#{size},@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			@rs=client.query("select @rs").first["@rs"];
 			client.close
-						
+			return @rs	
+		end
+
+	end
+
+	def self.Delete(groupid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			client.query("call groups_delete(#{groupid},@rs)");
+			@rs=client.query("select @rs").first["@rs"];
+			client.close
 			return @rs	
 		end
 
