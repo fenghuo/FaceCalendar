@@ -1,4 +1,4 @@
-require 'Conn_model.rb'
+require Conn_model.rb
 
 class EventDB < ActiveRecord::Base
 
@@ -8,8 +8,8 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call event_create(#{userid},'#{Conn.ESP(starttime)}','#{Conn.ESP(endtime)}','#{Conn.ESP(erepeat)}',#{Conn.ESP(groupid)},'#{Conn.ESP(eventname)}','#{Conn.ESP(description)}','#{Conn.ESP(place)}',#{Conn.ESP(weekday)},@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call event_create(#{userid},#{Conn.ESP(starttime)},#{Conn.ESP(endtime)},#{Conn.ESP(erepeat)},#{Conn.ESP(groupid)},#{Conn.ESP(eventname)},#{Conn.ESP(description)},#{Conn.ESP(place)},#{Conn.ESP(weekday)},@rs)");
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs
 		end	
@@ -21,7 +21,7 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@rs=client.query("call event_getAll(#{userid},'#{Conn.ESP(starttime)}','#{Conn.ESP(endtime)}')");
+			@rs=client.query("call event_getAll(#{userid},#{Conn.ESP(starttime)},#{Conn.ESP(endtime)})");
 			client.close			
 			return @rs	
 		end
@@ -34,7 +34,7 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			@rs=client.query("call event_getPrivate(#{userid},'#{Conn.ESP(starttime)}','#{Conn.ESP(endtime)}')");
+			@rs=client.query("call event_getPrivate(#{userid},#{Conn.ESP(starttime)},#{Conn.ESP(endtime)})");
 			client.close			
 			return @rs	
 		end
@@ -72,8 +72,8 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			client.query("call event_editTime(#{eventid},'#{Conn.ESP(starttime)}','#{Conn.ESP(endtime)}',@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call event_editTime(#{eventid},#{Conn.ESP(starttime)},#{Conn.ESP(endtime)},@rs)");
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -85,8 +85,8 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			client.query("call event_editOthers(#{eventid},'#{Conn.ESP(repeat)}','#{Conn.ESP(name)}','#{Conn.ESP(description)}','#{Conn.ESP(place)}',#{weekday},@rs)");
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call event_editOthers(#{eventid},#{Conn.ESP(repeat)},#{Conn.ESP(name)},#{Conn.ESP(description)},#{Conn.ESP(place)},#{weekday},@rs)");
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -99,7 +99,7 @@ class EventDB < ActiveRecord::Base
 			return -1;
 		else		
 			client.query("call event_delete(#{eventid},@rs)");#true if succeed
-			@rs=client.query('select @rs').first["@rs"];
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -111,8 +111,8 @@ class EventDB < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else		
-			client.query("call event_addGroup(#{eventid},#{groupid},'#{Conn.ESP(description)}',@rs)");#true if succeed
-			@rs=client.query('select @rs').first["@rs"];
+			client.query("call event_addGroup(#{eventid},#{groupid},#{Conn.ESP(description)},@rs)");#true if succeed
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end
@@ -149,7 +149,7 @@ class EventDB < ActiveRecord::Base
 			return -1;
 		else		
 			client.query("call event_deleteFromGroup(#{eventid},#{groupid},@rs)");#true if succeed
-			@rs=client.query('select @rs').first["@rs"];
+			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
 		end

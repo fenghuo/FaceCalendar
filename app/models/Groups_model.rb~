@@ -1,4 +1,4 @@
-require 'Conn_model.rb'
+require Conn_model.rb
 
 class Group < ActiveRecord::Base
 
@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_create('#{Conn.ESP(groupname)}','#{Conn.ESP(category)}','#{Conn.ESP(description)}',#{Conn.ESP(userid)},#{Conn.ESP(groupsize)},'#{Conn.ESP(imageurl)}',@rs)");
+			client.query("call groups_create(#{Conn.ESP(groupname)},#{Conn.ESP(category)},#{Conn.ESP(description)},#{Conn.ESP(userid)},#{Conn.ESP(groupsize)},#{Conn.ESP(imageurl)},@rs)");
 			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
@@ -33,7 +33,7 @@ class Group < ActiveRecord::Base
 		if(client==nil)
 			return -1;
 		else
-			client.query("call groups_AddMember(#{groupid},#{userid},'#{Conn.ESP(description)}',@rs)");
+			client.query("call groups_AddMember(#{groupid},#{userid},#{Conn.ESP(description)},@rs)");
 			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	

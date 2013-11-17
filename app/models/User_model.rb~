@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 			return -1;
 		else
 			# not safe enough to send passwords and store passwords in database
-			client.query("call user_changePassword (#{userid},#{Conn.ESP(username)},#{Conn.ESP(oldpassword)},#{Conn.ESP(newpasswordL)},@rs)")
+			client.query("call user_changePassword (#{userid},#{Conn.ESP(username)},#{Conn.ESP(oldpassword)},#{Conn.ESP(newpassword)},@rs)")
 			@rs=client.query("select @rs").first["@rs"];
 			client.close			
 			return @rs	
