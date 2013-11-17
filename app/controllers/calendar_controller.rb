@@ -320,6 +320,7 @@ class CalendarController < ApplicationController
       #    session[:current_event].push(e)
       #  end
       #end
+      EventDB.Delelte(session[:current_event][idx].eventid)
       session[:current_event].delete_if {|e| e.eventsid==@eventsid.to_i}
 
     end

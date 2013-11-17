@@ -7991,3 +7991,232 @@ ActionController::RoutingError (No route matches [GET] "/assets/jquery-1.10.2.mi
   /usr/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
 
 
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-17 10:20:05 -0800
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 263ms (Views: 256.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:06 -0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:06 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:06 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:06 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:06 -0800
+
+
+Started GET "/assets/calendar_background.jpg" for 127.0.0.1 at 2013-11-17 10:20:07 -0800
+
+
+Started GET "/assets/facecalendar_icon.jpeg" for 127.0.0.1 at 2013-11-17 10:20:07 -0800
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-17 10:20:10 -0800
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (1.0ms)
+  Rendered calendar/show.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 407ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:11 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:11 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:11 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:11 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:11 -0800
+
+
+Started GET "/calendar/show_event?eventtoshowid=0" for 127.0.0.1 at 2013-11-17 10:20:12 -0800
+Processing by CalendarController#show_event as HTML
+  Parameters: {"eventtoshowid"=>"0"}
+  Rendered calendar/show_event.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 40ms (Views: 39.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:13 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:13 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:13 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:13 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:13 -0800
+
+
+Started GET "/calendar/edit?eventsid=0" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+Processing by CalendarController#edit as HTML
+  Parameters: {"eventsid"=>"0"}
+  Rendered calendar/edit.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:20:15 -0800
+
+
+Started POST "/calendar/edit_propose" for 127.0.0.1 at 2013-11-17 10:20:16 -0800
+Processing by CalendarController#edit_propose as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ODCS82H3qLP3EwLQt0YKJFbwLCHulGp8gbr7NTiP768=", "commit"=>"delete", "eventname"=>"zzzz", "starttime"=>"2013-11-12T02:00:00-08:00", "endtime"=>"2013-11-12T02:30:00-08:00", "place"=>"", "groupname"=>"private;", "desp"=>"zz", "eventsid"=>"0"}
+  [1m[36mSQL (2.8ms)[0m  [1mDELETE FROM `event_dbs` WHERE `event_dbs`.`id` = 12466[0m
+Mysql2::Error: Table 'facecalendar.event_dbs' doesn't exist: DELETE FROM `event_dbs` WHERE `event_dbs`.`id` = 12466
+Completed 500 Internal Server Error in 30ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'facecalendar.event_dbs' doesn't exist: DELETE FROM `event_dbs` WHERE `event_dbs`.`id` = 12466):
+  app/controllers/calendar_controller.rb:323:in `edit_propose'
+
+
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started POST "/calendar/edit_propose" for 127.0.0.1 at 2013-11-17 10:22:17 -0800
+Processing by CalendarController#edit_propose as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ODCS82H3qLP3EwLQt0YKJFbwLCHulGp8gbr7NTiP768=", "commit"=>"delete", "eventname"=>"zzzz", "starttime"=>"2013-11-12T02:00:00-08:00", "endtime"=>"2013-11-12T02:30:00-08:00", "place"=>"", "groupname"=>"private;", "desp"=>"zz", "eventsid"=>"0"}
+Completed 500 Internal Server Error in 17ms
+
+Mysql2::Error (Unknown column 'row_count' in 'field list'):
+  app/models/Event_model.rb:101:in `query'
+  app/models/Event_model.rb:101:in `Delelte'
+  app/controllers/calendar_controller.rb:323:in `edit_propose'
+
+
+
+
+Started GET "/calendar/show" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (1.6ms)
+  Rendered calendar/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 91ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/assets/facecalendar_icon.jpeg" for 127.0.0.1 at 2013-11-17 10:24:25 -0800
+
+
+Started GET "/calendar/show_event?eventtoshowid=0" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+Processing by CalendarController#show_event as HTML
+  Parameters: {"eventtoshowid"=>"0"}
+  Rendered calendar/show_event.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:29 -0800
+
+
+Started GET "/calendar/edit?eventsid=0" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+Processing by CalendarController#edit as HTML
+  Parameters: {"eventsid"=>"0"}
+  Rendered calendar/edit.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:24:37 -0800
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/calendar/edit?eventsid=0" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+Processing by CalendarController#edit as HTML
+  Parameters: {"eventsid"=>"0"}
+  Rendered calendar/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 58ms (Views: 57.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started GET "/assets/sqltest.css?body=1" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started GET "/assets/facecalendar_icon.jpeg" for 127.0.0.1 at 2013-11-17 10:27:47 -0800
+
+
+Started POST "/calendar/edit_propose" for 127.0.0.1 at 2013-11-17 10:27:49 -0800
+Processing by CalendarController#edit_propose as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ODCS82H3qLP3EwLQt0YKJFbwLCHulGp8gbr7NTiP768=", "commit"=>"delete", "eventname"=>"zzzz", "starttime"=>"2013-11-12T02:00:00-08:00", "endtime"=>"2013-11-12T02:30:00-08:00", "place"=>"", "groupname"=>"private;", "desp"=>"zz", "eventsid"=>"0"}
+Completed 500 Internal Server Error in 2ms
+
+Mysql2::Error (Unknown column 'row_count' in 'field list'):
+  app/models/Event_model.rb:101:in `query'
+  app/models/Event_model.rb:101:in `Delelte'
+  app/controllers/calendar_controller.rb:323:in `edit_propose'
+
+
