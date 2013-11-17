@@ -75,6 +75,7 @@
 							data : msg,
 						});
 						$( this ).dialog( "close" );
+						$( this ).closest(".ui-dialog").remove();
 					}
 				},
 				{
@@ -83,6 +84,7 @@
 					text: "Cancel",
 					click: function() {
 						$( this ).dialog( "close" );
+						$( this ).closest(".ui-dialog").remove();
 					}
 				}]
 		});
@@ -101,8 +103,9 @@
 	}
 
 	function uploadDialog() {
-		var dia = $("<div style='display:hide'></div>");
+/*		var dia = $("<div style='display:hide'></div>");
 		dia.append($("<label>choose photo:</label>")).append($("<input type='file' class='form-control upload-img'/>"));
+
 		dia.dialog({
 			width: 600,
 			autoOpen: false,
@@ -117,7 +120,19 @@
 					click : function() {
 						var reader = new FileReader();
 						var uploadFile = $("input.upload-img")[0].files[0];
-						console.log(uploadFile.type + "\t" + uploadFile.name);
+						reader.readAsText(uploadFile);
+						reader.onload = function() {
+							var f = new Object();
+							f.name = uploadFile.name;
+							f.cont = reader.result;
+							$.ajax({
+								url : "/profile/uploadPic",
+								type : "POST",
+								data : f
+							});
+						};
+						console.log(uploadFile.type + "\t" + uploadFile.name + "\t" + uploadFile.size);
+						$( this ).closest(".ui-dialog").remove();
 					}
 				},
 				{
@@ -127,6 +142,39 @@
 					click: function() {
 						var some = $( this );
 						$( this ).dialog("close");
+						$( this ).closest(".ui-dialog").remove();
+					}
+				}
+			]
+		});
+		dia.dialog("open");
+ */
+		var dia = $("div.upload-img");
+		dia.dialog({
+			width: 600,
+			autoOpen: false,
+			title : "Upload Photo",
+			closeButton : false,
+			modal : true,
+			buttons: [
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "upload",
+					click : function() {
+						$("form.upload-form").submit();
+//						console.log(uploadFile.type + "\t" + uploadFile.name + "\t" + uploadFile.size);
+//						$( this ).closest(".ui-dialog").remove();
+					}
+				},
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "Cancel",
+					click: function() {
+						var some = $( this );
+						$( this ).dialog("close");
+//						$( this ).closest(".ui-dialog").remove();
 					}
 				}
 			]
