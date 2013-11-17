@@ -48,6 +48,10 @@ p.user-name {
 	left : -150px;
 }
 
+.upload-img {
+	display : none;
+}
+
 .section {
 	padding-top: 75px;
 	padding-bottom: 75px;

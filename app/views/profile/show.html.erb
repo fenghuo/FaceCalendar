@@ -54,6 +54,13 @@
 	</div>
     </div>
         
+    <div class="upload-img">
+	<%= form_tag('/profile/uploadPic', {:multipart => true, :class => "upload-form" }) do %>
+		<label>choose photo:</label>
+		<%= file_field_tag "pro_pic", { class: 'form-control', accept: 'image/png,image/gif,image/jpeg' } %>
+	<% end %>
+    </div>
+		
     <!-- FOOTER -->
     <!--div class="container">
       <footer>

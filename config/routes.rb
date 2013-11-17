@@ -22,6 +22,7 @@ FaceCalendar::Application.routes.draw do
   get "profile/show"
   get "profile/ret_data"
   post "profile/update_info"
+  post "profile/uploadPic"
 
 
 #  controller :login do
