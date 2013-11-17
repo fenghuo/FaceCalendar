@@ -130,4 +130,29 @@ class EventDB < ActiveRecord::Base
 		end
 	end
 
+	def self.GetEventGroup(eventid)	#get all groups have this event
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else		
+			@rs=client.query("call event_getEventGroup(#{eventid})");
+			client.close			
+			return @rs	
+		end
+	end
+
+	def self.DelelteFromGroup(eventid,groupid)	#delete an event from group
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else		
+			client.query("call event_deleteFromGroup(#{eventid},#{groupid},@rs)");#true if succeed
+			@rs=client.query('select @rs').first["@rs"];
+			client.close			
+			return @rs	
+		end
+	end
+
 end
