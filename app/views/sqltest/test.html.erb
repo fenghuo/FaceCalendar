@@ -15,6 +15,27 @@
   <%= submit_tag("Login") %>
 <% end %>
 
+<table border='1'>
+<tr>
+	<th>
+	<% @test4.first.each do |k,v| %>
+			<%= k.to_s %>
+		</th>
+	<% end %>	
+</tr>
+
+<% @test4.each do |row| %>
+<tr>
+	<% row.each do |k,v| %>
+		<td>	
+			<%= v.to_s %>
+		</td>
+	<% end %>
+</tr>
+<% end %>
+</table>
+
+
 <p><%= @uid %></p>
 <hr>
 <div>groups</div>
