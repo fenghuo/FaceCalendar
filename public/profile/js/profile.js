@@ -6,13 +6,13 @@
 		occupation : "what do you do?",
 		skills : "what are your skills?",
 		tagline : "a brief description of you",
-		description : "a little about yourself"
+		introduction : "a little about yourself"
 	};
 
 	var ref = {
 		'bsc-info' : ['gender', 'birthday', 'relationship'],
 		work : [ 'occupation', 'skills' ],
-		story : [ 'tagline', 'description' ]
+		story : [ 'tagline', 'introduction' ]
 	};
 
 	function appendEntry(container, key) {
@@ -75,6 +75,7 @@
 							data : msg,
 						});
 						$( this ).dialog( "close" );
+						$( this ).closest(".ui-dialog").remove();
 					}
 				},
 				{
@@ -83,6 +84,7 @@
 					text: "Cancel",
 					click: function() {
 						$( this ).dialog( "close" );
+						$( this ).closest(".ui-dialog").remove();
 					}
 				}]
 		});
@@ -90,7 +92,7 @@
 	});
 
 	function fillPanel(data) {
-		var actualData = $.extend({}, placeholders, data[0]);
+		var actualData = $.extend({}, placeholders, data);
 		$.each(Object.keys(ref), function(index , value) {
 			var list = ref[value];
 			var table = $("table." + value);
@@ -101,8 +103,9 @@
 	}
 
 	function uploadDialog() {
-		var dia = $("<div style='display:hide'></div>");
+/*		var dia = $("<div style='display:hide'></div>");
 		dia.append($("<label>choose photo:</label>")).append($("<input type='file' class='form-control upload-img'/>"));
+
 		dia.dialog({
 			width: 600,
 			autoOpen: false,
@@ -117,7 +120,19 @@
 					click : function() {
 						var reader = new FileReader();
 						var uploadFile = $("input.upload-img")[0].files[0];
-						console.log(uploadFile.type + "\t" + uploadFile.name);
+						reader.readAsText(uploadFile);
+						reader.onload = function() {
+							var f = new Object();
+							f.name = uploadFile.name;
+							f.cont = reader.result;
+							$.ajax({
+								url : "/profile/uploadPic",
+								type : "POST",
+								data : f
+							});
+						};
+						console.log(uploadFile.type + "\t" + uploadFile.name + "\t" + uploadFile.size);
+						$( this ).closest(".ui-dialog").remove();
 					}
 				},
 				{
@@ -127,6 +142,41 @@
 					click: function() {
 						var some = $( this );
 						$( this ).dialog("close");
+						$( this ).closest(".ui-dialog").remove();
+					}
+				}
+			]
+		});
+		dia.dialog("open");
+ */
+		var dia = $("div.upload-img");
+		dia.dialog({
+			width: 600,
+			autoOpen: false,
+			title : "Upload Photo",
+			closeButton : false,
+			modal : true,
+			buttons: [
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "upload",
+					click : function() {
+						$("form.upload-form").submit();
+						$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
+
+//						console.log(uploadFile.type + "\t" + uploadFile.name + "\t" + uploadFile.size);
+//						$( this ).closest(".ui-dialog").remove();
+					}
+				},
+				{
+					class : "btn btn-xs",
+					width : 70,
+					text : "Cancel",
+					click: function() {
+						var some = $( this );
+						$( this ).dialog("close");
+//						$( this ).closest(".ui-dialog").remove();
 					}
 				}
 			]
@@ -141,8 +191,12 @@
 				dataType : 'json'
 		})
 		.done(function(data) {
-			$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
-			$("p.user-name").html(data[0]["firstname"] + " " + data[0]["lastname"]).css("display", "inline");
+			if ( data["picture"].indexOf("/") == -1) {
+				$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
+			} else {
+				$(".img-profile").attr("src", data["picture"]).show();
+			}
+			$("p.user-name").html(data["firstname"] + " " + data["lastname"]).css("display", "inline");
 			fillPanel(data);
 			$.each($(".profile"), function(index, value) {
 				$(value).show();

@@ -22,16 +22,43 @@ FaceCalendar::Application.routes.draw do
   get "profile/show"
   get "profile/ret_data"
   post "profile/update_info"
+  post "profile/uploadPic"
 
 
 #  controller :login do
 #    get 'logout' => logout
 #  end
 
+  get "group/show" 
   get "group/show_own"
   get "group/show_joined"
-  get "group/show_members"
-  get "group/show_frame"
+  get "group/show_profile"
+  get "group/get_members"
+  get "group/add_member"
+  get "group/delete_member"
+  get 'group/search_group'
+  get 'group/create_group'
+  get 'group/quit_group'
+
+  post "group/show"
+  post "group/show_own"
+  post "group/show_joined"
+  post "group/show_profile"
+  post "group/get_members"
+  post "group/add_member"
+  post "group/delete_member"
+  post 'group/create_group'
+  post 'group/quit_group'
+
+  get 'group/show/:page_id', to: 'group#show'
+  get 'group/show_joined/:page_id', to: 'group#show_joined'
+  get 'group/show_profile/:group_id', to: 'group#show_profile'
+  get 'group/show_profile/:group_id/:page_id', to: 'group#show_profile'
+  get 'group/show_profile/:group_id/:page_id/:search_page_id', to: 'group#show_profile'
+  get 'group/add_member/:add_to_group_id', to: 'group#add_member'
+  get 'group/delete_member/:delete_from_group_id/:delete_user_id', to: 'group#delete_member'
+  get 'group/quit_group/:quit_group_id', to: 'group#quit_group'
+  get 'group/search_group/:search_gname/:page_id', to: 'group#search_group'
 
   get "sqltest/test"
   # The priority is based upon order of creation:

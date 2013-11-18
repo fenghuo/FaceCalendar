@@ -1,4 +1,6 @@
 require 'User_model'
+require 'RMagick'
+include Magick
 
 class ProfileController < ApplicationController
   def show
@@ -9,10 +11,13 @@ class ProfileController < ApplicationController
 
   def ret_data
 #	tmp = Tmp.new()
-    user = User.Get(8)
+    user = User.Get(session[:user_id])
+    tmpUser =  user.first
+    tmpUser["gender"] = tmpUser["sex"]
+    tmpUser.delete("sex")
 	respond_to do |format|
 	  format.html
-      format.json { render :json => user }
+      format.json { render :json => tmpUser }
 	end
   end
 
@@ -31,11 +36,46 @@ class ProfileController < ApplicationController
   end
 
   def update_info
+    user = User.Get(session[:user_id])
+    user = user.first
+    puts "#{user["birthday"].class} \n"
+    if tmp = params["birthday"]
+        user["birthday"] = Date.parse(tmp)
+	params.delete("birthday")
+    end
+
     for key, value in params
       if key == "controller" || key == "action"
         next
       end
       puts "#{key} => #{value} \n"
+      user[key] = value
     end
+    User.Update(session[:user_id], user["gender"], user["email"], user["picture"], user["firstname"], user["lastname"], user["occupation"], user["skills"], user["birthday"], user["relationship"], user["orientation"], user["introduction"])
   end	
+
+  def uploadPic
+=begin
+    for key, value in params
+      if key == "controller" || key == "action"
+	next
+      end
+      puts "#{key} => #{value} \n"
+    end
+    puts "#{params["cont"].length} \n"
+    some = StringIO.new(params["cont"], "r:binary")
+=end
+    path = File.join("/home/ubuntu/current/public/profile/pics", params["pro_pic"].original_filename)
+    f = File.new(path, "w:ascii-8bit")
+    f.write(params["pro_pic"].read)
+    f.close
+    pic = Image.read(path)[0]
+    pic.resize_to_fill!(200)
+    pic.write(path)
+    user = User.Get(session[:user_id])
+    user = user.first
+    user["picture"] = File.join("/profile/pics", params["pro_pic"].original_filename)
+    User.Update(session[:user_id], user["gender"], user["email"], user["picture"], user["firstname"], user["lastname"], user["occupation"], user["skills"], user["birthday"], user["relationship"], user["orientation"], user["introduction"])
+    render 'show'
+  end
 end
