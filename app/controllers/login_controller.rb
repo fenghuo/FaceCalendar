@@ -11,7 +11,9 @@ class LoginController < ApplicationController
   def login
 	email = params[:email]
 	password = params[:password]
-	if session[:user_id] = User.LoginCheck(email, password)
+	res = User.LoginCheck(email, password)
+    if res != -1
+		session[:user_id] = res
 		redirect_to :controller => 'calendar', :action => 'show'		
 	else
 		redirect_to action: "tryAgain"
