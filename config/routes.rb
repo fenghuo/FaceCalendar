@@ -39,6 +39,7 @@ FaceCalendar::Application.routes.draw do
   get 'group/search_group'
   get 'group/create_group'
   get 'group/quit_group'
+  get 'group/search_user'
 
   post "group/show"
   post "group/show_own"
@@ -49,16 +50,19 @@ FaceCalendar::Application.routes.draw do
   post "group/delete_member"
   post 'group/create_group'
   post 'group/quit_group'
+  post 'group/search_user'
 
   get 'group/show/:page_id', to: 'group#show'
   get 'group/show_joined/:page_id', to: 'group#show_joined'
   get 'group/show_profile/:group_id', to: 'group#show_profile'
   get 'group/show_profile/:group_id/:page_id', to: 'group#show_profile'
-  get 'group/show_profile/:group_id/:page_id/:search_page_id', to: 'group#show_profile'
   get 'group/add_member/:add_to_group_id', to: 'group#add_member'
+  get 'group/add_other_member/:add_to_group_id/:add_user_id', to: 'group#add_other_member'
   get 'group/delete_member/:delete_from_group_id/:delete_user_id', to: 'group#delete_member'
   get 'group/quit_group/:quit_group_id', to: 'group#quit_group'
   get 'group/search_group/:search_gname/:page_id', to: 'group#search_group'
+  get 'group/:group_id/search_user', to: 'group#search_user'
+  get 'group/:group_id/search_user/:search_uname/:page_id', to: 'group#search_user'
 
   get "sqltest/test"
   # The priority is based upon order of creation:

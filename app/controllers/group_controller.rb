@@ -3,10 +3,12 @@ require 'User_model.rb'
 
 class GroupController < ApplicationController
 
+    # SHOW MY OWN GROUPS
   	def show
   		show_own
   	end
 
+    # SHOW MY OWN GROUPS
   	def show_own
       #@my_uid = session[:user_id];
     	@my_uid = 1;
@@ -39,12 +41,16 @@ class GroupController < ApplicationController
     show_own_page
     end
 
+    # SET @group_per_page
   	def show_own_page
       @group_per_page = 5;
   	end
 
+    # SHOW MY JOINED GROUP
   	def show_joined
+      #@my_uid = session[:user_id];
   		@my_uid = 1;
+      
   		if (params[:page_id] == nil)
   			@pid = 1;
   		else
@@ -72,10 +78,12 @@ class GroupController < ApplicationController
 		show_joined_page
   	end
 
+    # SET @group_per_page
   	def show_joined_page
   		@group_per_page = 5;
   	end
 
+    # SHOW GROUP MEMBERS
   	def get_members
   		@member_ids = nil;
       @member_info = [];
@@ -91,13 +99,14 @@ class GroupController < ApplicationController
 		  return @member_ids;
   	end
 
+    # SHOW GROUP PROFILE
   	def show_profile
   		@gid = Integer(params[:group_id]);
   		@ginfo = nil;
   		if (@gid != nil)
   			@ginfo = Group.GetById(@gid);
   			get_members;
-  		end
+  		end  
 
   		@pid = nil;
   		if (params[:page_id] == nil)
@@ -107,29 +116,52 @@ class GroupController < ApplicationController
   		end
   	end
 
+    # SEARCH USERS
   	def search_user
-      @rs_search_name = params[:search_uname];
+      if (@gid == nil)
+        @gid = Integer(params[:group_id]);
+      end
 
+      @ginfo = nil;
+      @member_ids = nil;
+      @member_userid = [];
+      if (@gid != nil)
+        @ginfo = Group.GetById(@gid);
+        @member_ids = Group.FindGroupMembers(@gid);
+        @member_ids.each do |user|
+          @member_userid << user["userid"];
+        end
+      end
+
+      @user_per_page = 12;
+
+      if (params[:page_id] == nil)
+        @pid = 1;
+      else
+        @pid = Integer(params[:page_id]);
+      end     
+
+      @rs_search_name = params[:search_uname];
       if (@rs_search_name == nil)
-        @rs_search_name = params[:uname];
+        @rs_search_name = params[:add_uname];
       end
 
       @rs_search = nil;
       @rs_search_info = [];
+      @rs_search_ids = [];
+      @rs_membership = [];
+
       if(@rs_search_name != nil)
-        @rs_search = User.SearchByName(@rs_search_name);  
+        @rs_search = User.Search(@rs_search_name);  
         @rs_search.each do |row|
           @rs_search_info << row;
+          @rs_search_ids << row["id"];
+          @rs_membership << @member_userid.include?(row["id"]);
         end
       end
-
-      if (params[:search_page_id] == nil)
-        @search_pid = 1;
-      else
-        @search_pid = Integer(params[:search_page_id]);
-      end     
   	end
 
+    # SEARCH GROUPS
   	def search_group
       @grs_search_name = params[:search_gname];
       @pid = params[:page_id];
@@ -138,6 +170,12 @@ class GroupController < ApplicationController
         @grs_search_name = params[:gname];
       end
 
+      if (params[:page_id] == nil)
+        @pid = 1;
+      else
+        @pid = Integer(params[:page_id]);
+      end     
+
       @grs_search = nil;
       @grs_search_info = [];
       if(@grs_search_name != nil)
@@ -145,15 +183,10 @@ class GroupController < ApplicationController
         @grs_search.each do |row|
           @grs_search_info << row;
         end
-      end
-
-      if (params[:page_id] == nil)
-        @pid = 1;
-      else
-        @pid = Integer(params[:page_id]);
-      end 		
+      end    
   	end
 
+    # ADD A MEMBER TO A GROUP
   	def add_member
   		#@my_uid = session[:user_id];
   		@my_uid = 1;
@@ -162,14 +195,23 @@ class GroupController < ApplicationController
   		redirect_to '/group/show_joined'
   	end
 
+    def add_other_member
+      @add_uid = Integer(params[:add_user_id]);
+      @add_to_gid = Integer(params[:add_to_group_id]);
+      Group.AddMember(@add_to_gid, @add_uid, 'description');
+      redirect_to '/group/show_profile/' + @add_to_gid.to_s
+    end
+
+
+    # DELETE A MEMBER FROM A GROUP
     def delete_member
-      #@my_uid = session[:user_id];
       @delete_uid = Integer(params[:delete_user_id]);
       @delete_from_gid = Integer(params[:delete_from_group_id]);
       Group.DeleteMember(@delete_from_gid, @delete_uid);
       redirect_to '/group/show_profile/' + @delete_from_gid.to_s
     end
 
+    # QUIT A GROUP BY ONESELF
     def quit_group
       #@my_uid = session[:user_id];
       @my_uid = 1;
@@ -178,6 +220,7 @@ class GroupController < ApplicationController
       redirect_to '/group/show_joined'
     end
 
+    # CREATE A GROUP
     def create_group     
       @grs_create_name = params[:gname];
       @grs_create_category_ = params[:gcategory];
