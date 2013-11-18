@@ -1,5 +1,5 @@
-require Conn_model.rb
-require Event_model.rb
+require 'Conn_model'
+require 'Event_model'
 
 class User < ActiveRecord::Base
 

@@ -1,4 +1,4 @@
-require Conn_model.rb
+require 'Conn_model'
 
 class EventDB < ActiveRecord::Base
 
