@@ -17,8 +17,10 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#<%= div_id %>" >
-                  <span class="badge"><%= @my_joined_group_info[indx]["size"] > 0 ? @my_joined_group_info[indx]["size"] : 111 %></span> &nbsp;
-                  <b><%= @my_joined_group_names[indx] %></b>
+                  <span class="badge">
+                    <%= @my_joined_group_info[indx]["size"] > 0 ? @my_joined_group_info[indx]["size"] : 111 %>
+                  </span> &nbsp;
+                  <b><%= @my_joined_group_names[indx] == nil ? "GROUP_NAME_FOR_ID_"+ @my_joined_group_ids[indx].to_s : @my_joined_group_names[indx] %></b>
                 <div align = "right"> 
                   <a href="<%='/group/show_profile/'+@my_joined_group_ids[indx].to_s%>">
                     <button type="button" class="btn btn-primary btn-xs">Manage Group</button>
@@ -54,9 +56,10 @@
                       </p>
                       <p><b>Group Tags:      </b>
                         <% t = 0 %>
+                        <% tag = @my_joined_group_info[indx]["categroy"] == nil ? 'tag' : @my_joined_group_info[indx]["categroy"] %>
                         <% while t < 3 %>
                           <span class="label label-primary">
-                            <%= 'tag'+ @my_joined_group_info[indx]["categroy"] +  '-' + t.to_s %>
+                            <%= tag + '-' + t.to_s %>
                           </span> &nbsp;
                           <% t = t + 1 %>
                         <% end %></p>
