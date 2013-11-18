@@ -6,13 +6,13 @@
 		occupation : "what do you do?",
 		skills : "what are your skills?",
 		tagline : "a brief description of you",
-		description : "a little about yourself"
+		introduction : "a little about yourself"
 	};
 
 	var ref = {
 		'bsc-info' : ['gender', 'birthday', 'relationship'],
 		work : [ 'occupation', 'skills' ],
-		story : [ 'tagline', 'description' ]
+		story : [ 'tagline', 'introduction' ]
 	};
 
 	function appendEntry(container, key) {
@@ -92,7 +92,7 @@
 	});
 
 	function fillPanel(data) {
-		var actualData = $.extend({}, placeholders, data[0]);
+		var actualData = $.extend({}, placeholders, data);
 		$.each(Object.keys(ref), function(index , value) {
 			var list = ref[value];
 			var table = $("table." + value);
@@ -163,6 +163,8 @@
 					text : "upload",
 					click : function() {
 						$("form.upload-form").submit();
+						$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
+
 //						console.log(uploadFile.type + "\t" + uploadFile.name + "\t" + uploadFile.size);
 //						$( this ).closest(".ui-dialog").remove();
 					}
@@ -189,8 +191,12 @@
 				dataType : 'json'
 		})
 		.done(function(data) {
-			$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
-			$("p.user-name").html(data[0]["firstname"] + " " + data[0]["lastname"]).css("display", "inline");
+			if ( data["picture"].indexOf("/") == -1) {
+				$(".img-profile").attr("src", "http://placehold.it/200x200&text=Me").show();
+			} else {
+				$(".img-profile").attr("src", data["picture"]).show();
+			}
+			$("p.user-name").html(data["firstname"] + " " + data["lastname"]).css("display", "inline");
 			fillPanel(data);
 			$.each($(".profile"), function(index, value) {
 				$(value).show();
