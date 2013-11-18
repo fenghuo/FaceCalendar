@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>Off Canvas Template for Bootstrap</title>
+    <title>Create A Group</title>
 
     <!-- Bootstrap core CSS -->
     <!-- link href="../../dist/css/bootstrap.min.css" rel="stylesheet" -->
@@ -54,9 +54,9 @@
           <ul class="nav nav-pills nav-stacked">
 
             <li><%= link_to "My Own Groups", group_show_path %></li>
-            <li class="active"><%= link_to "My Joined Group", group_show_joined_path %></li>
+            <li><%= link_to "My Joined Groups", group_show_joined_path %></a></li>
             <li><%= link_to "Search Groups", group_search_group_path %></a></li>
-            <li><%= link_to "Create Groups", group_create_group_path %></a></li>
+            <li class="active"><%= link_to "Create Groups", group_create_group_path %></a></li>
             <li><a href="#">Recommending Groups</a></li>
           </ul>
         </div><!--/span-->
@@ -66,18 +66,36 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           
-          <div id = "group_list">
-           
-            <% test = false %>
-            <% if test%>
-              <%= @my_joined_group_ids %>
-              <%= @my_joined_group_names %>
-              <%= @my_joined_group_info %>
-            <% else %>
-              <%= render :partial => 'group/show_joined_page' %>
-            <% end %>
+          <div id = "group_form_div">
+            <form action='/group/create_group' id='create_form' method='get' target='_top'>
+
+              <div class="input-group">
+                <span class="input-group-addon">Group Name</span>
+                <input name='gname' type="text" class="form-control" placeholder="Group Name">
+              </div>
+              <p>&nbsp;</p>
+
+              <div class="input-group">
+                <span class="input-group-addon">Group Category</span>
+                <input name='gcategory' type="text" class="form-control" placeholder="Group Category">
+              </div>
+              <p>&nbsp;</p>
+
+              <div class="input-group">
+                <span class="input-group-addon">Group Image</span>
+                <input name='gicon' type="text" class="form-control" placeholder="Group Image">
+              </div>
+              <p>&nbsp;</p>
+
+              <textarea name='gdescription' type="text" class="form-control" rows="3"  placeholder="Group Description"></textarea>
+              <p>&nbsp;</p>
+
+              <div align="right">
+                <button class="btn btn-danger" id='create_button' type='submit'><span>Create</span></button>
+              </div>
+
+            </form>
           </div>
-          
         </div><!--/span-->
 
       </div><!--/row-->
