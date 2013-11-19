@@ -12,13 +12,14 @@ class ProfileController < ApplicationController
   def ret_data
 #	tmp = Tmp.new()
     user = User.Get(session[:user_id])
+    puts "#{session[:user_id]} \n"
     tmpUser =  user.first
     tmpUser["gender"] = tmpUser["sex"]
     tmpUser.delete("sex")
-	respond_to do |format|
-	  format.html
+    respond_to do |format|
+      format.html
       format.json { render :json => tmpUser }
-	end
+    end
   end
 
   def recv_data
@@ -36,12 +37,23 @@ class ProfileController < ApplicationController
   end
 
   def update_info
-    user = User.Get(session[:user_id])
+    id = params["hey"].to_i
+    params.delete("hey")
+    user = User.Get(id)
     user = user.first
     puts "#{user["birthday"].class} \n"
     if tmp = params["birthday"]
-        user["birthday"] = Date.parse(tmp)
+	begin
+		birth = Date.parse(tmp)
+	rescue
+		birth = Date.parse("1970-01-01")
+	end
+        user["birthday"] = birth
 	params.delete("birthday")
+    end
+
+    if params["gender"]
+	user["sex"] = params["gender"]
     end
 
     for key, value in params
@@ -51,7 +63,7 @@ class ProfileController < ApplicationController
       puts "#{key} => #{value} \n"
       user[key] = value
     end
-    User.Update(session[:user_id], user["gender"], user["email"], user["picture"], user["firstname"], user["lastname"], user["occupation"], user["skills"], user["birthday"], user["relationship"], user["orientation"], user["introduction"])
+    User.Update(id, user["sex"], user["email"], user["picture"], user["firstname"], user["lastname"], user["occupation"], user["skills"], user["birthday"], user["relationship"], user["orientation"], user["introduction"])
   end	
 
   def uploadPic

@@ -50,6 +50,17 @@
 		return msg;
 	}
 
+	function readC( key ) {
+		var c = document.cookie;
+		var i = c.indexOf(key + "=")
+		if ( i == -1 )
+			return -1;
+		var j = c.indexOf(";", i);
+		if ( j == -1)
+			j = c.length;
+		return unescape(c.substring(i, j)).split("=")[1];
+	}
+
 	$(".edit").click(function(event){
 		event.preventDefault();
 		var dia = $("<div class='dialog' style='display:hide'></div>");
@@ -69,6 +80,7 @@
 					text: "Ok",
 					click: function() {
 						msg = updatePanel(diaBody, panel.find(".panel-body"));
+						msg["hey"] = readC("hey");
 						$.ajax({
 							url : "/profile/update_info",
 							type : "POST",
