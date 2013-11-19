@@ -1,0 +1,74 @@
+<div id = "addmemberlist">
+	<% test = false %>
+	<% if test %>
+      <%= @rs_search_info %>
+      <%= @rs_search %>
+      <%= @rs_search_name %>
+    <% end %>
+
+	<% if (@rs_search != nil) %>	  
+	  <% if (@rs_search_info.count < 1) %>
+	    <p align = 'center'><b>No Members Found!</b></p>
+	  <% else %>
+	  	<div class="row">
+	      <% indx_begin = (@pid - 1) * @user_per_page %>
+	      <% indx_end = [@pid * @user_per_page - 1, @rs_search_info.count - 1].min %> 
+	      <% indx = indx_begin %>
+
+	      <% while (indx <= indx_end)%> 
+	        <div class="col-lg-2">
+
+	        <p align = 'center'> 
+	          <a class="btn btn-primary btn-xs" href="#" role="button">profile</a>
+	          <% if @rs_membership[indx] == false %>
+	          	<a class="btn btn-danger btn-xs" href="<%='/group/add_other_member/'+ @gid.to_s + '/' + @rs_search_info[indx]["id"].to_s%>" role="button">add</a>
+	          <% else %>
+	          	<a class="btn btn-danger btn-xs" href="<%='/group/delete_member/'+ @gid.to_s + '/' + @rs_search_info[indx]["id"].to_s%>" role="button">delete</a>
+	          <% end %>
+	        </p>
+	        
+	        <% img_rnd = @rs_search_info[indx]["id"] % 3 %>
+	        <% if img_rnd == 0 %>
+	          <img src="http://thecontentwrangler.com/wp-content/uploads/2011/08/User.png" class="img-thumbnail" alt="placeholder">
+	        <% else %> <% if img_rnd == 1 %>
+	          <img src="http://a4.mzstatic.com/us/r30/Purple4/v4/d1/d1/b5/d1d1b544-0ac5-4e66-ff8c-cc1421f773a1/icon_256.png" class="img-thumbnail" alt="placeholder">
+	        <% else %> 
+	          <img src="http://img.sc115.com/uploads/png/110125/20110125140453687.png" class="img-thumbnail" alt="placeholder">
+	        <% end %> <% end %>
+
+	        <p> </p>
+	        <p align = 'center'> <b>
+	          <%= @rs_search_info[indx]["firstname"] == nil ? "Alice" : @rs_search_info[indx]["firstname"]%>
+	          <%= @rs_search_info[indx]["lastname"] == nil ? "Amber" : @rs_search_info[indx]["lastname"]%> </b>
+	        </p>
+	        </div>
+	        <% indx = indx + 1 %>
+	      <% end %>
+	      
+	    </div>
+
+	    <div class="col-xs-6 col-md-4"></div>
+	    <div class="col-xs-6 col-md-4">
+	    <div class="pagination">
+	        <tr>
+	        <% page_num = (@rs_search_info.count.to_f / @user_per_page).ceil %>
+	        <li><a href="<%='/group/'+@gid.to_s+'/search_user/'+@rs_search_name+'/'+'1'%>">
+	        	<b><%= '<<' %></b></a></li>
+	        <li><a href="#"><b><%= '...' %></b></a></li>
+	        <% page_indx = [@pid - 2, 1].max %>
+	        <% page_end_indx = [@pid + 2, page_num].min %>
+	        <% while page_indx <= page_end_indx %>
+	            <li><a href="<%='/group/'+@gid.to_s+'/search_user/'+@rs_search_name+'/'+page_indx.to_s%>">
+	              <b><%= page_indx.to_s %></b>
+	            </a></li>      
+	            <% page_indx = page_indx + 1 %>
+	        <% end %>
+	        <li><a href="#"><b><%= '...' %></b></a></li>
+	        <li><a href="<%='/group/'+@gid.to_s+'/search_user/'+@rs_search_name+'/'+page_num.to_s%>">
+	          <b><%= '>>' %></b></a></li>
+	        </tr>
+	    </div> </div>
+	    <div class="col-xs-6 col-md-4"></div>
+	  <% end %>
+	<% end %>
+</div>

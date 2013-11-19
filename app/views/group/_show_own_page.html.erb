@@ -17,14 +17,16 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#<%= div_id %>" >
-                  <span class="badge"><%= @my_own_group_info[indx]["size"] > 0 ? @my_own_group_info[indx]["size"] : 111 %></span> &nbsp;
-                  <b><%= @my_own_group_info[indx]["name"] %></b>
+                  <span class="badge">
+                    <%= @my_own_group_info[indx]["size"] > 0 ? @my_own_group_info[indx]["size"] : 111 %>
+                  </span> &nbsp;
+                  <b><%= @my_own_group_info[indx]["name"] == nil ? "GROUP_NAME_FOR_ID_"+ @my_own_group_ids[indx].to_s : @my_own_group_info[indx]["name"] %></b>
                 <div align = "right"> 
                   <a href="<%='/group/show_profile/'+@my_own_group_ids[indx].to_s%>">
                     <button type="button" class="btn btn-primary btn-xs">Manage Group</button>
                   </a>
                   <a href="<%= "/group/quit_group/"+ @my_own_group_ids[indx].to_s%>">
-                    <button type="button" class="btn btn-danger btn-xs">Quit Group</button>
+                    <button type="button" class="btn btn-danger btn-xs" disabled="disabled">Delete Group</button>
                   </a>
                 </div>
               </a>
@@ -55,9 +57,10 @@
                       </p>
                       <p><b>Group Tags:      </b>
                         <% t = 0 %>
+                        <% tag = @my_own_group_info[indx]["categroy"] == nil ? 'tag' : @my_own_group_info[indx]["categroy"] %>
                         <% while t < 3 %>
                           <span class="label label-primary">
-                            <%= 'tag'+ @my_own_group_info[indx]["categroy"] +  '-' + t.to_s %>
+                            <%= tag + '-' + t.to_s %>
                           </span> &nbsp;
                           <% t = t + 1 %>
                         <% end %></p>

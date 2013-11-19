@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Off Canvas Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- link href="../../dist/css/bootstrap.min.css" rel="stylesheet" -->
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+    <div><p>&nbsp;</p><p>&nbsp;</p></div>
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <ul class="nav nav-pills nav-stacked">
+
+            <li><%= link_to "My Own Groups", group_show_path %></li>
+            <li><%= link_to "My Joined Groups", group_show_joined_path %></a></li>
+            <li class="active"><%= link_to "Search Groups", group_search_group_path %></a></li>
+            <li><%= link_to "Create Groups", group_create_group_path %></a></li>
+            <li><a href="#">Recommending Groups</a></li>
+          </ul>
+        </div><!--/span-->
+
+        <div class="col-xs-12 col-sm-9 col-lg-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+
+          <div id = "group_search_box">
+            <div class="row">
+              <div class="col-lg-12">
+                <form action='/group/search_group' id='search-form' method='get' target='_top'>
+                <div class="input-group">                  
+                  <input id='search-text' class="form-control" name='gname' placeholder='Group Name' type='text'>
+                  <span class="input-group-btn">
+                    <button id='search-button' class="btn btn-primary" type='submit'>Search</button>
+                  </span>
+                </div><!-- /input-group -->
+                </form>
+              </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+
+            <div id='search-box'>
+              </br>
+
+              <% test = false %>
+              <% if test == true %>
+                <div>
+                <%= @grs_search_name %>
+                <%= @pid %>
+                <%= @grs_search_info %>
+              </div>
+              <% end %>
+
+              <% if (@grs_search!=nil) %>
+              
+                <% if (@grs_search.count<1) then %>
+                  <p>No Groups Found!</p>
+                <% else %>
+
+                  <% if @grs_search_name != nil %>
+                    <div><b>Search Results For "<%= @grs_search_name %>"</b></div>
+                    <p>&nbsp;</p>
+                  <% end %>
+
+                  <% @group_per_page = 10 %>
+                  <% index_begin = (@pid - 1) * @group_per_page %>
+                  <% index_end = [@pid * @group_per_page - 1, @grs_search.count - 1].min %> 
+
+                  <table class="table table-striped">
+                    <tr>
+                        <% version = false %>
+                        <% if version == true %>
+                          <% @grs_search.first.each do |k,v| %>
+                            <th>
+                              <%= k.to_s %>
+                            </th>
+                          <% end %>
+                        <% else %>
+                          <th> Name </th>
+                          <th> Category </th>
+                          <th> Description </th>
+                          <th> Size </th>
+                        <% end %>
+                        <th> Action </th> 
+                        <th> </th>
+                    </tr> 
+
+                  <% indx = index_begin %>
+                  <% while (indx <= index_end )%>    
+
+                      <% add_to_group_id = 0 %>
+                      <% row = @grs_search_info[indx] %>
+                      
+                      <tr>
+                        <% add_to_gid = 0 %>
+                        <% row.each do |k,v| %>
+                          <% if k == "id" %>
+                            <% add_to_gid = v %>
+                          <% end %>
+                          <% if (k == "name" || k == "categroy" || k == "description" || k == "size") %>
+                            <td>                           
+                                <% if k == "categroy" %>
+                                  <span class="label label-primary"><%= v %></span>
+                                  <!--<% t = 0 %><% tag = v == nil ? 'tag' : v %><% while t < 3 %><p><span class="label label-primary"><%= tag +  '-' + t.to_s %></span></p><% t = t + 1 %><% end %>-->
+                                <% else %>
+                                  <% if (k == "description" && v != nil) %>
+                                   <% if v.length > 150 %>
+                                      <% v = v[0..149]+'...' %>
+                                   <% end %>
+                                  <% end %>
+                                  <% if (k == "description" && v == nil) %>
+                                    <% v = "No Description" %>
+                                  <% end %>
+                                  <% if (k == "name" && v == nil) %>
+                                    <% v = "GROUP_NAME_FOR_ID_"+ add_to_gid.to_s %>
+                                  <% end %>
+                                  <%= v.to_s %>
+                                <% end %>                              
+                            </td>
+                          <% end %>
+                        <% end %>
+                        <td> <a type="button" class="btn btn-primary btn-xs" href="<%= "/group/show_profile/"+ add_to_gid.to_s%>" role="button">Group Profile</a></td>
+                        <td> <a type="button" class="btn btn-danger btn-xs" href = "<%= "/group/add_member/"+ add_to_gid.to_s%>" >+ Add Group </a> </td>
+                      </tr>
+                    
+                    
+                    <% indx = indx + 1 %>
+                
+                  <% end %>
+
+                  </table>
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+          
+
+        </div><!--/span-->
+
+
+        <% if @grs_search != nil %>
+        <div class="col-xs-4 col-sm-8 col-md-offset-4">
+          <div class="pagination">
+              <tr>
+              <% page_num = (@grs_search.count.to_f / @group_per_page).ceil %>
+              <li><a href="<%='/group/search_group/'+@grs_search_name+'/1'%>">
+                <b><%= '<<' %></b></a></li>
+              <li><a href="#"><b><%= '...' %></b></a></li>
+              <% page_indx = [@pid - 2, 1].max %>
+              <% page_end_indx = [@pid + 2, page_num].min %>
+              <% while page_indx <= page_end_indx %>
+                  <li><a href="<%='/group/search_group/'+@grs_search_name+'/'+page_indx.to_s%>">
+                    <b><%= page_indx.to_s %></b>
+                  </a></li>      
+                  <% page_indx = page_indx + 1 %>
+              <% end %>
+              <li><a href="#"><b><%= '...' %></b></a></li>
+              <li><a href="<%='/group/search_group/'+@grs_search_name+'/'+page_num.to_s%>">
+                <b><%= '>>' %></b></a></li>
+              </tr>
+          </div> 
+        </div> 
+        <% end %>
+
+
+
+      </div><!--/row-->
+
+      <hr>
+      <footer>
+        <p>&copy; FaceCalendar 2013</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="offcanvas.js"></script>
+  </body>
+</html>
