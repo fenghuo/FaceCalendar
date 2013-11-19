@@ -3,13 +3,15 @@
 	<% @all_event.each do |e| %>
 		<tr>
 			<td><%= e.eventname %></td>
+			<td><%= e.groupname %></td>
 	 		<td><%= e.desp %></td>
 	 		<td><%= e.place %></td>
-	 		<td><%= e.groupname %></td>
+	 		
 	 		<td><%= e.eventsid %></td>
 	 		<td><%= e.weekday %></td>
 			<td><%= e.starttime %></td>
 			<td><%= e.endtime %></td>
+			<td><%= e.eventid %></td>
 		</tr>
 	<% end %>
 

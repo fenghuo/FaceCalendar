@@ -46,7 +46,27 @@ function get_event(userid) {
     events.push(event3);
     
 }
+function combine_event(){
+    var i=0;
+    if(events.length==0)
+        return;
 
+    var events2 = new Array();
+    events2.push(events[0]);
+    for(i=1;i<events.length;i++){
+        if(events[i].eventname==events2[events2.length-1].eventname 
+            && events[i].start==events2[events2.length-1].start
+            && events[i].end==events2[events2.length-1].end
+            && events[i].weekday==events2[events2.length-1].weekday
+            && events[i].desp==events2[events2.length-1].desp){
+
+            continue;
+        }
+        events2.push(events[i]);
+
+    }
+    events=events2;
+}
 function get_event_by_day(weekday) {//filter and sort by start time
     var event_at_day = new Array();
     //filter

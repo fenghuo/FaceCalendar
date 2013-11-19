@@ -2,7 +2,7 @@ require 'Event_model.rb'
 require 'Groups_model.rb'
 
 class CalendarController < ApplicationController
-  helper_method :prep, :group_name2id
+  helper_method :prep, :group_name2id, :combine_groups
   class Event
     attr_accessor :eventname,:desp,:place,:starttime,:endtime,:groupname, :weekday, :eventid, :eventsid
     def initialize
@@ -56,25 +56,91 @@ class CalendarController < ApplicationController
     #@all_event = [ @event0, @event1, @event2]
 
     @all_event=[]
+
+
+
+    #session[:test]=0
     event_table=EventDB.GetAll(session[:user_id],starttime,endtime)
     if event_table!=[]
+
       event_table.each do |e|
         event0=Event.new
-      
+        
         event0.eventid = e["id"]
         event0.eventname=e["eventname"]
-        event0.desp=e["decription"]
+        event0.desp=e["description"]
         event0.place=e["place"]
         event0.starttime = DateTime.parse(e["starttime"].to_s)
         event0.endtime = DateTime.parse(e["endtime"].to_s)
-        event0.groupname = "private;"
         event0.weekday = event0.starttime.wday
         if @event0.weekday==0
           @event0.weekday=7
         end
+
+
+        event0groupid=EventDB.GetEventGroup(event0.eventid)
+        if event0groupid==nil
+          #event0groupid.push(-1)
+          event0groupname="private;"
+
+          #EventDB.Delelte(event0.eventid)
+          #event0.eventid=EventDB.Create(session[:user_id],event0.starttime,event0.endtime,"",-1,event0.eventname,event0.desp,event0.place,event0.weekday)
+
+        else
+
+          event0groupname=""
+          event0groupid.each do |ee|
+            idexist=@all_groupid.index(ee["groupid"])
+            
+          #  if ee==-1
+          #    event0groupname="private;"
+          #  end
+            if idexist
+              event0groupname=event0groupname+@all_group[idexist]+";"
+            end
+          end
+        end
+        #session[:test]=event0groupname
+        #event0.groupname=event0groupname;
+        event0.groupname = event0groupname
+        
+
         @all_event.push(event0)
       end
     end
+
+   
+    event_table=EventDB.GetPrivate(session[:user_id],starttime,endtime)
+    @test=event_table.count
+    if event_table!=[]
+        event_table.each do |e|
+        event0=Event.new
+        @test=-1    
+        event0.eventid = e["id"]
+        event0.eventname=e["eventname"]
+        event0.desp=e["description"]
+        event0.place=e["place"]
+        event0.starttime = DateTime.parse(e["starttime"].to_s)
+        event0.endtime = DateTime.parse(e["endtime"].to_s)
+        event0.weekday = event0.starttime.wday
+        if @event0.weekday==0
+          @event0.weekday=7
+        end
+
+          event0groupname="private;"
+
+          #EventDB.Delelte(event0.eventid)
+          #event0.eventid=EventDB.Create(session[:user_id],event0.starttime,event0.endtime,"",-1,event0.eventname,event0.desp,event0.place,event0.weekday)
+        event0.groupname = event0groupname
+        
+
+        @all_event.push(event0)
+      end
+    end
+
+
+
+
 
 
 
@@ -94,7 +160,7 @@ class CalendarController < ApplicationController
         end
       end
     end
-    use_database=true
+    #use_database=true
     if(use_database==true)
       session[:current_event]=[]
       currentsid=0
@@ -118,6 +184,37 @@ class CalendarController < ApplicationController
   def group_name2id(name)
     return session[:current_groupid][session[:current_group].index(name)]
   end
+
+  def combine_groups(events,the_event)
+    i=0
+    #all_event_tmp=events.clone
+    #all_event_tmp.sort! { |a,b| a.eventid<=>b.eventid }
+    groupnames=""
+    #while i<events.length
+    #  if all_event_tmp[i].eventid>the_event.eventid
+    #    if all_event_tmp[i].starttime==the_event.starttime &&
+    #         all_event_tmp[i].endtime==the_event.endtime &&
+    #         all_event_tmp[i].eventname==the_event.eventname &&
+    #         all_event_tmp[i].desp==the_event.desp
+    #        groupnames=groupnames+all_event_tmp[i].groupname
+    #    else
+    #      break
+    #    end
+    #  end
+    #  i=i+1
+    #end
+    events.each do |e|
+      if e.starttime==the_event.starttime &&
+           e.endtime==the_event.endtime &&
+           e.eventname==the_event.eventname &&
+           e.desp==the_event.desp
+        groupnames=groupnames+e.groupname
+      end
+    end
+
+    return groupnames
+  end
+
   def show
     #session[:current_event]=[]
     
@@ -206,6 +303,7 @@ class CalendarController < ApplicationController
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
     
+    @groupnames=combine_groups(@all_event,@event_to_show)
 
   end
   
@@ -226,7 +324,8 @@ class CalendarController < ApplicationController
     week_start_tmp=session[:week_start]
     
     
-    #add 
+    #add
+    @create_success=1
     @all_event=session[:current_event]
     if @all_event==[]
 	      currentsid=-1
@@ -248,7 +347,7 @@ class CalendarController < ApplicationController
       currentsid=currentsid+1
 
       session_rec.starttime=week_start_tmp+ded[0].to_i-1+ded[1].to_f/24.0
-      #@testttt=session_rec.starttime
+      
       session_rec.endtime=week_start_tmp+ded[0].to_i-1+ded[2].to_f/24.0
       session_rec.eventid=session[:current_event].length
       session_rec.groupname.split(";").each do |e|
@@ -257,7 +356,15 @@ class CalendarController < ApplicationController
         else
           gid=group_name2id(e)
         end
-        EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",1,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
+        
+
+        session_rec.eventid=EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",gid,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
+
+        if session_rec.eventid>0
+          @create_success=@create_success
+        else
+          @create_success=0
+        end
       end
 
       session[:current_event].push(session_rec)
@@ -280,10 +387,13 @@ class CalendarController < ApplicationController
     id=params[:eventtoshowid]
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
+
+    @groupnames=combine_groups(@all_event,@event_to_show)
     #event=event_fint_by_id[id]
   end
 
   def backup
+
     @all_event=session[:current_event]
   end
 
@@ -307,6 +417,7 @@ class CalendarController < ApplicationController
       event_to_show=session[:current_event][idx]
       EventDB.EditTime(event_to_show.eventid,event_to_show.starttime,event_to_show.endtime)
       EventDB.EditOthers(event_to_show.eventid,"",event_to_show.eventname,event_to_show.desp,event_to_show.place,event_to_show.weekday)
+
     elsif params[:commit]=="delete"
       
       #database delete method

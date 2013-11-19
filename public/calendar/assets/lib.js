@@ -50,7 +50,31 @@ function get_event(userid) {
     events.push(event3);
     
 }
+function combine_event(){
+    var i=0;
+    if(events.length==0)
+        return;
 
+    var events2 = new Array();
+    events2.push(events[0]);
+    for(i=1;i<events.length;i++){
+        var toadd=1
+        for(j=0;j<events2.length;j++){
+            if(events[i].eventname==events2[j].eventname 
+                && events[i].start==events2[j].start
+                && events[i].end==events2[j].end
+                && events[i].weekday==events2[j].weekday
+                && events[i].desp==events2[j].desp){
+                
+                toadd=0;
+                events2[j].group=events2[j].group+events[i].group;
+            }
+            if(j==events2.length-1 && toadd==1)
+                events2.push(events[i]);
+        }
+    }
+    events=events2;
+}
 function get_event_by_day(weekday) {//filter and sort by start time
     var event_at_day = new Array();
     //filter
@@ -271,7 +295,7 @@ function event_position_new(event_at_day) {
             if (colume_event_rec[posi_rec[idx].colum_no + 1].length == 0)
                 break;
             for (var k = 0; k < colume_event_rec[posi_rec[idx].colum_no + 1].length; k++) {
-                if (colume_event_rec[posi_rec[idx].colum_no + 1][k].the_event.end > event_at_day[idx].start && posi_rec[colume_event_rec[posi_rec[idx].colum_no + 1][k].event_at_day_posi].block_member < i) {
+                if (colume_event_rec[posi_rec[idx].colum_no + 1][k].the_event.end > event_at_day[idx].start && posi_rec[colume_event_rec[posi_rec[idx].colum_no + 1][k].event_at_day_posi].block_no < i) {
                     needchange = 1;
                     needchangeto = posi_rec[colume_event_rec[posi_rec[idx].colum_no + 1][k].event_at_day_posi].block_no;
                     block_width[needchangeto]=Math.max(block_width[needchangeto],block_width[i]);
