@@ -30,6 +30,10 @@ class LoginController < ApplicationController
   end
 
   def signup
+	if params[:name] == '' || params[:email] == '' || params[:password] == ''
+		redirect_to action: 'start'
+		return
+	end
     name = params[:name].split(' ', 2)
     email = params[:email]
     password = params[:password]
