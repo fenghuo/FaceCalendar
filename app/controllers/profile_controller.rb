@@ -1,5 +1,5 @@
 require 'User_model'
-require 'RMagick'
+#require 'RMagick'
 include Magick
 
 class ProfileController < ApplicationController
