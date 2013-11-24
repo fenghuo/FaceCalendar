@@ -137,7 +137,7 @@ class CalendarController < ApplicationController
         end
       end
     end
-    use_database=true
+    #use_database=true
     if(use_database==true)
       session[:current_event]=[]
       currentsid=0
