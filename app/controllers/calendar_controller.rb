@@ -14,38 +14,10 @@ class CalendarController < ApplicationController
   def prep(starttime,endtime)
     #fake record in reality I will request for every week's record
     #need to read the database in the released version
-    @event0=Event.new
-    @event0.starttime = DateTime.parse("2013-11-04 10:10:00")
-    @event0.endtime = DateTime.parse("2013-11-04 12:00:00")
-    @event0.groupname = "1;"
-    @event0.weekday = @event0.starttime.wday
-    @event0.eventid = 0
-    if @event0.weekday==0
-      @event0.weekday=7
-    end
-
-    @event1=Event.new
-    @event1.starttime = DateTime.parse("2013-11-03 10:00:00")
-    @event1.endtime = DateTime.parse("2013-11-03 12:00:00")
-    @event1.groupname = "2;"
-    @event1.weekday = @event1.starttime.wday
-    @event1.eventid = 1
-    if @event1.weekday==0
-      @event1.weekday=7
-    end
-
-    @event2=Event.new
-    @event2.starttime = DateTime.parse("2013-10-03 10:00:00")
-    @event2.endtime = DateTime.parse("2013-10-03 12:00:00")
-    @event2.groupname = "3;"
-    @event2.weekday = @event2.starttime.wday
-    @event2.eventid = 2
-    if @event2.weekday==0
-      @event2.weekday=7
-    end
-
+    
 
     group_table=Group.FindOnesJoinedGroupWithGroupName(session[:user_id])
+
     @all_group=[]
     @all_groupid=[]
     group_table.each do |e|
@@ -61,6 +33,7 @@ class CalendarController < ApplicationController
 
     #session[:test]=0
     event_table=EventDB.GetAll(session[:user_id],starttime,endtime)
+
     if event_table!=[]
 
       event_table.each do |e|
@@ -70,11 +43,13 @@ class CalendarController < ApplicationController
         event0.eventname=e["eventname"]
         event0.desp=e["description"]
         event0.place=e["place"]
-        event0.starttime = DateTime.parse(e["starttime"].to_s)
-        event0.endtime = DateTime.parse(e["endtime"].to_s)
+        time_temp = DateTime.parse(e["starttime"].to_s)+session[:time_offset]/24.0
+        event0.starttime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
+        time_temp = DateTime.parse(e["endtime"].to_s)+session[:time_offset]/24.0
+        event0.endtime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
         event0.weekday = event0.starttime.wday
-        if @event0.weekday==0
-          @event0.weekday=7
+        if event0.weekday==0
+          event0.weekday=7
         end
 
 
@@ -111,20 +86,22 @@ class CalendarController < ApplicationController
 
    
     event_table=EventDB.GetPrivate(session[:user_id],starttime,endtime)
-    @test=event_table.count
+    
     if event_table!=[]
         event_table.each do |e|
         event0=Event.new
-        @test=-1    
+         
         event0.eventid = e["id"]
         event0.eventname=e["eventname"]
         event0.desp=e["description"]
         event0.place=e["place"]
-        event0.starttime = DateTime.parse(e["starttime"].to_s)
-        event0.endtime = DateTime.parse(e["endtime"].to_s)
+        time_temp = DateTime.parse(e["starttime"].to_s)+session[:time_offset]/24.0
+        event0.starttime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
+        time_temp = DateTime.parse(e["endtime"].to_s)+session[:time_offset]/24.0
+        event0.endtime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
         event0.weekday = event0.starttime.wday
-        if @event0.weekday==0
-          @event0.weekday=7
+        if event0.weekday==0
+          event0.weekday=7
         end
 
           event0groupname="private;"
@@ -176,7 +153,6 @@ class CalendarController < ApplicationController
     else
       @all_event=session[:current_event]
     end
-
     session[:current_group]=@all_group
     session[:current_groupid]=@all_groupid
   end
@@ -211,7 +187,6 @@ class CalendarController < ApplicationController
         groupnames=groupnames+e.groupname
       end
     end
-
     return groupnames
   end
 
@@ -227,8 +202,9 @@ class CalendarController < ApplicationController
       @week_start_tmp=DateTime.now
     
     end
+    session[:time_offset]=@week_start_tmp.utc_offset/3600
 
-    @week_start_tmp=DateTime.new(@week_start_tmp.year,@week_start_tmp.mon,@week_start_tmp.day,0,0,0)
+    @week_start_tmp=DateTime.new(@week_start_tmp.year,@week_start_tmp.mon,@week_start_tmp.day,0,0,0,session[:time_offset].to_s)
     if @week_start_tmp.wday==0
       @week_start_tmp=@week_start_tmp-6
     else
@@ -269,20 +245,20 @@ class CalendarController < ApplicationController
         @month_start_tmp=DateTime.now
 
       end
-      @month_start_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon,1,0,0,0)
+      @month_start_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon,1,0,0,0,session[:time_offset].to_s)
       @month_end_tmp=@month_start_tmp+31
-      @month_end_tmp=DateTime.new(@month_end_tmp.year,@month_end_tmp.mon,1,0,0,0)-1
+      @month_end_tmp=DateTime.new(@month_end_tmp.year,@month_end_tmp.mon,1,0,0,0,session[:time_offset].to_s)-1
       @start_tmp=@month_start_tmp
       if @month_start_tmp.mon==12
-        @month_next_tmp=DateTime.new(@month_start_tmp.year+1,1,1,0,0,0)
+        @month_next_tmp=DateTime.new(@month_start_tmp.year+1,1,1,0,0,0,session[:time_offset].to_s)
       else
-        @month_next_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon+1,1,0,0,0)
+        @month_next_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon+1,1,0,0,0,session[:time_offset].to_s)
       end
 
       if @month_start_tmp.mon==1
-        @month_last_tmp=DateTime.new(@month_start_tmp.year-1,12,1,0,0,0)
+        @month_last_tmp=DateTime.new(@month_start_tmp.year-1,12,1,0,0,0,session[:time_offset].to_s)
       else
-        @month_last_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon-1,1,0,0,0)
+        @month_last_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon-1,1,0,0,0,session[:time_offset].to_s)
       end
 
       prep(@month_start_tmp,@month_next_tmp)
@@ -347,9 +323,13 @@ class CalendarController < ApplicationController
       currentsid=currentsid+1
 
       session_rec.starttime=week_start_tmp+ded[0].to_i-1+ded[1].to_f/24.0
-      
+      @test=session_rec.starttime
+
       session_rec.endtime=week_start_tmp+ded[0].to_i-1+ded[2].to_f/24.0
       session_rec.eventid=session[:current_event].length
+
+      group_added=0
+      session[:current_event].push(session_rec)
       session_rec.groupname.split(";").each do |e|
         if e=="private"
           gid=-1
@@ -357,17 +337,24 @@ class CalendarController < ApplicationController
           gid=group_name2id(e)
         end
         
-
-        session_rec.eventid=EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",gid,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
+        if group_added==0
+          session_rec.eventid=EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",gid,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
+        else
+          EventDB.AddGroup(session_rec.eventid,gid,"")
+        end
 
         if session_rec.eventid>0
           @create_success=@create_success
         else
           @create_success=0
         end
+        #session_rec_tmp=session_rec.clone
+        #session_rec_tmp.groupname=e+";"
+        
+        group_added=group_added+1
       end
 
-      session[:current_event].push(session_rec)
+      
     end
 
 
@@ -388,7 +375,7 @@ class CalendarController < ApplicationController
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
 
-    @groupnames=combine_groups(@all_event,@event_to_show)
+    #@groupnames=combine_groups(@all_event,@event_to_show)
     #event=event_fint_by_id[id]
   end
 
@@ -402,21 +389,82 @@ class CalendarController < ApplicationController
     @eventsid=params[:eventsid]
     idx=session[:current_event].index {|e| e.eventsid==@eventsid.to_i}
     go_back_time=session[:current_event][idx].starttime
+    the_event=session[:current_event][idx].clone
     if params[:commit]=="save"
       #database edit method
       #session edit
       
-      session[:current_event][idx].eventname=params[:eventname]
-      session[:current_event][idx].starttime=DateTime.parse(params[:starttime])
-      go_back_time=session[:current_event][idx].starttime
-      session[:current_event][idx].endtime=DateTime.parse(params[:endtime])
-      session[:current_event][idx].place=params[:place]
-      session[:current_event][idx].groupname=params[:groupname]
-      session[:current_event][idx].desp=params[:desp]
+      group_new=params[:groupname].split(";")
+      group_old=the_event.groupname.split(";")
 
-      event_to_show=session[:current_event][idx]
-      EventDB.EditTime(event_to_show.eventid,event_to_show.starttime,event_to_show.endtime)
-      EventDB.EditOthers(event_to_show.eventid,"",event_to_show.eventname,event_to_show.desp,event_to_show.place,event_to_show.weekday)
+      
+#      session[:current_event].each do |e|
+#        if e.starttime==the_event.starttime &&
+#           e.endtime==the_event.endtime &&
+#           e.eventname==the_event.eventname &&
+#           e.desp==the_event.desp
+#           group_old.push(e.groupname.delete(";"))
+#
+#        end
+#      end
+      tmp=Event.new
+      tmp.eventname=params[:eventname]
+      tmp.starttime=DateTime.parse(params[:starttime])
+      go_back_time=tmp.starttime
+      tmp.endtime=DateTime.parse(params[:endtime])
+      tmp.place=params[:place]
+      tmp.desp=params[:desp]
+      tmp.eventid=the_event.eventid
+      tmp.weekday=tmp.starttime.wday
+      if tmp.weekday==0
+        tmp.weekday=7
+      end
+
+      @test=group_old.index("private")
+      if group_new.index("private")!=nil && group_old.index("private")==nil
+         EventDB.Delelte(the_event.eventid)
+         @test=2
+         gid=-1
+         tmp.eventid=EventDB.Create(session[:user_id],tmp.starttime,tmp.endtime,
+          "",gid,tmp.eventname,tmp.desp,tmp.place,tmp.weekday)
+
+      elsif group_new.index("private")==nil && group_old.index("private")!=nil
+          EventDB.Delelte(the_event.eventid)
+          gid0=group_name2id(group_new[0])
+          tmp.eventid=EventDB.Create(session[:user_id],tmp.starttime,tmp.endtime,
+          "",gid0,tmp.eventname,tmp.desp,tmp.place,tmp.weekday)
+          group_new.each do |e|
+            gid=group_name2id(e)
+            if gid!=gid0
+              EventDB.AddGroup(tmp.eventid,gid,"")
+            end
+          end
+
+      else 
+        group_add=group_new-group_old
+        group_del=group_old-group_new
+        #update
+        EventDB.EditTime(the_event.eventid,tmp.starttime,tmp.endtime)
+        EventDB.EditOthers(the_event.eventid,"",tmp.eventname,tmp.desp,tmp.place,tmp.weekday)
+
+        #add new 
+        group_add.each do |e|
+          EventDB.AddGroup(the_event.eventid,group_name2id(e),"")
+        end
+        #delete old
+        group_del.each do |e|
+          EventDB.DelelteFromGroup(the_event.eventid,group_name2id(e))
+        end
+      end
+
+      session[:current_event][idx].groupname=params[:groupname]
+      session[:current_event][idx].eventname=tmp.eventname
+      session[:current_event][idx].starttime=tmp.starttime
+      session[:current_event][idx].endtime  =tmp.endtime
+      session[:current_event][idx].place    =tmp.place
+      session[:current_event][idx].desp     =tmp.desp
+      session[:current_event][idx].weekday  =tmp.weekday
+      session[:current_event][idx].eventid  =tmp.eventid
 
     elsif params[:commit]=="delete"
       
@@ -431,14 +479,24 @@ class CalendarController < ApplicationController
       #    session[:current_event].push(e)
       #  end
       #end
-      EventDB.Delelte(session[:current_event][idx].eventid)
-      session[:current_event].delete_if {|e| e.eventsid==@eventsid.to_i}
+      EventDB.Delelte(the_event.eventid)
+      session[:current_event].delete_if {|ee| ee.eventid==the_event.eventid.to_i}
+      
 
     end
     
     
 
-    
+    @go_back_time2=go_back_time
     redirect_to calendar_show_path(week_start_para: go_back_time)
+  end
+
+  def check_change
+    @changed=false
+
+    respond_to do |format|
+      format.js
+      format.html 
+    end
   end
 end

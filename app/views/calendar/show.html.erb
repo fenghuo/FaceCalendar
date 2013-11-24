@@ -26,23 +26,27 @@
             }
         </style>
         <script>
-            
+
             //global initialization
             //get_group();
             //get_event(1);
+<<<<<<< HEAD
+=======
             
+>>>>>>> aafadd0156e6f4cb087f2359ada3ad7f020f86c1
             var show_cata = new Array();
             show_cata.push("all")
             <% @all_group.each  do |k|%>
-            group.push("<%= k %>");
-            show_cata.push("<%= k %>");
+              <% if k!=nil %>
+                group.push("<%= k %>");
+                show_cata.push("<%= k %>");
+              <% end %>
             <% end %>
             show_cata.push("private");
             
-            
             events.length=0;
             <%= render 'get_event_group' %>
-            combine_event();
+            //combine_event();
             
             //add
             add_init();
@@ -210,6 +214,7 @@
                     }
                     //alert(events[0].desp);
                 }
+                $('#week .well').css("word-wrap","break-word");
             }
             function event_draw_by_group(groupname){
                 event_clean();
@@ -220,6 +225,8 @@
             function event_click(i){
                 //window.open("show_event");
             }
+
+
         </script>
     </head>
     <body>
@@ -227,6 +234,7 @@
               <li class="previous">
                 <a href="show?week_start_para=<%= @week_last_tmp %>" >Last Week &rarr;</a>
               </li>
+              <li id="changed" style="background-color:red">Some of the event has been changed. Please reload this page.</li>
               <li class="next">
                <a href="show?week_start_para=<%= @week_next_tmp %>" >Next Week &rarr;</a>
               </li>
@@ -331,3 +339,13 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                 
             
         </div>
+        <!-- Polling -->
+        <script>
+        $('#changed').hide();
+        setInterval(function(){
+            $.ajax({
+                type:'get',
+                url: 'check_change',
+            });
+        },1000);
+        </script>

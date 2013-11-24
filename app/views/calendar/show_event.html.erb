@@ -23,7 +23,7 @@
  	</tr>
  	<tr>
  		<td>Groups:</td>
- 		<td><%= @groupnames %></td>
+ 		<td><%= @event_to_show.groupname %></td>
  	</tr>
 </table>
 <%= link_to "Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>

@@ -1,5 +1,6 @@
 FaceCalendar::Application.routes.draw do
 
+  get "calendar/check_change"
   get "calendar/edit_propose"
   get "calendar/backup"
   get "calendar/create_event"
