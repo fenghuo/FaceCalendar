@@ -1,6 +1,6 @@
 
 .full-width-image-1 {
-	background: url(http://lorempixel.com/1920/500/) no-repeat center center;
+	background: url(/profile/cover/02.jpg) no-repeat center center;
 	background-size: cover;
 	text-align: left;
 	padding: 100px 0;
@@ -17,7 +17,7 @@
 	display: table-cell;
 	position: relative;
 	bottom: -175px;
-	left: 150px
+	left: 150px;
 }
 
 p.user-name {
