@@ -6,7 +6,9 @@ body {
 
 .signup-panel {
 	width: auto;
-	max-width: 1200;
+	max-width: 100%;
+	height: auto;
+	min-height: 800px;
 }
 
 .signup-panel:after {

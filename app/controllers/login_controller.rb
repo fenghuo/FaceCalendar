@@ -2,9 +2,13 @@ require 'User_model'
 
 class LoginController < ApplicationController
   def start
-	respond_to do |format|
-		format.html
-		format.js
+	if session[:user_id] == nil
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	else
+		redirect_to controller: 'calendar', action: 'show'
 	end
   end
 
@@ -14,7 +18,8 @@ class LoginController < ApplicationController
 	res = User.LoginCheck(email, password)
     if res != -1
 		session[:user_id] = res
-		redirect_to :controller => 'calendar', :action => 'show'		
+		cookies["hey"] = res
+		redirect_to :controller => 'calendar', :action => 'show'
 	else
 		redirect_to action: "tryAgain"
 	end
@@ -25,6 +30,10 @@ class LoginController < ApplicationController
   end
 
   def signup
+	if params[:name] == '' || params[:email] == '' || params[:password] == ''
+		redirect_to action: 'start'
+		return
+	end
     name = params[:name].split(' ', 2)
     email = params[:email]
     password = params[:password]
@@ -43,6 +52,7 @@ class LoginController < ApplicationController
 
   def logout
 	session[:user_id] = nil
+	cookies.delete "hey"
 	redirect_to action: 'start'
   end
 

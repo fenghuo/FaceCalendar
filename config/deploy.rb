@@ -3,7 +3,7 @@ set :repo_url, 'git@github.com:fenghuo/FaceCalendar.git'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, '/home/ubuntu/main'
+set :deploy_to, '/home/ubuntu'
 set :user, %{ubuntu}
 set :use_sudo, false
 set :latest_release_directory, File.join(fetch(:deploy_to), 'current')
