@@ -77,7 +77,7 @@ class ProfileController < ApplicationController
     puts "#{params["cont"].length} \n"
     some = StringIO.new(params["cont"], "r:binary")
 =end
-    path = File.join("/home/ubuntu/main/current/public/profile/pics", params["pro_pic"].original_filename)
+    path = File.join("/home/ubuntu/current/public/profile/pics", params["pro_pic"].original_filename)
     f = File.new(path, "w:ascii-8bit")
     f.write(params["pro_pic"].read)
     f.close
