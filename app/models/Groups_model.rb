@@ -142,6 +142,32 @@ class Group < ActiveRecord::Base
 
 	end
 	
+	def self.SnapShotUpdate(userid,value)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			client.query("call snap_groups_update(#{userid},#{Conn.ESP(value)})");
+			client.close
+			return @rs	
+		end
+
+	end
+
+	def self.SnapShotGet(userid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call snap_groups_get(#{userid})");
+			client.close
+			return @rs	
+		end
+
+	end
+
 	def self.NotifyGroupMember(groupid) ## no db notice
 
 	end

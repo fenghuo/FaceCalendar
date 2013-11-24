@@ -155,4 +155,30 @@ class EventDB < ActiveRecord::Base
 		end
 	end
 
+	def self.SnapShotUpdate(userid,value)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			client.query("call snap_event_update(#{userid},#{Conn.ESP(value)})");
+			client.close
+			return @rs	
+		end
+
+	end
+
+	def self.SnapShotGet(userid)
+		client= Conn.GetConn
+		@rs=nil
+		if(client==nil)
+			return -1;
+		else
+			@rs=client.query("call snap_event_get(#{userid})");
+			client.close
+			return @rs	
+		end
+
+	end
+
 end
