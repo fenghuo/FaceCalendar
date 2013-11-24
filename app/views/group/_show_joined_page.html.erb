@@ -38,7 +38,7 @@
                 <div class="row row-offcanvas row-offcanvas-right">
                   <div class="row">
                     <div class="col-xs-12 col-sm-3">
-                      <% if (@my_joined_group_info[indx]["image"] != nil && @my_joined_group_info[indx]["image"] != "image" && @my_own_group_info[indx]["image"] != "Group Image") %>
+                      <% if (@my_joined_group_info[indx]["image"] != nil && @my_joined_group_info[indx]["image"] != "image" && @my_joined_group_info[indx]["image"] != "Group Image") %>
                         <%= image_tag(@my_joined_group_info[indx]["image"].to_s) %>
                       <% else %>
                         <% url = (@my_joined_group_ids[indx] % 10).to_s %>

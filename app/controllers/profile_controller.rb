@@ -1,6 +1,6 @@
 require 'User_model'
 #require 'RMagick'
-include Magick
+# include Magick
 
 class ProfileController < ApplicationController
   def show
@@ -77,13 +77,15 @@ class ProfileController < ApplicationController
     puts "#{params["cont"].length} \n"
     some = StringIO.new(params["cont"], "r:binary")
 =end
-    path = File.join("/home/ubuntu/current/public/profile/pics", params["pro_pic"].original_filename)
+    path = File.join("/home/ubuntu/main/current/public/profile/pics", params["pro_pic"].original_filename)
     f = File.new(path, "w:ascii-8bit")
     f.write(params["pro_pic"].read)
     f.close
+=begin
     pic = Image.read(path)[0]
     pic.resize_to_fill!(200)
     pic.write(path)
+=end
     user = User.Get(session[:user_id])
     user = user.first
     user["picture"] = File.join("/profile/pics", params["pro_pic"].original_filename)

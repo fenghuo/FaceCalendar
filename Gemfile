@@ -13,9 +13,6 @@ gem 'rails', '4.0.0'
 gem 'mysql2'
 gem 'sqlite3'
 
-# RMagick for profile image process
-#gem 'rmagick', '2.13.2'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
