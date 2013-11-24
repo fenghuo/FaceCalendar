@@ -14,10 +14,31 @@ var max_esid=0;
             e_temp.start = <%= e.starttime.hour + 0.5*e.starttime.min/30 %>;
             e_temp.end = <%= e.endtime.hour + 0.5*e.endtime.min/30 %>;
             e_temp.group = "<%= e.groupname %>"; 
-        <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
-            events.push(e_temp);
+            <% if e.starttime.day==e.endtime.day %>
+                <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+                    events.push(e_temp);
+                <% end %>
+            <% else %>
+                end_temp=e_temp.end;
+                e_temp.end=24.0;
+                <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+                    events.push(e_temp);
+                <% end %>
+                
+                
+                <% if e.endtime -  @start_tmp < 7 &&  e.endtime -  @start_tmp>= 0 %>
+                    var e_temp2  = new Object();
+                    e_temp2.desp=e_temp.desp;
+                    e_temp2.eventid=e_temp.eventid;
+                    e_temp2.eventsid=e_temp.eventsid;
+                    e_temp2.end=end_temp;
+                    e_temp2.group=e_temp.group;
+                    e_temp2.start=0.0;
+                    e_temp2.weekday=(e_temp.weekday+1)%7;
+                    events.push(e_temp2);
+                <% end %>
+
         <% end %>    
-        
         
     <% end %>
 <% end %>

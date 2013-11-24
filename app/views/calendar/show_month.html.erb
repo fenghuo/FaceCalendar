@@ -40,7 +40,7 @@ function get_day_selector(day){
 }
 function goto_wek(day){
 	if(day>0)
-		window.location.href="show?week_start_para="+this_year+'-'+this_month+'-'+day
+		window.location.href="show?week_start_para="+this_year+'-'+this_month+'-'+day+'T00:00:00'+"<%= session[:time_offset] %>"+":00";
 }
 
 </script>
