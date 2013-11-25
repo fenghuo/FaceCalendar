@@ -1,27 +1,7 @@
 <script src="assets/lib.js"></script>
 <script>
-var max_esid=0;
-events.length=0
-<% session[:current_event].each  do |e|%>
-    
-    
-        var e_temp  = new Object();
-        e_temp.desp = "<%= e.eventname %>";
-        e_temp.weekday = "<%= e.weekday %>";
-        e_temp.eventid = <%= e.eventid %>;
-        e_temp.eventsid=<%= e.eventsid %>;
-        if(e_temp.eventsid>max_esid){
-            max_esid=e_temp.eventsid
-        }
-        e_temp.year = <%= e.starttime.year %>;
-        e_temp.month = <%= e.starttime.mon %>;
-        e_temp.day = <%= e.starttime.day %>;
-        e_temp.group = "<%= e.groupname %>"; 
-        events.push(e_temp); 
-    
-    
-<% end %>
 
+<%= render 'get_event_month' %>
 function mywday(wday){
 	if(wday==0)
 		return 7;
@@ -48,12 +28,16 @@ function goto_wek(day){
       <li class="previous">
         <a href="show_month?month_start=<%= @month_last_tmp %>" >Last Month &rarr;</a>
       </li>
+
       <li>
       	<font size="5" color="black"><%= Date::MONTHNAMES[@month_start_tmp.mon] %>&nbsp;&nbsp;&nbsp;<%= @month_start_tmp.year %></font>
       </li>
       <li class="next">
        <a href="show_month?month_start=<%= @month_next_tmp %>" >Next Month &rarr;</a>
       </li>
+</ul>
+<ul>
+  <li id="changed" style="background-color:red">Some of the event has been changed. Please reload this page.</li>
 </ul>
 <table class="table table-bordered" style="margin-bottom:0px;position:relative;table-layout:fixed;line-height:30px;">    
     <thead>
@@ -87,10 +71,30 @@ margin-top:0px;position:relative;table-layout:fixed;height:120px;" id="month" >
 		$(get_day_selector(i)).bind("mouseout",function(){$(this).css("background-color","inherit");})
 
 	}
-	for(var i=0;i<events.length;i++){
-		if(events[i].year==this_year && events[i].month==this_month)
-			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a></li>")
+  function event_draw(){
+  	for(var i=0;i<events.length;i++){
+  		if(events[i].year==this_year && events[i].month==this_month)
+  			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a></li>")
+  
+  	}
+  }
+  event_draw();
 
-	}
-
+</script>
+<!-- Polling -->
+<script>
+$('#changed').hide();
+$.ajax({
+        type:'get',
+        url: 'check_change?type=load&period=month&start='+'<%= @month_start_tmp %>',
+        success:function(){
+            event_draw();
+        }
+    });
+setInterval(function(){
+    $.ajax({
+        type:'get',
+        url: 'check_change?type=check&period=month&start='+'<%= @month_start_tmp %>',
+    });
+},3000);
 </script>

@@ -1,6 +1,6 @@
     <script src="assets/lib.js"></script>
     <script src="assets/bootstrap_min.js"></script>
-      <style type="text/css">
+    <style type="text/css">
 
             .panel {
                 display:none;
@@ -30,10 +30,7 @@
             //global initialization
             //get_group();
             //get_event(1);
-<<<<<<< HEAD
-=======
-            
->>>>>>> aafadd0156e6f4cb087f2359ada3ad7f020f86c1
+
             var show_cata = new Array();
             show_cata.push("all")
             <% @all_group.each  do |k|%>
@@ -268,7 +265,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                         <ul class="dropdown-menu" id="group_select_menu">
                         </ul>
                         <script>
-                        $("#group_showing").append(group_to_show);
+                        $("#group_showing").html(group_to_show);
                         
                         for(var i=0;i<show_cata.length;i++){
                                 $('#group_select_menu').append("<li> <a href='javascript:void(0)' onclick=event_draw_by_group(show_cata["+i+"])>"+show_cata[i]+"</a></li>");
@@ -341,11 +338,24 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         </div>
         <!-- Polling -->
         <script>
+        $.ajax({
+                type:'get',
+                url: 'get_group',
+
+            });
         $('#changed').hide();
+        $.ajax({
+                type:'get',
+                url: 'check_change?type=load&period=week&start='+'<%= @week_start_tmp %>',
+                success:function(){
+                    event_draw();
+                }
+            });
+        
         setInterval(function(){
             $.ajax({
                 type:'get',
-                url: 'check_change',
+                url: 'check_change?type=check&period=week&start='+'<%= @week_start_tmp %>',
             });
-        },1000);
+        },3000);
         </script>
