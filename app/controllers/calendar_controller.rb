@@ -2,6 +2,7 @@ require 'Event_model.rb'
 require 'Groups_model.rb'
 
 class CalendarController < ApplicationController
+  before_action :check_login
   helper_method :prep, :group_name2id, :combine_groups,:prep_group
   class Event
     attr_accessor :eventname,:desp,:place,:starttime,:endtime,:groupname, :weekday, :eventid, :eventsid
@@ -540,6 +541,13 @@ class CalendarController < ApplicationController
         format.js
         format.html 
       end
+    end
+  end
+
+  private
+  def check_login
+    if session[:user_id]==nil
+      redirect_to :controller => 'login', :action => 'start'
     end
   end
 end
