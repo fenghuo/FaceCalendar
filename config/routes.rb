@@ -17,7 +17,7 @@ FaceCalendar::Application.routes.draw do
   get 'login/start'
   get 'login/tryAgain'
   get 'login/logout'
-  get 'login/login'
+  post 'login/login'
   get 'login/signup'
 
   get "profile/show"
