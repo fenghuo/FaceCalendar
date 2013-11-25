@@ -12,9 +12,9 @@ set :rvm_ruby_version, '2.0.0-p247'
 #set :server_name, %w{ec2-54-226-227-186.compute-1.amazonaws.com}
 set :server_name, %w{54.196.36.102}
 
-role :web, fetch(:server_name) # Needed for precompiling assets
+#role :web, fetch(:server_name) # Needed for precompiling assets
 role :app, fetch(:server_name) # Needed for preparing something I forgot what
-role :db, fetch(:server_name) # Needed for migration
+#role :db, fetch(:server_name) # Needed for migration
 role :all, fetch(:server_name) # This doesn't work completely yet, hence the above 3 specifications
 
 # Extended Server Syntax
