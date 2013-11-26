@@ -1,0 +1,30 @@
+<% if session[:current_event] && session[:current_event]!=[]%>
+  var max_esid=<%= (session[:current_event].max { |a,b| a.eventsid<=>b.eventsid }).eventsid %>;
+<% else %>
+  var max_esid=-1
+<% end %>
+events.length=0
+<% session[:current_event].each  do |e|%>
+    
+    
+        var e_temp  = new Object();
+        e_temp.desp = "<%= e.eventname %>";
+        e_temp.weekday = "<%= e.weekday %>";
+        e_temp.eventid = <%= e.eventid %>;
+        e_temp.eventsid=<%= e.eventsid %>;
+        e_temp.group = "<%= e.groupname %>"; 
+
+        <% if (e.starttime.year==@month_start_tmp.year && e.starttime.mon==@month_start_tmp.mon) ||
+              (e.endtime.year==@month_start_tmp.year && e.endtime.mon==@month_start_tmp.mon) %>
+
+            e_temp.year = <%= e.starttime.year %>;
+            e_temp.month = <%= @month_start_tmp.mon %>;
+            e_temp.day = <%= e.starttime.day %>;
+
+            events.push(e_temp); 
+
+        <% end %>
+
+    
+    
+<% end %>

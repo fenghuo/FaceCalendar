@@ -1,0 +1,17 @@
+var show_cata = new Array();
+group=[]
+show_cata.push("all")
+<% @all_group.each  do |k|%>
+  <% if k!=nil %>
+    group.push("<%= k %>");
+    show_cata.push("<%= k %>");
+  <% end %>
+<% end %>
+show_cata.push("private");
+
+$('#group_select_menu').html("");
+for(var i=0;i<show_cata.length;i++){
+	$('#group_select_menu').append("<li> <a href='javascript:void(0)' onclick=event_draw_by_group(show_cata["+i+"])>"+
+		show_cata[i]+"</a></li>");
+
+}
