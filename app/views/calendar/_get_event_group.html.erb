@@ -1,3 +1,4 @@
+
 <% if session[:current_event] && session[:current_event]!=[]%>
   var max_esid=<%= (session[:current_event].max { |a,b| a.eventsid<=>b.eventsid }).eventsid %>;
 <% else %>
@@ -5,6 +6,9 @@
 <% end %>
 
 events.length=0;
+
+
+var max_esid=-1;
 
 <% if session[:current_event]!="" %>
     <% session[:current_event].each  do |e|%>
