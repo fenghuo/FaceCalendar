@@ -15,7 +15,7 @@ FaceCalendar::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false #was true
+  config.assets.compile = true #was true
 
   # Generate digests for assets URLs
   config.assets.digest = true
