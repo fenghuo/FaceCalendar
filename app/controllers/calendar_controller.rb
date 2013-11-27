@@ -67,7 +67,7 @@ class CalendarController < ApplicationController
         
         event0.eventid = e["id"]
         event0.eventname=e["eventname"]
-        event0.desp=e["description"]
+        event0.desp=e["decription"]
         event0.place=e["place"]
         time_temp = DateTime.parse(e["starttime"].to_s)+session[:time_offset]/24.0
         event0.starttime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
@@ -233,6 +233,7 @@ class CalendarController < ApplicationController
     end
     #@all_group=[]
     #prep_group
+
     if session[:read_snapshot]!=1
     #prep(@week_start_tmp,@week_next_tmp)
       
@@ -466,6 +467,7 @@ class CalendarController < ApplicationController
           EventDB.DelelteFromGroup(the_event.eventid,group_name2id(e))
         end
       end
+      
 
       session[:current_event][idx].groupname=params[:groupname]
       session[:current_event][idx].eventname=tmp.eventname
@@ -497,6 +499,7 @@ class CalendarController < ApplicationController
     
     
     EventDB.SnapShotUpdate(session[:user_id],session[:current_event].to_json);
+    
     @go_back_time2=go_back_time
     redirect_to calendar_show_path(week_start_para: go_back_time)
   end
