@@ -5,12 +5,13 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql2
-  host: 127.0.0.1
+#  host: 54.196.39.99
+  host: FaceCalendarDB-763477422.us-east-1.elb.amazonaws.com
   encoding: utf8
   database: facecalendar
   pool: 5
   timeout: 5000
-  username: root
+  username: face
   password: ''
   socket: /var/run/mysqld/mysqld.sock
 

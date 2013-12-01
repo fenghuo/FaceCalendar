@@ -18014,3 +18014,1353 @@ ActionController::RoutingError (No route matches [GET] "/MyAdmin/scripts/setup.p
   Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.8ms)
   Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (38.7ms)
   Rendered /home/tianjiu/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (82.6ms)
+Started GET "/" for 169.231.11.232 at 2013-12-01 02:00:45 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:00:45 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:00:45 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/images/facecalendar_icon.jpeg" for 169.231.11.232 at 2013-12-01 02:00:46 +0000
+
+ActionController::RoutingError (No route matches [GET] "/images/facecalendar_icon.jpeg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:00:51 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Completed 500 Internal Server Error in 137ms
+
+Mysql2::Error (Unknown database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/User_model.rb:33:in `LoginCheck'
+  app/controllers/login_controller.rb:18:in `login'
+
+
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:01:09 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Unknown database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/User_model.rb:33:in `LoginCheck'
+  app/controllers/login_controller.rb:18:in `login'
+
+
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:01:11 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Completed 500 Internal Server Error in 3ms
+
+Mysql2::Error (Unknown database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/User_model.rb:33:in `LoginCheck'
+  app/controllers/login_controller.rb:18:in `login'
+
+
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:01:36 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Completed 500 Internal Server Error in 10ms
+
+Mysql2::Error (Unknown database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/User_model.rb:33:in `LoginCheck'
+  app/controllers/login_controller.rb:18:in `login'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.1ms)
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:02:34 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Completed 500 Internal Server Error in 13ms
+
+Mysql2::Error (Access denied for user 'user'@'54.204.98.237' (using password: NO)):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/User_model.rb:33:in `LoginCheck'
+  app/controllers/login_controller.rb:18:in `login'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.7ms)
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 02:04:17 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://54.204.98.237/calendar/show
+Completed 302 Found in 22ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:04:17 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 11ms
+
+Mysql2::Error (Table 'facecalendar.groups' doesn't exist):
+  app/models/Groups_model.rb:86:in `query'
+  app/models/Groups_model.rb:86:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:10:12 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 29ms
+
+Mysql2::Error (Access denied for user 'face'@'54.204.98.237' to database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.9ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:10:17 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 6ms
+
+Mysql2::Error (Access denied for user 'face'@'54.204.98.237' to database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.2ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:11:00 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 7ms
+
+Mysql2::Error (Access denied for user 'face'@'54.204.98.237' to database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (40.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (59.1ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:11:02 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 6ms
+
+Mysql2::Error (Access denied for user 'face'@'54.204.98.237' to database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.1ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:11:04 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 6ms
+
+Mysql2::Error (Access denied for user 'face'@'54.204.98.237' to database 'facecalendar'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 02:11:20 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (1.1ms)
+  Rendered calendar/show.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 89ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:11:21 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (119.8ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:11:21 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (21.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (93.7ms)
+Started GET "/calendar/show?week_start_para=2013-11-18T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:11:25 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-18T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 66ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:11:26 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:11:26 +0000
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (89.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (68.9ms)
+Started GET "/calendar/show?week_start_para=2013-11-11T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:11:27 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-11T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (1.5ms)
+  Rendered calendar/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 52ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:11:27 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.8ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:11:27 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (82.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (130.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (84.3ms)
+Started GET "/calendar/show?week_start_para=2013-11-11T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:22 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-11T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.4ms)
+  Rendered calendar/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 66ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:22 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (48.1ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:22 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (47.9ms)
+Started GET "/calendar/show?week_start_para=2013-11-11T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:27 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-11T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.3ms)
+  Rendered calendar/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 77ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:28 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:28 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (91.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (89.9ms)
+Started GET "/calendar/show?week_start_para=2013-11-11T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:31 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-11T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.3ms)
+  Rendered calendar/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 33ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:32 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:32 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (93.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (91.7ms)
+Started GET "/calendar/show?week_start_para=2013-11-11T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:34 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-11T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.4ms)
+  Rendered calendar/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 35ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:34 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:34 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (89.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (99.4ms)
+Started GET "/calendar/show?week_start_para=2013-11-04T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:44 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-04T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 28ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:44 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:44 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (8.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (114.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (116.3ms)
+Started GET "/calendar/show?week_start_para=2013-11-04T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:49 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-04T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 27ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:49 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:49 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (109.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (204.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (200.9ms)
+Started GET "/calendar/show?week_start_para=2013-10-28T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 02:12:53 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-10-28T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.7ms)
+  Rendered calendar/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 62ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:12:53 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 02:12:53 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (89.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (93.6ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 02:13:00 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (48.3ms)
+Started GET "/" for 169.231.11.232 at 2013-12-01 04:23:07 +0000
+Processing by LoginController#start as HTML
+Redirected to http://54.204.98.237/calendar/show
+Completed 302 Found in 7ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 04:23:07 +0000
+Processing by CalendarController#show as HTML
+Completed 500 Internal Server Error in 20ms
+
+Mysql2::Error (Host 'ip-10-40-214-200.ec2.internal' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts'):
+  app/models/Conn_model.rb:5:in `new'
+  app/models/Conn_model.rb:5:in `GetConn'
+  app/models/Groups_model.rb:81:in `FindOnesJoinedGroupWithGroupName'
+  app/controllers/calendar_controller.rb:19:in `prep'
+  app/controllers/calendar_controller.rb:217:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 04:24:59 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (1.5ms)
+  Rendered calendar/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 58ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:24:59 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (81.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (132.8ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:24:59 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (65.8ms)
+Started GET "/login/logout?button=" for 169.231.11.232 at 2013-12-01 04:25:01 +0000
+Processing by LoginController#logout as HTML
+  Parameters: {"button"=>""}
+Redirected to http://54.204.98.237/login/start
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+Started GET "/login/start" for 169.231.11.232 at 2013-12-01 04:25:02 +0000
+Processing by LoginController#start as HTML
+  Rendered login/start.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:02 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:02 +0000
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (95.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (70.7ms)
+Started GET "/login/login?email=user1&password=[FILTERED]&button=" for 169.231.11.232 at 2013-12-01 04:25:05 +0000
+Processing by LoginController#login as HTML
+  Parameters: {"email"=>"user1", "password"=>"[FILTERED]", "button"=>""}
+Redirected to http://54.204.98.237/calendar/show
+Completed 302 Found in 24ms (ActiveRecord: 0.0ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 04:25:06 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (1.4ms)
+  Rendered calendar/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 56ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:06 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:06 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (97.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (66.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (139.5ms)
+Started GET "/calendar/show" for 169.231.11.232 at 2013-12-01 04:25:12 +0000
+Processing by CalendarController#show as HTML
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 33ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:12 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:12 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (88.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (95.7ms)
+Started GET "/calendar/show?week_start_para=2013-11-18T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 04:25:15 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-18T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 35ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:16 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:16 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (85.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (62.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (139.4ms)
+Started GET "/calendar/show?week_start_para=2013-11-25T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 04:25:18 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-11-25T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.1ms)
+  Rendered calendar/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 95ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:18 +0000
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:18 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (84.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (99.8ms)
+Started GET "/calendar/show?week_start_para=2013-12-02T00:00:00+00:00" for 169.231.11.232 at 2013-12-01 04:25:19 +0000
+Processing by CalendarController#show as HTML
+  Parameters: {"week_start_para"=>"2013-12-02T00:00:00 00:00"}
+  Rendered calendar/_get_event_group.html.erb (0.2ms)
+  Rendered calendar/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 35ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+Started GET "/stylesheets/application.css" for 169.231.11.232 at 2013-12-01 04:25:19 +0000
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Started GET "/javascripts/application.js" for 169.231.11.232 at 2013-12-01 04:25:19 +0000
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  railties (4.0.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (4.0.20) lib/phusion_passenger/rack/thread_handler_extension.rb:77:in `process_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:140:in `accept_and_process_next_request'
+  passenger (4.0.20) lib/phusion_passenger/request_handler/thread_handler.rb:108:in `main_loop'
+  passenger (4.0.20) lib/phusion_passenger/request_handler.rb:441:in `block (3 levels) in start_threads'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (97.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (84.7ms)
