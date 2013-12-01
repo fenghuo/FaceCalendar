@@ -192,7 +192,6 @@ class CalendarController < ApplicationController
 
   def show
     #session[:current_event]=[]
-    
     set_start_end=0
     #data format regulation
     if params[:week_start_para]
@@ -225,9 +224,10 @@ class CalendarController < ApplicationController
     end
     @start_tmp=@week_start_tmp #for render template
     
-
+    #
     begin
       @all_group=ActiveSupport::JSON.decode(Group.SnapShotGet(session[:user_id]).first["value"])
+      #@all_group=[]
     rescue
       @all_group=[]
     end
@@ -236,8 +236,12 @@ class CalendarController < ApplicationController
 
     if session[:read_snapshot]!=1
     #prep(@week_start_tmp,@week_next_tmp)
-      
+    begin
       cached_event=ActiveSupport::JSON.decode(EventDB.SnapShotGet(session[:user_id]).first["value"])
+    rescue
+      cached_event=[]
+    end
+      #cached_event==[];
       session[:current_event]=[]
       cached_event.each do |e|
         addevent=Event.new

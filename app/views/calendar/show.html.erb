@@ -24,6 +24,7 @@
             #time_encoded{
                 display:none;
             }
+]
         </style>
         <script>
 
@@ -42,7 +43,9 @@
             show_cata.push("private");
             
             events.length=0;
+        
             <%= render 'get_event_group' %>
+
             //combine_event();
             
             //add
@@ -194,6 +197,14 @@
                         win.style.left = leftmost + "px";
                         win.style.backgroundColor = event_color[2];
                         win.className = "well well-sm";
+                        //win.onmouseover=(function(){
+                        //    var s=1;
+                        //    return function(){
+                        //        s=1-s;
+                        //        win.style.backgroundColor = event_color[5+s];
+                        //   }        
+                        //}());
+                        win.onmouseout=function(){win.style.backgroundColor = event_color[2];}
                         //win.id = "event" + i + j;
                         //win.onclick = function () { event_click(even_today[i].desp); };
                         
@@ -219,9 +230,7 @@
                 $("#group_showing").html(groupname);
                 event_draw();
             }
-            function event_click(i){
-                //window.open("show_event");
-            }
+
 
 
         </script>
