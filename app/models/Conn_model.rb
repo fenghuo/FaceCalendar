@@ -6,7 +6,7 @@ class Conn < ActiveRecord::Base
 	end
 	
 	def self.GetWConn
-		config = YAML::load_file("config/database.yml")["writeDB"]
+		config = YAML::load_file("config/database.yml")["production"]
 		client = Mysql2::Client.new(config)
 		return client
 	end

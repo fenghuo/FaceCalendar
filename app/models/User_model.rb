@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
 	def self.Create(username,password,sex,email,picture,firstname,lastname,occupation,skills,birthday,relationship,orientation,introduction)
 	# birthday must be in date format
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=-1
 		if(client==nil)
 			return -1;
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 	
 	def self.Update(userid,sex,email,picture,firstname,lastname,occupation,skills,birthday,relationship,orientation,introduction)
 	# birthday must be in date format
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=-1
 		if(client==nil)
 			return -1;
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def self.ChangePassword(userid,oldpassword,newpassword)
-		client= Conn.GetConn	
+		client= Conn.GetWConn	
 		@rs=-1	
 		if(client==nil)
 			return -1;

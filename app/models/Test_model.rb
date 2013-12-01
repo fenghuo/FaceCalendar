@@ -3,11 +3,11 @@ require 'Conn_model.rb'
 class Test < ActiveRecord::Base
 
 	def self.GetAllTble
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@alltable=[]
 		@tablename=Test.GetTableName
 		@tablename.each do |t|
-			@alltable<<(client.query("select * from `#{t}`"))
+			@alltable<<(client.query("select * from `#{t}` limit 10"))
 		end
 		return @alltable	
 	end
