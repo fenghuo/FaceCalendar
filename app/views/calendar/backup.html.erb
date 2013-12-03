@@ -1,3 +1,4 @@
+<p>event_count:<%= session[:current_event].length %></p>
 <table>
 <% if @all_event!=nil %>
 	<% @all_event.each do |e| %>
@@ -36,4 +37,4 @@
 <% end %>
 </table>
 
-
+<p>test:<%= session[:test] %></p>

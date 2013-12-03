@@ -112,14 +112,14 @@ class CalendarController < ApplicationController
 
    
     event_table=EventDB.GetPrivate(session[:user_id],starttime,endtime)
-    
+    #session[:test]=endtime
     if event_table!=[]
         event_table.each do |e|
         event0=Event.new
          
         event0.eventid = e["id"]
         event0.eventname=e["eventname"]
-        event0.desp=e["description"]
+        event0.desp=e["decription"]
         event0.place=e["place"]
         time_temp = DateTime.parse(e["starttime"].to_s)+session[:time_offset]/24.0
         event0.starttime=DateTime.new(time_temp.year,time_temp.mon,time_temp.day,time_temp.hour,time_temp.min,0,session[:time_offset].to_s)
@@ -169,7 +169,7 @@ class CalendarController < ApplicationController
       end
     end
     
-    has_change=true
+    #has_change=true
     if(has_change==true)
       currentsid=-1
       session[:current_event].each do |e|
@@ -191,7 +191,7 @@ class CalendarController < ApplicationController
 
 
   def show
-    #session[:current_event]=[]
+    #session[:test]=session[:current_event].last.eventname;
     set_start_end=0
     #data format regulation
     if params[:week_start_para]
@@ -224,7 +224,7 @@ class CalendarController < ApplicationController
     end
     @start_tmp=@week_start_tmp #for render template
     
-    #
+    
     begin
       @all_group=ActiveSupport::JSON.decode(Group.SnapShotGet(session[:user_id]).first["value"])
       #@all_group=[]
@@ -233,15 +233,16 @@ class CalendarController < ApplicationController
     end
     #@all_group=[]
     #prep_group
-
+    
     if session[:read_snapshot]!=1
     #prep(@week_start_tmp,@week_next_tmp)
-    begin
-      cached_event=ActiveSupport::JSON.decode(EventDB.SnapShotGet(session[:user_id]).first["value"])
-    rescue
-      cached_event=[]
-    end
+      begin
+        cached_event=ActiveSupport::JSON.decode(EventDB.SnapShotGet(session[:user_id]).first["value"])
+      rescue
+        cached_event=[]
+      end
       #cached_event==[];
+
       session[:current_event]=[]
       cached_event.each do |e|
         addevent=Event.new
@@ -350,16 +351,16 @@ class CalendarController < ApplicationController
       session_rec.eventid=session[:current_event].length
 
       group_added=0
-      session[:current_event].push(session_rec)
+      
       session_rec.groupname.split(";").each do |e|
         if e=="private"
           gid=-1
         else
           gid=group_name2id(e)
         end
-        
         if group_added==0
           session_rec.eventid=EventDB.Create(session[:user_id],session_rec.starttime,session_rec.endtime,"",gid,session_rec.eventname,session_rec.desp,session_rec.place,session_rec.weekday);
+          #session[:test]=session_rec.eventid
         else
           EventDB.AddGroup(session_rec.eventid,gid,"")
         end
@@ -371,7 +372,12 @@ class CalendarController < ApplicationController
         end
         #session_rec_tmp=session_rec.clone
         #session_rec_tmp.groupname=e+";"
-        
+        session[:current_event].push(session_rec)
+        #if !session[:test].is_a?(Array)
+        #  session[:test]=[]
+        #else
+        #  session[:test].push(session_rec)
+        #end
         group_added=group_added+1
       end
 
@@ -383,6 +389,8 @@ class CalendarController < ApplicationController
 
 
     EventDB.SnapShotUpdate(session[:user_id],session[:current_event].to_json);
+    session[:test]=EventDB.SnapShotGet(session[:user_id]).first["value"];
+    #session[:test]=session[:current_event].last.eventname;
     respond_to do |format|
       format.html
       format.js 
@@ -404,6 +412,7 @@ class CalendarController < ApplicationController
 
     @all_event=session[:current_event]
     #@test=ActiveSupport::JSON.decode(EventDB.SnapShotGet(1).first["value"])
+
 
   end
 
@@ -516,6 +525,7 @@ class CalendarController < ApplicationController
   end
   def check_change
     @changed=false
+    #session[:test]=@changed
     if params[:period]=="week"
       peri=7
     elsif params[:period]=="month"
@@ -543,7 +553,7 @@ class CalendarController < ApplicationController
     elsif params[:type]=="check"
       start_time=DateTime.parse(params[:start])
       @start_tmp=start_time
-      @change=prep(start_time,start_time+peri)
+      @changed=prep(start_time,start_time+peri)
       respond_to do |format|
         format.js
         format.html 
@@ -556,5 +566,6 @@ class CalendarController < ApplicationController
     if session[:user_id]==nil
       redirect_to :controller => 'login', :action => 'start'
     end
+
   end
 end

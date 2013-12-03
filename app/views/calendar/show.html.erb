@@ -132,12 +132,12 @@
                     for (var j = 0; j < group.length; j++)
                         if (button_status[j] == 1) {
                             button_status[j] = 0;
-                            $('#group_selection button:nth-child(' + (j+2) + ')').button('toggle');
+                            $('#group_selection button:nth-child(' + (j+1) + ')').button('toggle');
                         }
                 }
                 if (i != group.length && button_status[group.length] == 1) {
                     button_status[group.length] = 0;
-                    $('#group_selection button:nth-child(' + (group.length + 2) + ')').button('toggle');
+                    $('#group_selection button:nth-child(' + (group.length + 1) + ')').button('toggle');
                 }
             }
             
@@ -331,17 +331,21 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             </table>
                 
                 Groups:
-                 <div class="btn-group" data-toggle="buttons-checkbox" id="group_selection">
-                     <script>
-                         for (var i = 0; i < group.length; i++) {
+                 <div class="btn-group" data-toggle="buttons"  id="group_selection">
+
+                 </div>
+                <script>
+                    function get_mygroups(){
+                        $('#group_selection').html("");
+                        for (var i = 0; i < group.length; i++) {
                              $('#group_selection').append("<button type='button' class='btn btn-primary' onclick='event_group(" + i + ")'>" + group[i] + "</button>");
                              
                          }
                          $('#group_selection').append("<button type='button' id='private_button' class='btn btn-primary' onclick='event_group(" + i + ")'>Private</button>");
                          $('#private_button').button('toggle');
-
-                     </script>
-                 </div>
+                    }
+                    get_mygroups();
+                </script>
                 
             
         </div>
@@ -354,17 +358,17 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             });
         $('#changed').hide();
         $.ajax({
-                type:'get',
-                url: 'check_change?type=load&period=week&start='+'<%= @week_start_tmp %>',
-                success:function(){
-                    event_draw();
-                }
-            });
+            type:'get',
+            url: 'check_change?type=load&period=week&start='+'<%= @week_start_tmp %>',
+            success:function(){
+                event_draw();
+            }
+        });
         
         setInterval(function(){
             $.ajax({
                 type:'get',
-                url: 'check_change?type=check&period=week&start='+'<%= @week_start_tmp %>',
+               url: 'check_change?type=check&period=week&start='+'<%= @week_start_tmp %>',
             });
-        },3000);
+        },10000);
         </script>
