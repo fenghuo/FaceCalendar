@@ -18,7 +18,7 @@ development:
 wirteDB:
   adapter: mysql2
 #  host: 54.196.39.99
-  host: 54.226.204.23
+  host: FaceCalendar-DB-M-972335910.us-east-1.elb.amazonaws.com 
   encoding: utf8
   database: facecalendar
   pool: 5
