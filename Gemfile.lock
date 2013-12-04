@@ -40,8 +40,6 @@ GEM
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
-    capistrano-rvm (0.0.3)
-      capistrano
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -91,6 +89,9 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rvm1-capistrano3 (1.1.0)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -138,13 +139,13 @@ DEPENDENCIES
   capistrano (~> 3.0.0)
   capistrano-bundler
   capistrano-rails
-  capistrano-rvm (~> 0.0.3)
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
   rails (= 4.0.0)
   rails3-jquery-autocomplete
+  rvm1-capistrano3
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
