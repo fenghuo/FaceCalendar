@@ -15,7 +15,7 @@ class Group < ActiveRecord::Base
 	end
 	
 	def self.Create(groupname,category,description,userid,groupsize,imageurl)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -28,7 +28,7 @@ class Group < ActiveRecord::Base
 	end
 
 	def self.AddMember(groupid, userid, description)  #add member of group return true/false
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -41,7 +41,7 @@ class Group < ActiveRecord::Base
 	end
 
 	def self.DeleteMember(groupid, userid)#delete a member from group
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -115,7 +115,7 @@ class Group < ActiveRecord::Base
 	end
 
 	def self.ChangeSize(groupid,size)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -129,7 +129,7 @@ class Group < ActiveRecord::Base
 	end
 
 	def self.Delete(groupid)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -143,7 +143,7 @@ class Group < ActiveRecord::Base
 	end
 	
 	def self.SnapShotUpdate(userid,value)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;

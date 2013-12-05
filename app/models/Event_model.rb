@@ -3,7 +3,7 @@ require 'Conn_model'
 class EventDB < ActiveRecord::Base
 
 	def self.Create	(userid,starttime,endtime,erepeat,groupid,eventname,description,place,weekday)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -67,7 +67,7 @@ class EventDB < ActiveRecord::Base
 	end
 
 	def self.EditTime(eventid,starttime,endtime)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -80,7 +80,7 @@ class EventDB < ActiveRecord::Base
 	end
 		
 	def self.EditOthers(eventid,repeat,name,description,place,weekday)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -93,7 +93,7 @@ class EventDB < ActiveRecord::Base
 	end
 
 	def self.Delelte(eventid)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -106,7 +106,7 @@ class EventDB < ActiveRecord::Base
 	end
 
 	def self.AddGroup(eventid, groupid, description)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -143,7 +143,7 @@ class EventDB < ActiveRecord::Base
 	end
 
 	def self.DelelteFromGroup(eventid,groupid)	#delete an event from group
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
@@ -156,7 +156,7 @@ class EventDB < ActiveRecord::Base
 	end
 
 	def self.SnapShotUpdate(userid,value)
-		client= Conn.GetConn
+		client= Conn.GetWConn
 		@rs=nil
 		if(client==nil)
 			return -1;
