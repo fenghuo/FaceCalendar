@@ -4,27 +4,75 @@
   var max_esid=-1
 <% end %>
 events.length=0
-<% session[:current_event].each  do |e|%>
+
+    var server_date = new Date("<%= @month_start_tmp %>");
+    var client_date = new Date();
+    client_date.setMonth(server_date.getMonth())
+
+    var client_firstday=new Date();
     
+    client_firstday.setMonth(server_date.getMonth());
+    client_firstday.setDate(1);
+    client_firstday.setHours(0);
+    client_firstday.setMinutes(0);
+    client_firstday.setSeconds(0);
+    client_firstday.setMilliseconds(0);
     
-        var e_temp  = new Object();
-        e_temp.desp = "<%= e.eventname %>";
-        e_temp.weekday = "<%= e.weekday %>";
-        e_temp.eventid = <%= e.eventid %>;
-        e_temp.eventsid=<%= e.eventsid %>;
-        e_temp.group = "<%= e.groupname %>"; 
+    var client_lastday=new Date(client_firstday);
+    client_lastday.setMonth(client_lastday.getMonth()+1)
+    
+    <% session[:current_event].each  do |e|%>
 
-        <% if (e.starttime.year==@month_start_tmp.year && e.starttime.mon==@month_start_tmp.mon) ||
-              (e.endtime.year==@month_start_tmp.year && e.endtime.mon==@month_start_tmp.mon) %>
+        <% if e.endtime-@month_start_tmp>=-2 && e.starttime-@month_end_tmp<=2 %>
+            
+            
+            var client_start = new Date("<%= e.starttime %>")
+            var client_end   = new Date("<%= e.endtime %>")
+            client_start.setMinutes(client_start.getMinutes()+client_start.getTimezoneOffset()-client_firstday.getTimezoneOffset());
+            client_end  .setMinutes(client_end  .getMinutes()+client_end  .getTimezoneOffset()-client_firstday.getTimezoneOffset());
 
-            e_temp.year = <%= e.starttime.year %>;
-            e_temp.month = <%= @month_start_tmp.mon %>;
-            e_temp.day = <%= e.starttime.day %>;
+            if(client_end > client_firstday || client_start < client_lastday){
+                var e_temp  = new Object();
+                e_temp.desp    = "<%= e.eventname %>";
+                e_temp.weekday = "<%= e.weekday %>";
+                e_temp.eventid = <%= e.eventid %>;
+                e_temp.eventsid= <%= e.eventsid %>;
+                e_temp.group   = "<%= e.groupname %>";
 
-            events.push(e_temp); 
+                if(client_end.getDate()==client_start.getDate()){
+                    e_temp.year  = client_end.getFullYear();
+                    e_temp.month = client_end.getMonth()+1;
+                    e_temp.day   = client_end.getDate();
+                    events.push(e_temp);
+                }
+                else{
+                    if(client_start > client_firstday && client_start < client_lastday){
+                        e_temp.year = client_start.getFullYear();
+                        e_temp.month= client_start.getMonth()+1;
+                        e_temp.day  = client_start.getDate();
+                        events.push(e_temp);
+                    }
+
+                    if(client_end > client_firstday && client_end < client_lastday){
+                        var e_temp2=new Object();
+                        e_temp2.desp    = "<%= e.eventname %>";
+                        e_temp2.weekday = "<%= e.weekday %>";
+                        e_temp2.eventid = <%= e.eventid %>;
+                        e_temp2.eventsid= <%= e.eventsid %>;
+                        e_temp2.group   = "<%= e.groupname %>";
+                        e_temp2.year    = client_end.getFullYear();
+                        e_temp2.month   = client_end.getMonth()+1;
+                        e_temp2.day     = client_end.getDate();
+                        events.push(e_temp2);
+                    }
+                }
+
+
+
+                
+            }
+            
+
 
         <% end %>
-
-    
-    
-<% end %>
+    <% end %>

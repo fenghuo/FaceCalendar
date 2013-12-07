@@ -10,7 +10,8 @@
 	 	</tr>
 	 	<tr>
 	 		<td>Start At:</td>
-	 		<td><%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
+	 		<td>
+	 			<%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
 	 	</tr>
 	 	<tr>
 	 		<td>End By:</td>
@@ -37,7 +38,7 @@
 	</table>
 
  <% end %>
- <%= link_to "Discard Editing and Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>
+ <%= link_to "Discard Editing and Go Back To Calendar Week View" , calendar_show_path(week_start_para: @event_to_show.starttime) %>
  <p></p>
  <%= link_to "Discard Editing and Go Back To Calendar Month View", calendar_show_month_path(month_start: @event_to_show.starttime) %>
 

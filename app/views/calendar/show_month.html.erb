@@ -1,15 +1,14 @@
 <script src="assets/lib.js"></script>
 <script>
-
 <%= render 'get_event_month' %>
 function mywday(wday){
 	if(wday==0)
 		return 7;
 	else
-		return wday-1;
+		return wday;
 
 }
-var begin_offset=mywday(<%= @month_start_tmp.wday %>);
+var begin_offset=mywday(<%= @month_start_tmp.wday %>)-1;
 var this_year=<%= @month_start_tmp.year %>;
 var this_month=<%= @month_start_tmp.mon %>;
 var month_day_numb=<%= @month_next_tmp-@month_start_tmp %>;
@@ -52,42 +51,49 @@ function goto_wek(day){
 </table>
 <table class="table table-bordered" style="
 margin-top:0px;position:relative;table-layout:fixed;height:120px;" id="month" >
-		<script>
-		var table_block_no=<%= @month_next_tmp-@month_start_tmp %>+mywday(<%= @month_start_tmp.wday %>)
-		for(var i=0;i<Math.ceil(table_block_no/7.0);i++){
-			$('#month').append("<tr>");
-			for(var j=0;j<7;j++){
-				$('#month tr:nth-child('+(i+1)+')').append("<td style='height:120px' onclick='goto_wek("+(j+i*7-begin_offset+1)+")'></td>");
-			}
-			$('#month').append("</tr>");
-		}
-	</script>
-
 </table>
 <script>
-	for(var i=1;i<=month_day_numb;i++){
-		$(get_day_selector(i)).html(i+"<ul></ul>");
-		$(get_day_selector(i)).bind("mouseover",function(){$(this).css("background-color","white");})
-		$(get_day_selector(i)).bind("mouseout",function(){$(this).css("background-color","inherit");})
-
-	}
-  function event_draw(){
-  	for(var i=0;i<events.length;i++){
-  		if(events[i].year==this_year && events[i].month==this_month)
-  			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a></li>")
-  
-  	}
+function init_table(){
+  $('#month').html("")
+  var table_block_no=<%= @month_next_tmp-@month_start_tmp %>+mywday(<%= @month_start_tmp.wday %>)
+  for(var i=0;i<Math.ceil(table_block_no/7.0);i++){
+    $('#month').append("<tr>");
+    for(var j=0;j<7;j++){
+      $('#month tr:nth-child('+(i+1)+')').append("<td style='height:120px' onclick='goto_wek("+(j+i*7-begin_offset+1)+")'></td>");
+    }
+    $('#month').append("</tr>");
   }
-  event_draw();
+  for(var i=1;i<=month_day_numb;i++){
+    $(get_day_selector(i)).html(i+"<ul></ul>");
+    $(get_day_selector(i)).bind("mouseover",function(){$(this).css("background-color","white");})
+    $(get_day_selector(i)).bind("mouseout" ,function(){$(this).css("background-color","inherit");})
+  }
+}
+init_table();
+
+function event_draw(){
+  init_table();
+ 	for(var i=0;i<events.length;i++){
+ 		if(events[i].year==this_year && events[i].month==this_month)
+ 			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a></li>")
+  
+ 	}
+}
+event_draw();
 
 </script>
 <!-- Polling -->
 <script>
+$.ajax({
+            type:'get',
+            url: 'set_time_offset?today='+(new Date()).toString(),
+});
 $('#changed').hide();
 $.ajax({
         type:'get',
         url: 'check_change?type=load&period=month&start='+'<%= @month_start_tmp %>',
         success:function(){
+
             event_draw();
         }
     });

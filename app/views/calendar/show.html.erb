@@ -31,7 +31,8 @@
             //global initialization
             //get_group();
             //get_event(1);
-
+            //if (<%= params[:week_start_para]==nil %>)
+            //    window.location="show?week_start_para="+(new Date())
             var show_cata = new Array();
             show_cata.push("all")
             <% @all_group.each  do |k|%>
@@ -195,7 +196,7 @@
                         win.style.width = widthi + "px";
                         win.style.top = div_posi_x + "px";
                         win.style.left = leftmost + "px";
-                        win.style.backgroundColor = event_color[2];
+                        win.style.backgroundColor = event_color[9];
                         win.className = "well well-sm";
                         //win.onmouseover=(function(){
                         //    var s=1;
@@ -204,7 +205,7 @@
                         //        win.style.backgroundColor = event_color[5+s];
                         //   }        
                         //}());
-                        win.onmouseout=function(){win.style.backgroundColor = event_color[2];}
+                        //win.onmouseout=function(){win.style.backgroundColor = event_color[2];}
                         //win.id = "event" + i + j;
                         //win.onclick = function () { event_click(even_today[i].desp); };
                         
@@ -212,6 +213,7 @@
 
                         //t.innerHTML = time_slot(h0 * 2, 24) + "-" + time_slot(h1 * 2, 24);
                         desp.innerHTML = "<a href='show_event?eventtoshowid=" + event_today[i].eventsid + "'>" + event_today[i].desp + "</a>";
+                        desp.innerHTML+="&nbsp<a href='edit?eventsid="+event_today[i].eventsid+"''>Edit</a>"
                         desp.style.color = "yellow";
                         //win.appendChild(t);
                         win.appendChild(desp);
@@ -264,7 +266,7 @@
         </table>
         <table class="table table-bordered" style="
 margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week" onselect="return false" >
-            <thead> 
+            <thead style="table-layout:fixed"> 
                 <th>
                     <div class="btn-group">
                         <button class="btn" id="group_showing"></button>
@@ -351,6 +353,11 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         </div>
         <!-- Polling -->
         <script>
+        $.ajax({
+                    type:'get',
+                    url: 'set_time_offset?today='+(new Date()).toString(),
+
+                });
         $.ajax({
                 type:'get',
                 url: 'get_group',

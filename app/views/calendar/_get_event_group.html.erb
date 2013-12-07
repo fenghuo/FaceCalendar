@@ -9,47 +9,133 @@ events.length=0;
 
 
 var max_esid=-1;
+(function(){
 
-<% if session[:current_event]!="" %>
-    <% session[:current_event].each  do |e|%>
-        
-        
-            var e_temp  = new Object();
-            e_temp.desp = "<%= e.eventname %>";
-            e_temp.weekday = <%= e.weekday %>;
-            e_temp.eventid = <%= e.eventid %>;
-            e_temp.eventsid=<%= e.eventsid %>;
-            if(e_temp.eventsid>max_esid){
-                max_esid=e_temp.eventsid
-            }
-            e_temp.start = <%= e.starttime.hour + 0.5*e.starttime.min/30 %>;
-            e_temp.end = <%= e.endtime.hour + 0.5*e.endtime.min/30 %>;
-            e_temp.group = "<%= e.groupname %>"; 
-            <% if e.starttime.day==e.endtime.day %>
-                <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
-                    events.push(e_temp);
-                <% end %>
-            <% else %>
-                end_temp=e_temp.end;
-                e_temp.end=24.0;
-                <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
-                    events.push(e_temp);
-                <% end %>
+
+<% if params[:week_start_para]==nil %>
+    var today = new Date("<%= session[:week_start]+2 %>");
+    var thisday=new Date();
+    var todate=today.getDay();
+    if(todate==0)
+        todate=7;
+    var monday=new Date(today-(todate-1)*86400*1000);
+    monday.setHours(0);
+    monday.setMinutes(0);
+    monday.setSeconds(0);
+    monday.setMilliseconds(0);
+    var weeklong=7*86400*1000;
+    var sunday=new Date(monday);
+    sunday.setDate(monday.getDate()+7);
+    <% if session[:current_event]!="" %>
+        <% session[:current_event].each  do |e|%>
+            <% if e.endtime -  @start_tmp < 9 &&  e.starttime -  @start_tmp>= -2 %>
+
+                var e_temp  = new Object();
+                e_temp.desp = "<%= e.eventname %>";
                 
+                e_temp.eventid = <%= e.eventid %>;
+                e_temp.eventsid= <%= e.eventsid %>;
+                if(e_temp.eventsid>max_esid){
+                    max_esid=e_temp.eventsid
+                }
                 
-                <% if e.endtime -  @start_tmp < 7 &&  e.endtime -  @start_tmp>= 0 %>
+                var curr_tz = thisday.getTimezoneOffset(); //use ruby's exp
+                var start=new Date("<%= e.starttime %>");
+                var end  =new Date("<%= e.endtime   %>");
+                
+                start.setMinutes(start.getMinutes()+start.getTimezoneOffset()-curr_tz)
+                end.setMinutes(end.getMinutes()+end.getTimezoneOffset()-curr_tz)
+                
+                if(start.getDay()==end.getDay()){
+                    
+                    e_temp.start=start.getHours()+start.getMinutes()/30.0*0.5;
+                    e_temp.end  =end.getHours()+end.getMinutes()/30.0*0.5;
+                    e_temp.weekday=start.getDay();
+                    if(e_temp.weekday==0)
+                        e_temp.weekday=7;
+                    
+                    if(start-monday>=0 && start-sunday<=0)
+                        events.push(e_temp);
+
+                }
+                else{
+                    e_temp.start=start.getHours()+start.getMinutes()/30.0*0.5;
+                    e_temp.end  =24;
+                    e_temp.weekday=start.getDay();
+                    if(e_temp.weekday==0)
+                        e_temp.weekday=7;
+                    if(start-monday>=0 && start-sunday<=0)
+                        events.push(e_temp);
+
                     var e_temp2  = new Object();
                     e_temp2.desp=e_temp.desp;
                     e_temp2.eventid=e_temp.eventid;
                     e_temp2.eventsid=e_temp.eventsid;
-                    e_temp2.end=end_temp;
+                    e_temp2.end=end.getHours()+end.getMinutes()/30.0*0.5;
                     e_temp2.group=e_temp.group;
                     e_temp2.start=0.0;
                     e_temp2.weekday=(e_temp.weekday+1)%7;
+                    if(end-monday>=0 && end-sunday<=0)
                     events.push(e_temp2);
-                <% end %>
+                }
+                
+            <% end %>
+        <% end %>
+    <% end %>
 
-        <% end %>    
-        
+<% else %>
+
+    <% if session[:current_event]!="" %>
+        <% session[:current_event].each  do |e|%>
+
+             <% if e.endtime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+            
+                var e_temp  = new Object();
+                e_temp.desp = "<%= e.eventname %>";
+                
+                e_temp.eventid = <%= e.eventid %>;
+                e_temp.eventsid= <%= e.eventsid %>;
+                if(e_temp.eventsid>max_esid){
+                    max_esid=e_temp.eventsid
+                }
+                <% offset_temp=e.starttime.utc_offset/3600.0-session[:time_offset] %>
+                <% st_curr_timezone=e.starttime-offset_temp/24.0 %>
+                e_temp.start = <%= st_curr_timezone.hour + 0.5*st_curr_timezone.min/30.0 %>;
+                e_temp.weekday = <%= st_curr_timezone.wday %>;
+                if(e_temp.weekday==0)
+                    e_temp.weekday=7;
+
+                <% offset_temp=e.endtime.utc_offset/3600.0-session[:time_offset] %>
+                <% et_curr_timezone=e.endtime-offset_temp/24.0 %>
+                e_temp.end = <%= et_curr_timezone.hour + 0.5*et_curr_timezone.min/30.0 %>;
+                e_temp.group = "<%= e.groupname %>"; 
+                <% if st_curr_timezone.day==et_curr_timezone.day %>
+                    <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+                        events.push(e_temp);
+                    <% end %>
+                <% else %>
+                    end_temp=e_temp.end;
+                    e_temp.end=24.0;
+                    <% if e.starttime -  @start_tmp < 7 &&  e.starttime -  @start_tmp>= 0 %>
+                        events.push(e_temp);
+                    <% end %>
+                    
+                    
+                    <% if e.endtime -  @start_tmp < 7 &&  e.endtime -  @start_tmp>= 0 %>
+                        var e_temp2  = new Object();
+                        e_temp2.desp=e_temp.desp;
+                        e_temp2.eventid=e_temp.eventid;
+                        e_temp2.eventsid=e_temp.eventsid;
+                        e_temp2.end=end_temp;
+                        e_temp2.group=e_temp.group;
+                        e_temp2.start=0.0;
+                        e_temp2.weekday=(e_temp.weekday+1)%7;
+                        events.push(e_temp2);
+                    <% end %>
+                <% end %>
+            <% end %>    
+            
+        <% end %>
     <% end %>
 <% end %>
+})()

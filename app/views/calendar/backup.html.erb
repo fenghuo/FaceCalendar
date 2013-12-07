@@ -36,5 +36,9 @@
 		</tr>
 <% end %>
 </table>
-
+<p><%= x=DateTime.now %></p>
+<p><%= y=x.change(:offset => '-900') %></p>
+<p><%= z=y+(y.utc_offset-x.utc_offset)/(3600*24.0) %></p>
+<p><%= z==x %></p>
+<p><%= y.utc_offset %></p>
 <p>test:<%= session[:test] %></p>
