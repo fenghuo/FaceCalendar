@@ -10,6 +10,7 @@ set :latest_release_directory, File.join(fetch(:deploy_to), 'current')
 
 # set :format, :pretty
 set :log_level, :debug
+set :rvm1_ruby_version, "2.0.0"
 # set :pty, true
 
 # set :linked_files, %w{config/database.yml}
@@ -20,6 +21,13 @@ set :keep_releases, 5
 
 set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
 
+#set :default_environment, {
+#	'PATH' => "/home/ubuntu/.rvm/gems/ruby-2.0.0-p247/bin:/home/ubuntu/.rvm/gems/ruby-2.0.0-p247@global/bin:/home/ubuntu/.rvm/bin:$PATH",
+#	'RUBY_VERSION' => 'ruby 2.0.0',
+#	'GEM_HOME' => '/home/ubuntu/.rvm/gems/ruby-2.0.0-p247/gems',
+#	'GEM_PATH' => '/home/ubunt/.rvm/gems/ruby-2.0.0-p247/gems:/home/ubuntu/.rvm/gems/ruby-2.0.0-p247@global',
+#	'BUNDLE_PATH' => '/home/ubuntu/.rvm/gems/ruby-2.0.0-p247@global/bin'
+#}
 namespace :deploy do
 
   desc 'Restart application'
