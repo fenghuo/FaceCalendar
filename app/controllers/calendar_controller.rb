@@ -377,14 +377,14 @@ class CalendarController < ApplicationController
         end
         #session_rec_tmp=session_rec.clone
         #session_rec_tmp.groupname=e+";"
-        session[:current_event].push(session_rec)
+        
 
         group_added=group_added+1
       end
 
-      
+      session[:current_event].push(session_rec)
     end
-
+    
 
     
 

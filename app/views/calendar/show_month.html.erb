@@ -75,7 +75,7 @@ function event_draw(){
   init_table();
  	for(var i=0;i<events.length;i++){
  		if(events[i].year==this_year && events[i].month==this_month)
- 			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a></li>")
+ 			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a>&nbsp<a href='edit?eventsid="+events[i].eventsid+"''>Edit</a></li>")
   
  	}
 }
