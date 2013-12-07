@@ -1,5 +1,16 @@
 <script src="assets/lib.js"></script>
+<script src="assets/bootstrap_min.js"></script>
 <script>
+var group_to_show="all"
+var show_cata = new Array();
+show_cata.push("all")
+<% @all_group.each  do |k|%>
+  <% if k!=nil %>
+    group.push("<%= k %>");
+    show_cata.push("<%= k %>");
+  <% end %>
+<% end %>
+show_cata.push("private");
 <%= render 'get_event_month' %>
 function mywday(wday){
 	if(wday==0)
@@ -36,11 +47,21 @@ function goto_wek(day){
       </li>
 </ul>
 <ul>
-  <li id="changed" style="background-color:red">Some of the event has been changed. Please reload this page.</li>
+  <li id="changed" style="background-color:red;display:none">Some of the event has been changed. Please reload this page.</li>
 </ul>
 <table class="table table-bordered" style="margin-bottom:0px;position:relative;table-layout:fixed;line-height:30px;">    
     <thead>
-        <th>Monday</th>
+        <th>
+          Monday
+          <div class="btn-group">
+              <button class="btn" id="group_showing"></button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="group_select_menu">
+              </ul>
+          </div>
+        </th>
         <th>Tuesday</th>
         <th>Wednesday</th>
         <th>Thursday</th>
@@ -74,19 +95,43 @@ init_table();
 function event_draw(){
   init_table();
  	for(var i=0;i<events.length;i++){
- 		if(events[i].year==this_year && events[i].month==this_month)
- 			$(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a>&nbsp<a href='edit?eventsid="+events[i].eventsid+"''>Edit</a></li>")
+ 		if(events[i].year==this_year && events[i].month==this_month){
+      if(group_to_show=="all" || events[i].group.split(";").indexOf(group_to_show)!=-1)
+ 			  $(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a>&nbsp<a href='edit?eventsid="+events[i].eventsid+"''>Edit</a></li>")
+    }
   
  	}
 }
 event_draw();
-
+function get_mygroup(){
+  $("#group_showing").html(group_to_show);
+  $('#group_select_menu').html("");
+  for(var i=0;i<show_cata.length;i++){
+    var a_group0=$("<li>");
+    var a_group1=$("<a>",{ href: 'javascript:void(0)'});
+    a_group1.html(show_cata[i]);
+    a_group1.bind("click",(function(k){
+      return function(){
+        group_to_show=show_cata[k];
+        $("#group_showing").html(group_to_show);
+        event_draw();
+      }
+    })(i));
+    a_group1.appendTo(a_group0);
+    a_group0.appendTo('#group_select_menu')
+  }
+}
+get_mygroup();
 </script>
 <!-- Polling -->
 <script>
 $.ajax({
-            type:'get',
-            url: 'set_time_offset?today='+(new Date()).toString(),
+        type:'get',
+        url: 'set_time_offset?today='+(new Date()).toString(),
+});
+$.ajax({
+        type:'get',
+        url: 'get_group?type=month',
 });
 $('#changed').hide();
 $.ajax({

@@ -361,15 +361,16 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         <!-- Polling -->
         <script>
         $.ajax({
-                    type:'get',
-                    url: 'set_time_offset?today='+(new Date()).toString(),
+                type:'get',
+                url: 'set_time_offset?today='+(new Date()).toString(),
 
-                });
+        });
         $.ajax({
                 type:'get',
-                url: 'get_group',
+                url: 'get_group?type=week',
+        
 
-            });
+        });
         $('#changed').hide();
         $.ajax({
             type:'get',

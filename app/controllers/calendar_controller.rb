@@ -289,6 +289,31 @@ class CalendarController < ApplicationController
       else
         @month_last_tmp=DateTime.new(@month_start_tmp.year,@month_start_tmp.mon-1,1,0,0,0,session[:time_offset].to_s)
       end
+
+      begin
+        @all_group=ActiveSupport::JSON.decode(Group.SnapShotGet(session[:user_id]).first["value"])
+      #@all_group=[]
+      rescue
+        @all_group=[]
+      end
+
+      if session[:read_snapshot]!=1
+    #prep(@week_start_tmp,@week_next_tmp)
+        begin
+          cached_event=ActiveSupport::JSON.decode(EventDB.SnapShotGet(session[:user_id]).first["value"])
+        rescue
+          cached_event=[]
+        end
+        #cached_event==[];
+
+        session[:current_event]=[]
+        cached_event.each do |e|
+          addevent=Event.new
+          addevent.set_iv(e)
+          session[:current_event].push(addevent)
+        end
+        session[:read_snapshot]=1
+      end
       #prep_group
       #prep(@month_start_tmp,@month_next_tmp)
 
@@ -384,7 +409,7 @@ class CalendarController < ApplicationController
 
       session[:current_event].push(session_rec)
     end
-    
+
 
     
 
@@ -517,10 +542,19 @@ class CalendarController < ApplicationController
   end
   def get_group
     prep_group
-    respond_to do |format|
-      format.js { render partial:'get_group'}
-      format.html
+    
+    if params[:type]=="week"
+      respond_to do |format|
+        format.js { render partial:'get_group'}
+        #format.html
+      end
+    elsif params[:type]=="month"
+      respond_to do |format|
+        format.js { render partial:'get_group_month'}
+        #format.html
+      end
     end
+      
   end
   def check_change
     @changed=false
