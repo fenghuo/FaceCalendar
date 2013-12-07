@@ -29,52 +29,8 @@ var event_color = ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df
                           "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", 
                           "#17becf", "#9edae5"];
                           
-function get_group() {
-    //read from the database
 
-    //for test
-    group.push("Jpop");
-    group.push("cs290");
-    group.push("CSSA");
-    //end test
-}
-function get_event(userid) {
-    //read the database
 
-    //e.g.
-    var event1 = { desp: "group meeting", weekday: 1, start: 10.0, end: 10.5, place: "HFH", cata: "cs290" };
-    var event2 = { desp: "group meeting", weekday: 2, start: 10.0, end: 12.5, place: "HFH", cata: "cs290" };
-    var event3 = { desp: "eating", weekday: 2, start: 11.0, end: 12.5, place: "HFH", cata: "private" };
-    events.push(event1);
-    events.push(event2);
-    events.push(event3);
-    
-}
-function combine_event(){
-    var i=0;
-    if(events.length==0)
-        return;
-
-    var events2 = new Array();
-    events2.push(events[0]);
-    for(i=1;i<events.length;i++){
-        var toadd=1
-        for(j=0;j<events2.length;j++){
-            if(events[i].eventname==events2[j].eventname 
-                && events[i].start==events2[j].start
-                && events[i].end==events2[j].end
-                && events[i].weekday==events2[j].weekday
-                && events[i].desp==events2[j].desp){
-                
-                toadd=0;
-                events2[j].group=events2[j].group+events[i].group;
-            }
-            if(j==events2.length-1 && toadd==1)
-                events2.push(events[i]);
-        }
-    }
-    events=events2;
-}
 function get_event_by_day(weekday) {//filter and sort by start time
     var event_at_day = new Array();
     //filter

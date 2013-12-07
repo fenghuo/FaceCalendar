@@ -176,7 +176,7 @@ class EventDB < ActiveRecord::Base
 		else
 			@rs=client.query("call snap_event_get(#{userid})");
 			client.close
-			return @rs	
+			return @rs
 		end
 
 	end

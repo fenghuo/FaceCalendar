@@ -60,5 +60,7 @@ module FaceCalendar
     config.assets.version = '1.0'
 
     config.assets.precompile += %w(*.png,*.jpg,*.jpeg,*.gif)
+
+    #config.cache_store = :memory_store
   end
 end
