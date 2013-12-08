@@ -10,13 +10,20 @@ set :rvm_ruby_version, '2.0.0-p247'
 # unless any hosts have the primary property set.
 
 #set :server_name, %w{ec2-54-226-227-186.compute-1.amazonaws.com}
-set :server_name, %w{ec2-50-16-79-127.compute-1.amazonaws.com}
-set :server_name, %w{ec2-54-204-98-237.compute-1.amazonaws.com}
+#set :server_name_2, %w{54.242.16.10}
 
-#set :server_name, %w{54.196.36.102}
+set :s10, "ec2-23-23-40-78.compute-1.amazonaws.com"
+set :s11, "ec2-54-234-15-229.compute-1.amazonaws.com"
+set :s12, %w{ec2-54-237-82-202.compute-1.amazonaws.com  }
+set :s13, %w{ec2-107-21-133-69.compute-1.amazonaws.com  }
+set :s5, %w{ec2-54-211-195-188.compute-1.amazonaws.com  }
+set :s7, %w{ec2-54-227-221-251.compute-1.amazonaws.com  }
+set :s8, %w{ec2-54-205-123-82.compute-1.amazonaws.com  }
+set :s9, %w{ec2-72-44-55-153.compute-1.amazonaws.com  }
 
-role :web, fetch(:server_name) # Needed for precompiling assets
-role :app, fetch(:server_name) # Needed for preparing something I forgot what
+
+role :web, fetch(:s5), fetch(:s7), fetch(:s8), fetch(:s9) # Needed for precompiling assets
+role :app, fetch(:s5), fetch(:s7), fetch(:s8), fetch(:s9) # Needed for preparing something I forgot what
 #role :db, fetch(:server_name) # Needed for migration
 role :all, fetch(:server_name) # This doesn't work completely yet, hence the above 3 specifications
 
