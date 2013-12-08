@@ -1,7 +1,8 @@
 
- <%= form_tag("edit_propose") do %>
+ <%= form_tag("edit_propose?eventsid="+@event_to_show.eventsid.to_s) do %>
  <%= submit_tag("save", class: "btn btn-primary") %>
  <%= submit_tag("delete", class: "btn btn-primary") %>
+ <script src="assets/bootstrap_min.js"></script>
  <table class="table table-striped">
 	 	<tr>
 	 		<td>Event Name:</td>
@@ -9,7 +10,8 @@
 	 	</tr>
 	 	<tr>
 	 		<td>Start At:</td>
-	 		<td><%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
+	 		<td>
+	 			<%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
 	 	</tr>
 	 	<tr>
 	 		<td>End By:</td>
@@ -22,7 +24,11 @@
 	 	</tr>
 	 	<tr>
 	 		<td>Groups:</td>
-	 		<td><%= text_field_tag(:groupname,  @groupnames) %></td>
+
+	 		<td>
+	 			<div class="btn-group" data-toggle="buttons" id="group_show">
+ 				</div>
+	 			<%= text_field_tag(:groupname,"",  id: "group", style:"display:none")%></td>
 	 	</tr>
 	 	<tr>
 	 		<td>Description:</td>
@@ -30,13 +36,96 @@
 	 	</tr>
 
 	</table>
- <%= text_field_tag(:eventsid, @event_to_show.eventsid, style: "display:none") %>
+
  <% end %>
- <%= link_to "Discard Editing and Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>
+ <%= link_to "Discard Editing and Go Back To Calendar Week View" , calendar_show_path(week_start_para: @event_to_show.starttime) %>
  <p></p>
  <%= link_to "Discard Editing and Go Back To Calendar Month View", calendar_show_month_path(month_start: @event_to_show.starttime) %>
 
  <script>
+ 	var groups=new Array();
  	$('table input').css("width", window.innerWidth*0.75+"px")
  	$('table textarea').css("width", window.innerWidth*0.75+"px")
+ 	//$('#group').hide();
+ 	<% begin %>
+ 		<% session[:current_group].each do |e| %>
+ 		<% if e!=nil && e!=""%>
+ 			groups.push("<%= e %>");
+ 			$('#group_show').append("<label class='btn btn-primary'><input type='checkbox'> " + "<%= e %>" + "</label>")
+ 		<% end %>
+ 		<% end %>
+ 	<% rescue %>
+ 	<% end %>
+ 	groups.push("private");
+ 	$('#group_show').append("<label class='btn btn-primary'><input type='checkbox'> " + "pivate" + "</label>");
+ 	(function(){
+ 		var i=0;
+ 		var groupprop="<%= @event_to_show.groupname %>".split(';');
+ 		var groupstatus=new Array(groups.length);
+ 		for(i=0;i<groups.length;i++)
+ 		{
+ 			var j=groupprop.indexOf(groups[i]);
+ 			groupstatus[i]=0;
+ 			if(j!=-1)
+ 			{
+
+ 				$('#group_show label:nth-child('+(i+1)+')').button('toggle');
+ 				groupstatus[i]=1;
+ 			}
+ 			$('#group_show label:nth-child('+(i+1)+')').bind('click',
+ 				(function(k){
+ 					return function(){
+ 						if(k==groups.length-1 && groupstatus[groupstatus.length-1]==0)
+ 						{
+ 							
+ 							for(var s=0;s<groupstatus.length;s++)
+ 							{
+ 								if(groupstatus[s]==1)
+ 									$('#group_show label:nth-child('+(s+1)+')').button('toggle');
+ 								groupstatus[s]=0;
+ 							}
+ 							
+ 						}
+ 						else if(k!=groups.length-1 && groupstatus[groupstatus.length-1]==1)
+ 						{
+ 							groupstatus[groupstatus.length-1]=0;
+ 							$('#group_show label:nth-child('+(groupstatus.length)+')').button('toggle');
+ 						}
+ 						groupstatus[k]=1-groupstatus[k];
+
+ 						all_zero=1;
+ 						for(var s=0;s<groupstatus.length;s++)
+ 						{
+ 							if(groupstatus[s]==1)
+ 							{
+ 								all_zero=0;
+ 							}
+ 						}
+
+ 						if(all_zero==1)
+ 						{
+ 							groupstatus[groupstatus.length-1]=1;
+ 							$('#group_show label:nth-child('+(groupstatus.length)+')').button('toggle');
+ 						}
+
+ 						set_group();
+ 					}
+ 				})(i));
+
+ 		}
+ 		function set_group(){
+ 			var g=""
+ 			var s;
+ 			for(s=0;s<groups.length;s++)
+ 			{
+
+ 				if(groupstatus[s]==1)
+ 					g=g+groups[s]+";";
+ 			}
+ 			$('#group').val(g);
+
+ 		}
+ 		set_group();
+ 	})()
+ 	
  </script>

@@ -1,6 +1,6 @@
     <script src="assets/lib.js"></script>
     <script src="assets/bootstrap_min.js"></script>
-      <style type="text/css">
+    <style type="text/css">
 
             .panel {
                 display:none;
@@ -24,13 +24,26 @@
             #time_encoded{
                 display:none;
             }
+            body {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
         </style>
         <script>
 
             //global initialization
             //get_group();
             //get_event(1);
+<<<<<<< HEAD
 
+=======
+            //if (<%= params[:week_start_para]==nil %>)
+            //    window.location="show?week_start_para="+(new Date())
+>>>>>>> 2b152c82320e7120789050de26b86eb0912c4a09
             var show_cata = new Array();
             show_cata.push("all")
             <% @all_group.each  do |k|%>
@@ -42,7 +55,9 @@
             show_cata.push("private");
             
             events.length=0;
+        
             <%= render 'get_event_group' %>
+
             //combine_event();
             
             //add
@@ -129,12 +144,12 @@
                     for (var j = 0; j < group.length; j++)
                         if (button_status[j] == 1) {
                             button_status[j] = 0;
-                            $('#group_selection button:nth-child(' + (j+2) + ')').button('toggle');
+                            $('#group_selection button:nth-child(' + (j+1) + ')').button('toggle');
                         }
                 }
                 if (i != group.length && button_status[group.length] == 1) {
                     button_status[group.length] = 0;
-                    $('#group_selection button:nth-child(' + (group.length + 2) + ')').button('toggle');
+                    $('#group_selection button:nth-child(' + (group.length + 1) + ')').button('toggle');
                 }
             }
             
@@ -192,8 +207,16 @@
                         win.style.width = widthi + "px";
                         win.style.top = div_posi_x + "px";
                         win.style.left = leftmost + "px";
-                        win.style.backgroundColor = event_color[2];
+                        win.style.backgroundColor = event_color[9];
                         win.className = "well well-sm";
+                        //win.onmouseover=(function(){
+                        //    var s=1;
+                        //    return function(){
+                        //        s=1-s;
+                        //        win.style.backgroundColor = event_color[5+s];
+                        //   }        
+                        //}());
+                        //win.onmouseout=function(){win.style.backgroundColor = event_color[2];}
                         //win.id = "event" + i + j;
                         //win.onclick = function () { event_click(even_today[i].desp); };
                         
@@ -201,6 +224,7 @@
 
                         //t.innerHTML = time_slot(h0 * 2, 24) + "-" + time_slot(h1 * 2, 24);
                         desp.innerHTML = "<a href='show_event?eventtoshowid=" + event_today[i].eventsid + "'>" + event_today[i].desp + "</a>";
+                        desp.innerHTML+="&nbsp<a href='edit?eventsid="+event_today[i].eventsid+"''>Edit</a>"
                         desp.style.color = "yellow";
                         //win.appendChild(t);
                         win.appendChild(desp);
@@ -219,9 +243,7 @@
                 $("#group_showing").html(groupname);
                 event_draw();
             }
-            function event_click(i){
-                //window.open("show_event");
-            }
+
 
 
         </script>
@@ -229,7 +251,7 @@
     <body>
         <ul class="pager">
               <li class="previous">
-                <a href="show?week_start_para=<%= @week_last_tmp %>" >Last Week &rarr;</a>
+                <a href="show?week_start_para=<%= @week_last_tmp %>" >&larr;Last Week</a>
               </li>
               <li id="changed" style="background-color:red">Some of the event has been changed. Please reload this page.</li>
               <li class="next">
@@ -255,7 +277,7 @@
         </table>
         <table class="table table-bordered" style="
 margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week" onselect="return false" >
-            <thead> 
+            <thead style="table-layout:fixed"> 
                 <th>
                     <div class="btn-group">
                         <button class="btn" id="group_showing"></button>
@@ -265,7 +287,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                         <ul class="dropdown-menu" id="group_select_menu">
                         </ul>
                         <script>
-                        $("#group_showing").append(group_to_show);
+                        $("#group_showing").html(group_to_show);
                         
                         for(var i=0;i<show_cata.length;i++){
                                 $('#group_select_menu').append("<li> <a href='javascript:void(0)' onclick=event_draw_by_group(show_cata["+i+"])>"+show_cata[i]+"</a></li>");
@@ -322,27 +344,54 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             </table>
                 
                 Groups:
-                 <div class="btn-group" data-toggle="buttons-checkbox" id="group_selection">
-                     <script>
-                         for (var i = 0; i < group.length; i++) {
+                 <div class="btn-group" data-toggle="buttons"  id="group_selection">
+
+                 </div>
+                <script>
+                    function get_mygroups(){
+                        $('#group_selection').html("");
+                        for (var i = 0; i < group.length; i++) {
                              $('#group_selection').append("<button type='button' class='btn btn-primary' onclick='event_group(" + i + ")'>" + group[i] + "</button>");
                              
                          }
                          $('#group_selection').append("<button type='button' id='private_button' class='btn btn-primary' onclick='event_group(" + i + ")'>Private</button>");
                          $('#private_button').button('toggle');
-
-                     </script>
-                 </div>
+                    }
+                    get_mygroups();
+                </script>
                 
             
         </div>
         <!-- Polling -->
         <script>
+        $.ajax({
+                type:'get',
+                url: 'set_time_offset?today='+(new Date()).toString(),
+
+        });
+        $.ajax({
+                type:'get',
+                url: 'get_group?type=week',
+        
+
+        });
         $('#changed').hide();
+        $.ajax({
+            type:'get',
+            url: 'check_change?type=load&period=week&start='+'<%= @week_start_tmp %>',
+            success:function(){
+                event_draw();
+            }
+        });
+        
         setInterval(function(){
             $.ajax({
                 type:'get',
-                url: 'check_change',
+               url: 'check_change?type=check&period=week&start='+'<%= @week_start_tmp %>',
             });
+<<<<<<< HEAD
         },1000);
+=======
+        },10000);
+>>>>>>> 2b152c82320e7120789050de26b86eb0912c4a09
         </script>
