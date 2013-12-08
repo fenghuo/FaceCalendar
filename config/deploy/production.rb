@@ -9,7 +9,7 @@ set :rvm_ruby_version, '2.0.0-p247'
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 
-#set :server_name, %w{ec2-54-226-227-186.compute-1.amazonaws.com}
+set :server_name, %w{ 50.16.79.127}
 #set :server_name_2, %w{54.242.16.10}
 
 set :s10, "ec2-23-23-40-78.compute-1.amazonaws.com"
@@ -22,8 +22,8 @@ set :s8, %w{ec2-54-205-123-82.compute-1.amazonaws.com  }
 set :s9, %w{ec2-72-44-55-153.compute-1.amazonaws.com  }
 
 
-role :web, fetch(:s5), fetch(:s7), fetch(:s8), fetch(:s9) # Needed for precompiling assets
-role :app, fetch(:s5), fetch(:s7), fetch(:s8), fetch(:s9) # Needed for preparing something I forgot what
+role :web,  fetch(:server_name)# Needed for precompiling assets
+role :app,  fetch(:server_name)# Needed for preparing something I forgot what
 #role :db, fetch(:server_name) # Needed for migration
 role :all, fetch(:server_name) # This doesn't work completely yet, hence the above 3 specifications
 
