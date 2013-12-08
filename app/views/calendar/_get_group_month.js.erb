@@ -1,0 +1,12 @@
+var show_cata = new Array();
+group=[]
+show_cata.push("all")
+<% @all_group.each  do |k|%>
+  <% if k!=nil %>
+    group.push("<%= k %>");
+    show_cata.push("<%= k %>");
+  <% end %>
+<% end %>
+show_cata.push("private");
+
+get_mygroup();
