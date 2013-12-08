@@ -9,13 +9,30 @@ set :rvm_ruby_version, '2.0.0-p247'
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 
-#set :server_name, %w{ec2-54-226-227-186.compute-1.amazonaws.com}
-set :server_name, %w{54.196.36.102}
+#set :server_name, %w{ec2-54-226-227-186.compute-1.amazonaws.c
+#s1= '72.44.55.153'
+#s2= '54.205.123.82'
 
-role :web, fetch(:server_name) # Needed for precompiling assets
-role :app, fetch(:server_name) # Needed for preparing something I forgot what
+s1='ec2-50-16-79-127.compute-1.amazonaws.com'
+s2='ec2-54-204-98-237.compute-1.amazonaws.com'
+s3='ec2-54-224-89-87.compute-1.amazonaws.com'
+s4='ec2-23-23-40-78.compute-1.amazonaws.com'
+s5='ec2-54-234-15-229.compute-1.amazonaws.com'
+s6='ec2-54-237-82-202.compute-1.amazonaws.com'
+s7='ec2-107-21-133-69.compute-1.amazonaws.com'
+s8='ec2-54-242-16-10.compute-1.amazonaws.com'
+s9='ec2-54-211-73-159.compute-1.amazonaws.com'
+s10='ec2-54-204-79-235.compute-1.amazonaws.com'
+s11='ec2-54-211-195-188.compute-1.amazonaws.com'
+s12='ec2-54-227-221-251.compute-1.amazonaws.com'
+s13='ec2-54-205-123-82.compute-1.amazonaws.com'
+s14='ec2-72-44-55-153.compute-1.amazonaws.com'
+
+
+role :web,[ s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14] # Needed for precompiling assets
+role :app,[ s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14] # Needed for preparing something I forgot what
 #role :db, fetch(:server_name) # Needed for migration
-role :all, fetch(:server_name) # This doesn't work completely yet, hence the above 3 specifications
+role :all,[ s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14] # This doesn't work completely yet, hence the above 3 specifications
 
 # Extended Server Syntax
 # ======================
@@ -31,7 +48,7 @@ role :all, fetch(:server_name) # This doesn't work completely yet, hence the abo
 # set it globally
 set :ssh_options, {
     user: %{ubuntu},                # The user we want to log in as
-    keys: %w{/home/tianjiu/keys/face1.pem}, # Your .pem file
+    keys: %w{/home/ubuntu/face1.pem}, # Your .pem file
     forward_agent: true,          # In order for our EC2 instance to be able to access Github via ssh we need to forward our local ssh agent (since we have set up Github to accept that)
     auth_methods: %w(publickey)   # We are using ssh with .pem files
 }
