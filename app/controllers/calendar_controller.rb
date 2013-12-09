@@ -428,11 +428,18 @@ class CalendarController < ApplicationController
 
   def show_event
     @all_event=session[:current_event]#can use session to reduce database read
-
+    all_groupid=session[:current_groupid]
+    all_group=session[:current_group]
     id=params[:eventtoshowid]
     
     @event_to_show=@all_event.find{|i| i.eventsid==Integer(id)}
-
+    @groupname_to_show=@event_to_show.groupname.split(";");
+    @groupid_to_show=[]
+    @groupname_to_show.each do |e|
+      if(e!="private")
+        @groupid_to_show.push(all_groupid[all_group.index(e)])
+      end
+    end
     #@groupnames=combine_groups(@all_event,@event_to_show)
     #event=event_fint_by_id[id]
   end

@@ -205,7 +205,7 @@
                         win.style.width = widthi + "px";
                         win.style.top = div_posi_x + "px";
                         win.style.left = leftmost + "px";
-                        win.style.backgroundColor = event_color[9];
+                        win.style.backgroundColor = event_color[(i+j)%event_color.length];
                         win.className = "well well-sm";
                         //win.onmouseover=(function(){
                         //    var s=1;
@@ -221,7 +221,7 @@
                         //add event method here!
 
                         //t.innerHTML = time_slot(h0 * 2, 24) + "-" + time_slot(h1 * 2, 24);
-                        desp.innerHTML = "<a href='show_event?eventtoshowid=" + event_today[i].eventsid + "'>" + event_today[i].desp + "</a>";
+                        desp.innerHTML = "<a href='show_event?eventtoshowid=" + event_today[i].eventsid + "' style='font-weight:bold'>" + event_today[i].desp + "</a>";
                         desp.innerHTML+="&nbsp<a href='edit?eventsid="+event_today[i].eventsid+"''>Edit</a>"
                         desp.style.color = "yellow";
                         //win.appendChild(t);

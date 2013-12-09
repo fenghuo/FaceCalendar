@@ -24,10 +24,14 @@ function time_grid(time) {
 //initialization
 var group = new Array();
 var events = new Array();
-var event_color = ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", 
-                          "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", 
-                          "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", 
-                          "#17becf", "#9edae5"];
+var event_color = ["#5122B5","#c5b0d5","#6B491F","#D8C029"]
+//["#FF660A","#FF660A","#D64E12","#D64E12","#4E4644","#4E4644","#893D30",
+                  // "#893D30","#CE5631","#CE5631","#FFA001","#FFA001","#FFE5BA","#FFE5BA","#AE9D95","#AE9D95",
+                  // "#FD761A","#FD761A","#D83B22","#D83B22","#FFDBD9","#FFDBD9"]
+//["#1f77b4""," "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", 
+                  //        "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", 
+                  //        "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", 
+                  //        "#17becf", "#9edae5"];
                           
 
 

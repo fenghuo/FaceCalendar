@@ -31,7 +31,7 @@ var max_esid=-1;
 
                 var e_temp  = new Object();
                 e_temp.desp = "<%= e.eventname %>";
-                
+                e_temp.group= "<%= e.groupname %>"
                 e_temp.eventid = <%= e.eventid %>;
                 e_temp.eventsid= <%= e.eventsid %>;
                 if(e_temp.eventsid>max_esid){
