@@ -19,7 +19,7 @@ events.length=0
     client_firstday.setMilliseconds(0);
     
     var client_lastday=new Date(client_firstday);
-    client_lastday.setMonth(client_lastday.getMonth())
+    client_lastday.setMonth(client_lastday.getMonth()+1)
    
     <% session[:current_event].each  do |e|%>
 
