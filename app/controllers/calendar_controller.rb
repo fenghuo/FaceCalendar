@@ -99,7 +99,7 @@ class CalendarController < ApplicationController
           #    event0groupname="private;"
           #  end
             if idexist
-              event0groupname=event0groupname+@all_group[idexist]+";"
+              event0groupname=event0groupname+@all_group[idexist].to_s+";"
             end
           end
         end
@@ -141,8 +141,6 @@ class CalendarController < ApplicationController
     end
 
     has_change=false
-    session[:test]=0;
-    test_temp=session[:current_event].length
     session[:current_event].delete_if {|e|
       if (e.starttime-starttime>=0 && endtime-e.starttime>=0) ||
          (e.endtime-starttime>=0 && endtime-e.endtime>=0)
@@ -575,16 +573,16 @@ class CalendarController < ApplicationController
   end
   def get_group
     prep_group
-    
+
     if params[:type]=="week"
       respond_to do |format|
         format.js { render partial:'get_group'}
-        #format.html
+        format.html
       end
     elsif params[:type]=="month"
       respond_to do |format|
         format.js { render partial:'get_group_month'}
-        #format.html
+        format.html
       end
     end
       

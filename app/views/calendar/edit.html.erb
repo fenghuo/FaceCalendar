@@ -1,7 +1,7 @@
 
  <%= form_tag("edit_propose?eventsid="+@event_to_show.eventsid.to_s) do %>
- <%= submit_tag("save", class: "btn btn-primary") %>
- <%= submit_tag("delete", class: "btn btn-primary") %>
+ <%= submit_tag("save", class: "btn btn-primary", id: "saving") %>
+ <%= submit_tag("delete", class: "btn btn-primary", data: {confirm: "Are you sure?"}) %>
  <script src="assets/bootstrap_min.js"></script>
  <table class="table table-striped">
 	 	<tr>
@@ -188,12 +188,20 @@
 	 			value.setHours(parseInt(new_time[0]));
 	 			value.setMinutes(parseInt(new_time[1]));
 	 			rec.val(value);
+
  			})
  		}
  		set_times($('#start_select'),starttime,$('#starttime'));
  		set_times($('#end_select'),endtime,$('#endtime'));
 		
-
+ 		$('#saving').bind("click",
+ 			function(){
+ 				if(endtime<starttime){
+ 					alert("The event will end after it starts")
+ 					return false;
+ 				}
+ 			}
+ 		)
  	}())
 
  </script>
