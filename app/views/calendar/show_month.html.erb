@@ -20,8 +20,9 @@ function mywday(wday){
 
 }
 var begin_offset=mywday(<%= @month_start_tmp.wday %>)-1;
-var this_year=<%= @month_start_tmp.year %>;
-var this_month=<%= @month_start_tmp.mon %>;
+var this_year=<%= (@month_start_tmp+10).year %>;
+var this_month=<%= (@month_start_tmp+10).mon %>;
+
 var month_day_numb=<%= @month_next_tmp-@month_start_tmp %>;
 function get_day_selector(day){
 	var line=Math.ceil((day+begin_offset)/7);
@@ -94,7 +95,9 @@ init_table();
 
 function event_draw(){
   init_table();
+
  	for(var i=0;i<events.length;i++){
+    
  		if(events[i].year==this_year && events[i].month==this_month){
       if(group_to_show=="all" || events[i].group.split(";").indexOf(group_to_show)!=-1)
  			  $(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"'>"+events[i].desp+"</a>&nbsp<a href='edit?eventsid="+events[i].eventsid+"''>Edit</a></li>")
@@ -125,27 +128,37 @@ get_mygroup();
 </script>
 <!-- Polling -->
 <script>
-$.ajax({
-        type:'get',
-        url: 'set_time_offset?today='+(new Date()).toString(),
-});
-$.ajax({
-        type:'get',
-        url: 'get_group?type=month',
-});
-$('#changed').hide();
-$.ajax({
-        type:'get',
-        url: 'check_change?type=load&period=month&start='+'<%= @month_start_tmp %>',
-        success:function(){
+(function(){
+    var server_date = new Date("<%= @month_start_tmp %>");
+    var client_date = new Date();
+    client_date.setMonth(server_date.getMonth())
 
-            event_draw();
-        }
-    });
-setInterval(function(){
+    var client_firstday=new Date();
+    
+    client_firstday.setMonth(server_date.getMonth());
+    client_firstday.setDate(1);
+    client_firstday.setHours(0);
+    client_firstday.setMinutes(0);
+    client_firstday.setSeconds(0);
+    client_firstday.setMilliseconds(0);
     $.ajax({
-        type:'get',
-        url: 'check_change?type=check&period=month&start='+'<%= @month_start_tmp %>',
+            type:'get',
+            url: 'get_group?type=month',
     });
-},3000);
+    $('#changed').hide();
+    $.ajax({
+            type:'get',
+            url: 'check_change?type=load&period=month&start='+client_firstday.toString(),
+            success:function(){
+
+                event_draw();
+            }
+        });
+    setInterval(function(){
+        $.ajax({
+            type:'get',
+            url: 'check_change?type=check&period=month&start='+client_firstday.toString(),
+        });
+    },3000);
+}())
 </script>

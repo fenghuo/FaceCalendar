@@ -24,8 +24,10 @@
             #time_encoded{
                 display:none;
             }
+            #time_off{
+                display:none;
+            }
             body {
-                -webkit-touch-callout: none;
                 -webkit-user-select: none;
                 -khtml-user-select: none;
                 -moz-user-select: none;
@@ -334,6 +336,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                         <!--<td><input type="text" id="group_encoded" style="width:400px;display:none"/></td>-->
                     <td><%= text_field_tag(:time_encoded) %></td>
                         <!--<td><input type="text" id="time_encoded"  style="width:400px;display:none"/></td>-->
+                    <td><%= text_field_tag(:time_off) %></td>
                     <% end %>
                     <td><button type="button" id="cancel" value="cancel" onclick="event_cancel()" class="btn btn-primary" />cancel</td>
                 </tr>
@@ -344,6 +347,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
 
                  </div>
                 <script>
+                    $('#time_off').val((new Date()).getTimezoneOffset()*(-1/60));
                     function get_mygroups(){
                         $('#group_selection').html("");
                         for (var i = 0; i < group.length; i++) {
@@ -360,30 +364,42 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         </div>
         <!-- Polling -->
         <script>
-        $.ajax({
-                type:'get',
-                url: 'set_time_offset?today='+(new Date()).toString(),
+        //$.ajax({
+        //        type:'get',
+        //        url: 'set_time_offset?today='+(new Date()).toString(),
 
-        });
-        $.ajax({
-                type:'get',
-                url: 'get_group?type=week',
-        
+        //});
+        (function(){
+            var today = new Date("<%= session[:week_start]+2 %>");
+            var todate=today.getDay();
+            if(todate==0)
+                todate=7;
+            var monday=new Date(today-(todate-1)*86400*1000);
+            monday.setHours(0);
+            monday.setMinutes(0);
+            monday.setSeconds(0);
+            monday.setMilliseconds(0);
 
-        });
-        $('#changed').hide();
-        $.ajax({
-            type:'get',
-            url: 'check_change?type=load&period=week&start='+'<%= @week_start_tmp %>',
-            success:function(){
-                event_draw();
-            }
-        });
-        
-        setInterval(function(){
+            $.ajax({
+                    type:'get',
+                    url: 'get_group?type=week',
+            
+
+            });
+            $('#changed').hide();
             $.ajax({
                 type:'get',
-               url: 'check_change?type=check&period=week&start='+'<%= @week_start_tmp %>',
+                url: 'check_change?type=load&period=week&start='+monday.toString(),
+                success:function(){
+                    event_draw();
+                }
             });
-        },10000);
+            
+            setInterval(function(){
+                $.ajax({
+                    type:'get',
+                    url: 'check_change?type=check&period=week&start='+monday.toString(),
+                });
+            },10000);
+        }());
         </script>

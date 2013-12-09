@@ -7,11 +7,11 @@
  	</tr>
  	<tr>
  		<td>Start At:</td>
- 		<td><%= @event_to_show.starttime %></td>
+ 		<td id="st"></td>
  	</tr>
  	<tr>
  		<td>End By:</td>
- 		<td><%= @event_to_show.endtime %></td>
+ 		<td id="et"></td>
  	</tr>
  	<tr>
  		<td>Description:</td>
@@ -29,6 +29,9 @@
 <%= link_to "Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>
  <p></p>
 <%= link_to "Go Back To Calendar Month View", calendar_show_month_path(month_start: @event_to_show.starttime) %>
-
+<script>
+	$('#st').html(new Date("<%= @event_to_show.starttime %>"))
+	$('#et').html(new Date("<%= @event_to_show.endtime   %>"))
+</script>
 
 

@@ -3,7 +3,7 @@ require 'Groups_model.rb'
 
 class CalendarController < ApplicationController
   before_action :check_login
-  helper_method :prep, :group_name2id, :combine_groups,:prep_group
+  helper_method :prep, :group_name2id, :combine_groups,:prep_group, :change_time_zone
   class Event
     attr_accessor :eventname,:desp,:place,:starttime,:endtime,:groupname, :weekday, :eventid, :eventsid
     def initialize
@@ -32,6 +32,10 @@ class CalendarController < ApplicationController
     end
   end
   
+  def change_time_zone(origin)#change to server
+    temp=origin.change(:offset => (session[:time_offset].to_s+"00"));
+    return temp+(temp.utc_offset-origin.utc_offset)/(3600*24.0);
+  end
     #fake record in reality I will request for every week's record
     #need to read the database in the released version
     
@@ -213,8 +217,8 @@ class CalendarController < ApplicationController
       end
       #redirect_to calendar_show_path(week_start_para: @week_start_tmp)
     end
-    session[:time_offset]=@week_start_tmp.utc_offset/3600
-   
+    #session[:time_offset]=@week_start_tmp.utc_offset/3600
+    session[:time_offset]=0#fix serve tz, must be integer
     @week_start_tmp=DateTime.new(@week_start_tmp.year,@week_start_tmp.mon,@week_start_tmp.day,0,0,0,session[:time_offset].to_s)
     if @week_start_tmp.wday==0
       @week_start_tmp=@week_start_tmp-6
@@ -351,7 +355,8 @@ class CalendarController < ApplicationController
     @new_event_start=Array.new
     @new_event_end=Array.new
     week_start_tmp=session[:week_start]
-    
+    time_shift=params[:time_off].to_i-session[:time_offset].to_i
+    week_start_tmp=week_start_tmp-time_shift/24.0
     
     #add
     @create_success=1
@@ -564,8 +569,9 @@ class CalendarController < ApplicationController
       peri=31
     end
     need_update=false;
+    start=change_time_zone(DateTime.parse(params[:start]));
     if params[:type]=="load"
-      start_time=DateTime.parse(params[:start])
+      start_time=start
       @start_tmp=start_time
       need_update=prep(start_time,start_time+peri)
 
@@ -583,7 +589,7 @@ class CalendarController < ApplicationController
           
       end
     elsif params[:type]=="check"
-      start_time=DateTime.parse(params[:start])
+      start_time=start
       @start_tmp=start_time
       @changed=prep(start_time,start_time+peri)
       respond_to do |format|

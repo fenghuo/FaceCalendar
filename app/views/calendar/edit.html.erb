@@ -6,21 +6,32 @@
  <table class="table table-striped">
 	 	<tr>
 	 		<td>Event Name:</td>
-	 		<td><%= text_field_tag(:eventname, @event_to_show.eventname) %></td>
+	 		<td><%= text_field_tag(:eventname, @event_to_show.eventname, class: "form-control") %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>Date:</td>
+	 		<td>
+	 			<input type="date" name="bdaytime" id="date_select" class="form-control" >
+	 		</td>
 	 	</tr>
 	 	<tr>
 	 		<td>Start At:</td>
 	 		<td>
-	 			<%=  text_field_tag(:starttime, @event_to_show.starttime) %></td>
+	 			
+	 			<input type="time" name="bdaytime2" id="start_select" value="15:00" class="form-control" >
+	 			<%=  text_field_tag(:starttime, @event_to_show.starttime, style:"display:none") %></td>
 	 	</tr>
 	 	<tr>
 	 		<td>End By:</td>
-	 		<td><%= text_field_tag(:endtime,  @event_to_show.endtime) %></td>
+	 		<td>
+	 			<input type="time" name="bdaytime3" id="end_select" value="15:00" class="form-control" >
+	 			<%= text_field_tag(:endtime,  @event_to_show.endtime, style:"display:none") %>
+	 		</td>
 	 	</tr>
 
 	 	<tr>
 	 		<td>Place:</td>
-	 		<td><%= text_field_tag(:place,  @event_to_show.place) %></td>
+	 		<td><%= text_field_tag(:place,  @event_to_show.place,class: "form-control") %></td>
 	 	</tr>
 	 	<tr>
 	 		<td>Groups:</td>
@@ -32,7 +43,7 @@
 	 	</tr>
 	 	<tr>
 	 		<td>Description:</td>
-	 		<td><%= text_area_tag(:desp,  @event_to_show.desp) %></td>
+	 		<td><%= text_area_tag(:desp,  @event_to_show.desp,class: "form-control") %></td>
 	 	</tr>
 
 	</table>
@@ -46,6 +57,9 @@
  	var groups=new Array();
  	$('table input').css("width", window.innerWidth*0.75+"px")
  	$('table textarea').css("width", window.innerWidth*0.75+"px")
+ 	$("#date_select").css("wdith",window.innerWidth*0.25+"px")
+ 	$("#start_select").css("wdith",window.innerWidth*0.25+"px")
+ 	$("#end_select").css("wdith",window.innerWidth*0.25+"px")
  	//$('#group').hide();
  	<% begin %>
  		<% session[:current_group].each do |e| %>
@@ -126,6 +140,60 @@
 
  		}
  		set_group();
- 	})()
- 	
+ 	})();
+
+ 	(function(){
+ 		function add_0(n){
+ 			if(n<10)
+ 				return '0'+n;
+ 			else
+ 				return n;
+ 		}
+ 		var starttime=new Date("<%= @event_to_show.starttime %>");
+ 		var endtime=new Date("<%= @event_to_show.endtime %>");
+ 		//date
+ 		var startdate=starttime.getFullYear()+"-"+add_0(starttime.getMonth()+1)+"-"+add_0(starttime.getDate());
+ 		$("#date_select").val(startdate);
+ 		$("#date_select").bind("click",function(){
+ 			if($("#date_select").val()=="")
+ 				$("#date_select").val(startdate);
+ 		})
+ 		$("#date_select").bind("change",function(){
+ 			 if($("#date_select").val()=="")
+ 				$("#date_select").val(startdate);
+ 			var new_date=$("#date_select").val().split('-');
+
+ 			starttime.setYear(new_date[0]);
+ 			starttime.setMonth(new_date[1]-1);
+ 			starttime.setDate(new_date[2]);
+ 			$('#starttime').val(starttime);
+ 			endtime.setYear(new_date[0]);
+ 			endtime.setMonth(new_date[1]-1);
+ 			endtime.setDate(new_date[2]);
+ 			$('#endtime').val(endtime);
+ 		})
+
+ 		//time
+ 		function set_times(obj,value,rec){
+ 			var time_default=add_0(value.getHours())+':'+add_0(value.getMinutes());
+ 			obj.val(time_default);
+ 			obj.bind("click",function(){
+	 			if(obj.val()=="")
+	 				obj.val(time_default);
+ 			})
+ 			obj.bind("change",function(){
+	 			if(obj.val()=="")
+	 				obj.val(time_default);
+	 			var new_time=obj.val().split(':');
+	 			value.setHours(parseInt(new_time[0]));
+	 			value.setMinutes(parseInt(new_time[1]));
+	 			rec.val(value);
+ 			})
+ 		}
+ 		set_times($('#start_select'),starttime,$('#starttime'));
+ 		set_times($('#end_select'),endtime,$('#endtime'));
+		
+
+ 	}())
+
  </script>
