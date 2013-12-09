@@ -141,23 +141,43 @@ class CalendarController < ApplicationController
     end
 
     has_change=false
-
-    session[:current_event].each do |e|
+    session[:test]=0;
+    test_temp=session[:current_event].length
+    session[:current_event].delete_if {|e|
       if (e.starttime-starttime>=0 && endtime-e.starttime>=0) ||
          (e.endtime-starttime>=0 && endtime-e.endtime>=0)
+
         if(!@all_event.find{|se| e.eventid==se.eventid})
-          session[:current_event].delete_if {|se| se.eventid==e.eventid}
           has_change=true
+          true
         else
           temp=@all_event.find{|se| e.eventid==se.eventid}
           if !Event.is_same?(temp,e)
-            session[:current_event].delete_if {|se| se.eventid==e.eventid}
-            session[:current_event].push(temp)
             has_change=true
+            true
           end
         end
       end
-    end
+    }
+    
+#    session[:current_event].each do |e|
+#      session[:test]=session[:test]+1
+#      if (e.starttime-starttime>=0 && endtime-e.starttime>=0) ||
+#         (e.endtime-starttime>=0 && endtime-e.endtime>=0)
+#
+#        if(!@all_event.find{|se| e.eventid==se.eventid})
+#          session[:current_event].delete_if {|se| se.eventid==e.eventid}
+#          has_change=true
+#        else
+#          temp=@all_event.find{|se| e.eventid==se.eventid}
+#          if !Event.is_same?(temp,e)
+#            session[:current_event].delete_if {|se| se.eventid==e.eventid}
+#            session[:current_event].push(temp)
+#            has_change=true
+#          end
+#        end
+#      end
+#    end
 
     @all_event.each do |e|
       if !session[:current_event].find{|se| e.eventid==se.eventid}
@@ -180,6 +200,7 @@ class CalendarController < ApplicationController
     else
       @all_event=session[:current_event]
     end
+
     return has_change
   end
 
@@ -243,7 +264,7 @@ class CalendarController < ApplicationController
     end
     #@all_group=[]
     #prep_group
-    
+
     if session[:read_snapshot]!=1
     #prep(@week_start_tmp,@week_next_tmp)
       begin

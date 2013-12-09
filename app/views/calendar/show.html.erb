@@ -275,7 +275,7 @@
         </table>
         <table class="table table-bordered" style="
 margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week" onselect="return false" >
-            <thead style="table-layout:fixed"> 
+            <thead style="table-layout:fixed" id="week_title"> 
                 <th>
                     <div class="btn-group">
                         <button class="btn" id="group_showing"></button>
@@ -311,9 +311,12 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                   for (i = 0; i < 48; i++) {
                       document.write("<tr>");
                       document.write("<td>" + time_slot(i, 24) + "-"+time_slot((i+1)%48, 24)+ "</td>");
+
+
                       for (j = 1; j < 8; j++) {
                           document.write("<td onclick='event_start(" + i + "," + j + ")' onmouseover='time_over(" + i + "," + j + ")' onmouseout=time_out(" + i + "," + j + ") onmousemove='event_select(" + i + "," + j + ")'>&nbsp;</td>");
                       }
+
                       document.write("</tr>");
                   }
                   event_draw();
@@ -369,6 +372,12 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         //        url: 'set_time_offset?today='+(new Date()).toString(),
 
         //});
+        //$(window).bind('scroll',
+        //    function(){
+        //        if($('#week').position().top-window.pageYOffset<0)
+        //            $('#week_title').position().top=window.pageYOffset;
+        //    }
+        //);
         (function(){
             var today = new Date("<%= session[:week_start]+2 %>");
             var todate=today.getDay();
@@ -391,6 +400,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                 type:'get',
                 url: 'check_change?type=load&period=week&start='+monday.toString(),
                 success:function(){
+                    event_clean();
                     event_draw();
                 }
             });
