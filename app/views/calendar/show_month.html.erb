@@ -129,7 +129,7 @@ get_mygroup();
 <!-- Polling -->
 <script>
 (function(){
-    var server_date = new Date("<%= @month_start_tmp %>");
+    var server_date = new Date("<%= @month_start_tmp+10 %>");
     var client_date = new Date();
     client_date.setMonth(server_date.getMonth())
 
