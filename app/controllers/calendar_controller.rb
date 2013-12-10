@@ -139,7 +139,7 @@ class CalendarController < ApplicationController
         @all_event.push(event0)
       end
     end
-
+    session[:test]=@all_event.length;
     has_change=false
     session[:current_event].delete_if {|e|
       if (e.starttime-starttime>=0 && endtime-e.starttime>=0) ||

@@ -149,7 +149,7 @@ get_mygroup();
     $.ajax({
             type:'get',
             url: 'check_change?type=load&period=month&start='+client_firstday.toString(),
-            error:function(j,t,e){alert(j.responseText)},
+            //error:function(j,t,e){alert(j.responseText)},
             success:function(){
                 event_draw();
             }
