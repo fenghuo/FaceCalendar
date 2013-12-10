@@ -95,10 +95,10 @@ init_table();
 
 function event_draw(){
   init_table();
-
  	for(var i=0;i<events.length;i++){
     
  		if(events[i].year==this_year && events[i].month==this_month){
+      
       if(group_to_show=="all" || events[i].group.split(";").indexOf(group_to_show)!=-1)
  			  $(get_day_selector(events[i].day)+' ul').append("<li><a href='show_event?eventtoshowid=" + events[i].eventsid+"' style='font-weight:bold'>"+events[i].desp+"</a>&nbsp<a href='edit?eventsid="+events[i].eventsid+"''>Edit</a></li>")
     }
@@ -143,14 +143,14 @@ get_mygroup();
     client_firstday.setMilliseconds(0);
     $.ajax({
             type:'get',
-            url: 'get_group?type=month',
+            url: 'get_group?type=month'
     });
     $('#changed').hide();
     $.ajax({
             type:'get',
             url: 'check_change?type=load&period=month&start='+client_firstday.toString(),
+            error:function(j,t,e){alert(j.responseText)},
             success:function(){
-
                 event_draw();
             }
         });
@@ -160,5 +160,5 @@ get_mygroup();
             url: 'check_change?type=check&period=month&start='+client_firstday.toString(),
         });
     },3000);
-}())
+})();
 </script>

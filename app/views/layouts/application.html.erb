@@ -14,6 +14,22 @@
     <link href="/layouts/bootstrap.css" rel="stylesheet"/>
     <link href="/layouts/main.css" rel="stylesheet"/>
     <%= csrf_meta_tags %>
+    <style>
+    #tt:hover{
+      animation:title_anime 5s;
+      -webkit-animation:title_anime 5s; /* Safari and Chrome */
+    }
+    @keyframes title_anime{
+      from {color: blue;}
+      to {color: yellow;}
+
+    }
+    @-webkit-keyframes title_anime{
+      from {color: blue;}
+      to {color: yellow;}
+
+    }
+    </style>
   </head>
 <body>
 
@@ -25,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FaceCalendar</a>
+          <a class="navbar-brand" href="#" id="tt">FaceCalendar</a>
         </div>
         <div class="navbar-collapse collapse">
 	  <% if session[:user_id] %>
@@ -57,7 +73,6 @@
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-
 
 <%= yield %>
 

@@ -319,7 +319,8 @@ class CalendarController < ApplicationController
       rescue
         @all_group=[]
       end
-
+      session[:month_start]=@month_start_tmp
+      session[:month_end]=@month_end_tmp
       if session[:read_snapshot]!=1
     #prep(@week_start_tmp,@week_next_tmp)
         begin
@@ -464,7 +465,6 @@ class CalendarController < ApplicationController
   end
 
   def backup
-
     @all_event=session[:current_event]
     #@test=ActiveSupport::JSON.decode(EventDB.SnapShotGet(1).first["value"])
 
@@ -609,7 +609,7 @@ class CalendarController < ApplicationController
         end
       elsif params[:period]=="month" && need_update
         respond_to do |format|
-          format.js {render partial:'get_event_group'}
+          format.js {render partial:'get_event_month'}
           format.html 
         end
           
