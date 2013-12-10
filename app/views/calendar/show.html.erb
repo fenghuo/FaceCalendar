@@ -331,6 +331,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             <table id="event_enter">
                 <tr>
                     <%= form_tag("create_event",remote:true) do %>
+                    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
                     <td>Event&nbsp;&nbsp;&nbsp;:</td>
                     <td><%= text_field_tag(:text_event) %></td>
                         <!--<td><input type="text" id="text_event" data-provide="typeahead" style="width:400px;"/></td>-->
