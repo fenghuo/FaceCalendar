@@ -1,11 +1,10 @@
 <% if session[:current_event] && session[:current_event]!=[]%>
   var max_esid=<%= (session[:current_event].max { |a,b| a.eventsid<=>b.eventsid }).eventsid %>;
 <% else %>
-  var max_esid=-1
+  var max_esid=-1;
 <% end %>
-events.length=0
-
-    var server_date = new Date("<%= @month_start_tmp+10 %>");
+events.length=0;
+    var server_date = new Date("<%= session[:month_start]+10 %>");
     var client_date = new Date();
     client_date.setMonth(server_date.getMonth())
 
@@ -20,10 +19,8 @@ events.length=0
     
     var client_lastday=new Date(client_firstday);
     client_lastday.setMonth(client_lastday.getMonth()+1)
-   
     <% session[:current_event].each  do |e|%>
-
-        <% if e.endtime-@month_start_tmp>=-2 && e.starttime-@month_end_tmp<=2 %>
+        <% if e.endtime-session[:month_start]>=-2 && e.starttime-session[:month_end]<=2 %>
             
             
             var client_start = new Date("<%= e.starttime %>")
