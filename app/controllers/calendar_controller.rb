@@ -380,7 +380,7 @@ class CalendarController < ApplicationController
     #add
     @create_success=1
     @all_event=session[:current_event]
-    if @all_event==[]
+    if @all_event==[] || @all_event==nil
 	      currentsid=-1
     else
         currentsid=@all_event[@all_event.length-1].eventsid

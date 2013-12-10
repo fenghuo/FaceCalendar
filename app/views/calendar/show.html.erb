@@ -34,6 +34,9 @@
                 -ms-user-select: none;
                 user-select: none;
             }
+            #week_event td{
+                height:5px;
+            }
         </style>
         <script>
 
@@ -378,6 +381,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         //            $('#week_title').position().top=window.pageYOffset;
         //    }
         //);
+
         (function(){
             var today = new Date("<%= session[:week_start]+2 %>");
             var todate=today.getDay();
@@ -388,7 +392,19 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             monday.setMinutes(0);
             monday.setSeconds(0);
             monday.setMilliseconds(0);
-
+            
+//            $(window).bind("scroll",
+//                function(){
+//                    if($('#week_title').offset().top-window.pageYOffset-$('#week_title').height()){
+//                        title.css("position", "absolute");
+//                        title.css("top", window.pageYOffset+"px");
+//                        title.css("left", $('#week_title:nth-child(2)').css("left"));
+//                        title.css("background-color","red")
+//                        title.appendTo('body');
+//
+//                    }
+//                }
+//            )
             $.ajax({
                     type:'get',
                     url: 'get_group?type=week'
