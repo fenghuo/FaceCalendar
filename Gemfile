@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-#Capistrano
 gem 'capistrano','~> 3.0.0'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'rvm1-capistrano3', require: false
 #gem 'capistrano-rvm','~> 0.0.3'
 
+gem 'dalli'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -36,7 +36,6 @@ gem 'rails3-jquery-autocomplete'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

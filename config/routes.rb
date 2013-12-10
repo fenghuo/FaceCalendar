@@ -1,5 +1,7 @@
 FaceCalendar::Application.routes.draw do
 
+  get "calendar/set_time_offset"
+  get "calendar/get_group"
   get "calendar/check_change"
   get "calendar/edit_propose"
   get "calendar/backup"

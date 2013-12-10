@@ -7,11 +7,11 @@
  	</tr>
  	<tr>
  		<td>Start At:</td>
- 		<td><%= @event_to_show.starttime %></td>
+ 		<td id="st"></td>
  	</tr>
  	<tr>
  		<td>End By:</td>
- 		<td><%= @event_to_show.endtime %></td>
+ 		<td id="et"></td>
  	</tr>
  	<tr>
  		<td>Description:</td>
@@ -23,12 +23,27 @@
  	</tr>
  	<tr>
  		<td>Groups:</td>
- 		<td><%= @event_to_show.groupname %></td>
+ 		<td>
+ 			<% @groupname_to_show.each do |e| %>
+ 				<% if e=="private" %>
+ 					<a href="javascript:void(0)">
+	            	    <button type="button" class="btn btn-primary btn-xs">private</button>
+	            	</a>
+	            <% else %>
+	 				<a href="<%='/group/show_profile/'+@groupid_to_show[@groupname_to_show.index(e)].to_s %>">
+	            	    <button type="button" class="btn btn-primary btn-xs"><%= e %></button>
+	            	</a>
+	            <% end %>
+	        <% end %>
+ 		</td>
  	</tr>
 </table>
 <%= link_to "Go Back To Calendar Week View", calendar_show_path(week_start_para: @event_to_show.starttime) %>
  <p></p>
 <%= link_to "Go Back To Calendar Month View", calendar_show_month_path(month_start: @event_to_show.starttime) %>
-
+<script>
+	$('#st').html(new Date("<%= @event_to_show.starttime %>"))
+	$('#et').html(new Date("<%= @event_to_show.endtime   %>"))
+</script>
 
 
