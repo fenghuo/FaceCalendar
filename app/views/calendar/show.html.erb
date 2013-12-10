@@ -139,18 +139,18 @@
        
 
             function event_group(i) {
+                
                 button_status[i] = 1 - button_status[i];
-                //alert(button_status[0] + "," + i + "," + group.length);
                 if (i == group.length && button_status[i] == 1) {
                     for (var j = 0; j < group.length; j++)
                         if (button_status[j] == 1) {
                             button_status[j] = 0;
-                            $('#group_selection button:nth-child(' + (j+1) + ')').button('toggle');
+                            $('#group_selection label:nth-child(' + (j+1) + ')').button('toggle');
                         }
                 }
                 if (i != group.length && button_status[group.length] == 1) {
                     button_status[group.length] = 0;
-                    $('#group_selection button:nth-child(' + (group.length + 1) + ')').button('toggle');
+                    $('#group_selection label:nth-child(' + (group.length + 1) + ')').button('toggle');
                 }
             }
             
@@ -347,20 +347,21 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
                     <td><button type="button" id="cancel" value="cancel" onclick="event_cancel()" class="btn btn-primary" />cancel</td>
                 </tr>
             </table>
-                
+                <form>
                 Groups:
                  <div class="btn-group" data-toggle="buttons"  id="group_selection">
 
                  </div>
+                </form>
                 <script>
                     $('#time_off').val((new Date()).getTimezoneOffset()*(-1/60));
                     function get_mygroups(){
                         $('#group_selection').html("");
                         for (var i = 0; i < group.length; i++) {
-                             $('#group_selection').append("<button type='button' class='btn btn-primary' onclick='event_group(" + i + ")'>" + group[i] + "</button>");
+                             $('#group_selection').append("<label class='btn btn-primary' onclick='event_group(" + i + ")'><input type='checkbox' >" + group[i] + "</label>");
                              
                          }
-                         $('#group_selection').append("<button type='button' id='private_button' class='btn btn-primary' onclick='event_group(" + i + ")'>Private</button>");
+                         $('#group_selection').append("<label class='btn btn-primary' id='private_button' onclick='event_group(" + i + ")'><input type='checkbox'>Private</label>");
                          $('#private_button').button('toggle');
                     }
                     get_mygroups();
@@ -381,7 +382,7 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
         //            $('#week_title').position().top=window.pageYOffset;
         //    }
         //);
-
+        var title=$("<div>");
         (function(){
             var today = new Date("<%= session[:week_start]+2 %>");
             var todate=today.getDay();
@@ -393,18 +394,37 @@ margin-top:0px;position:relative;table-layout:fixed;line-height:30px;" id="week"
             monday.setSeconds(0);
             monday.setMilliseconds(0);
             
-//            $(window).bind("scroll",
-//                function(){
-//                    if($('#week_title').offset().top-window.pageYOffset-$('#week_title').height()){
-//                        title.css("position", "absolute");
-//                        title.css("top", window.pageYOffset+"px");
-//                        title.css("left", $('#week_title:nth-child(2)').css("left"));
-//                        title.css("background-color","red")
-//                        title.appendTo('body');
-//
-//                    }
-//                }
-//            )
+            $(window).bind("scroll",
+                function(){
+                    if($('#week_title').offset().top-window.pageYOffset-$(".navbar").height()<0){
+                        
+                        title.css("position", "absolute");
+                        title.css("top", (window.pageYOffset+$(".navbar").height())+"px");
+                        title.css("left",$('#week_title th:nth-child(2)').offset().left);
+
+                        var w=$(window).width()-$('#week_title th:nth-child(2)').offset().left
+                                
+                        title.css("width",w+"px")
+                        color=$('body').css("background-color")
+                        title.css("background-color",color)
+                        title.appendTo('body');
+                        title.html(" <table class='table table-bordered' style='margin-top:0px;position:relative;table-layout:fixed;' id='shifting_title'>"
+                                    +"<thead><tr>"
+                                    +"<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturaday</th>"
+                                    +"<th>Sunday</th>"
+                                    +"</tr></thead>"
+
+                            )
+                        title.show();
+
+                        title.css("height",$('#shifting_title').height()+2*parseFloat($('#week').css("border-width"))+"px");
+                    }
+                    else
+                    {
+                        title.hide();
+                    }
+                }
+            )
             $.ajax({
                     type:'get',
                     url: 'get_group?type=week'
