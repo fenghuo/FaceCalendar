@@ -29,10 +29,13 @@
         </div>
         <div class="navbar-collapse collapse">
 	  <% if session[:user_id] %>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/calendar/show">My Calendar</a></li>
-            <li><a href="/profile/show">Profile</a></li>
-            <li><a href="/group/show">Group</a></li>
+          <ul class="nav navbar-nav" id="top_bar">
+            <li id="calendar"><a href="/calendar/show">My Calendar</a></li>
+            <li id="profile"><a href="/profile/show">Profile</a></li>
+            <li id="group"><a href="/group/show">Group</a></li>
+            <script>
+                $("#"+"<%=params[:controller]%>").addClass("active");
+            </script>
           </ul>
 		  <form class="navbar-form navbar-right" action="/login/logout">
 			  <%= button_tag "Sign out", class: "btn btn-primary" %>
